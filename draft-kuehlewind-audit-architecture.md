@@ -69,7 +69,7 @@ Autonomous and semi-autonomous software agents based on large language models (L
 These agents interact across administrative and trust domains, delegate tasks and authority to other agents or tools, and initiate consequential actions without per-step human oversight.
 The question of whether the recorded actions of an agent faithfully represent what the agent actually did has acquired new urgency.
 
-Autonomous agents may run long-lived workflows without tight user interaction or may be very short-lived, e.g. for a delegated sub-tasks. 
+Autonomous agents may run long-lived workflows without tight user interaction or may be very short-lived, e.g. for a delegated sub-tasks.
 Agents may be authenticated to several services, request step-up approval from a human, spawn further sub-agents, and produc records that long outlive its own process.
 Existing auditing mechanisms often capture isolated system events but do not consistently represent delegation relationships, user intent, or evolving authorization.
 In agent-driven systems, auditability requires linking intent, delegation, authorization, and execution.
@@ -196,7 +196,7 @@ Two trust mechanisms are composed (attestation and transparency logging).
 An auditing system may select either, both, or neither according to the strength of evidence its Auditors require.
 
 The auditing services (Attestation, Audit Store, and Transparency Log) are distinct from the interaction and authorization layers that drives the three acting roles.
-They can be or need to be operated by different parties dependeing on trust requirements of auditor. 
+They can be or need to be operated by different parties dependeing on trust requirements of auditor.
 Attestations may be directly provided by the producer or supplied on request by an Attestation Service.
 An Audit Store canonicalises observable agent signals into the records and exposes them to Audit Consumers and Verifiers.
 The Store is logically distinct from the Agent it records, because an agent that records itself can produce useful telemetry but cannot, by itself, deliver non-repudiation to a third party.
@@ -244,7 +244,7 @@ The role-profile vocabulary is the subject of a separate specification (WI-2 in 
 A role is a function, not a deployment unit.
 The same entity may take on several roles.
 
-## Principle Agent Interaction Actors 
+## Principle Agent Interaction Actors
 
 The User is the human or organisation on whose behalf an Agent acts.
 Where the User is a natural person they are also the OAuth Principal of the run: the `sub` of any token issued for the run and the original authorizing party in any delegation chain.
