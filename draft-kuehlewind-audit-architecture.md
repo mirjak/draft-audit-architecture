@@ -155,7 +155,7 @@ Without detailed auditing, it is difficult to verify what data was accessed, wha
 
 {{fig-arch}} shows a high level end-to-end view of the proposed architecture: three principal acting roles produce records about their own behaviour. These records flow into supporting services that store, attest, and expose them to consumers that can verify their authenticity and provenance.
 
-~~~ aasvg
+~~~
 +---------------+        +---------------+        +---------------+
 |     User      |        |   AI Agent    |        |   External    |
 |               +------->+               +------->+   Services /  |
