@@ -1,6 +1,6 @@
 ---
 title: "An Architecture for Auditing AI Agent Delegation and Interactions"
-abbrev: "AUDIT Architecture"
+abbrev: "Agent Auditing Architecture"
 docname: draft-kuehlewind-audit-architecture-latest
 category: info
 consensus: true
