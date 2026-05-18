@@ -7,7 +7,7 @@ consensus: true
 submissionType: IETF
 
 ipr: trust200902
-area: "Security"
+# area: "Security"
 keyword:
  - audit
  - accountability
