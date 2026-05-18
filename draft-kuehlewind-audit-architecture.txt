@@ -1,0 +1,228 @@
+
+
+
+
+Network Working Group                                      M. Kuehlewind
+Internet-Draft                                                  Ericsson
+Intended status: Informational                               H. Birkholz
+Expires: 19 November 2026                                 Fraunhofer SIT
+                                                             18 May 2026
+
+
+   An Architecture for Auditing AI Agent Delegation and Interactions
+               draft-kuehlewind-audit-architecture-latest
+
+Abstract
+
+   This document describes an architecture for auditing of agent-driven
+   interactions on the Internet.  Autonomous and semi-autonomous
+   software agents, including those based on artificial intelligence,
+   increasingly act on behalf of users, organizations, and services.
+   Existing auditing mechanisms often capture isolated system events but
+   do not consistently represent delegation relationships, user intent,
+   or evolving authorization.  In agent-driven systems, auditability
+   requires linking intent, delegation, authorization, and execution.
+   The proposed architecture enables this through distributed audit
+   record generation, propagation of audit context, optional
+   attestation, and additonal logging for transparency.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on 19 November 2026.
+
+Copyright Notice
+
+   Copyright (c) 2026 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
+
+Table of Contents
+
+   1.  Introduction
+   2.  Security Considerations
+   3.  IANA Considerations
+   4.  References
+     4.1.  Normative References
+     4.2.  Informative References
+   Authors' Addresses
+
+1.  Introduction
+
+   TODO Introduction
+
+2.  Security Considerations
+
+   TODO Security
+
+3.  IANA Considerations
+
+   This document has no IANA actions.
+
+4.  References
+
+4.1.  Normative References
+
+   [I-D.ietf-oauth-attestation-based-client-auth]
+              Looker, T., Bastian, P., and C. Bormann, "OAuth 2.0
+              Attestation-Based Client Authentication", Work in
+              Progress, Internet-Draft, draft-ietf-oauth-attestation-
+              based-client-auth-08, 2 March 2026,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
+              attestation-based-client-auth-08>.
+
+   [I-D.ietf-oauth-identity-assertion-authz-grant]
+              Parecki, A., McGuinness, K., and B. Campbell, "Identity
+              Assertion JWT Authorization Grant", Work in Progress,
+              Internet-Draft, draft-ietf-oauth-identity-assertion-authz-
+              grant-03, 22 April 2026,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
+              identity-assertion-authz-grant-03>.
+
+   [I-D.ietf-oauth-identity-chaining]
+              Schwenkschuster, A., Kasselman, P., Burgin, K., Jenkins,
+              M. J., Campbell, B., and A. Parecki, "OAuth Identity and
+              Authorization Chaining Across Domains", Work in Progress,
+              Internet-Draft, draft-ietf-oauth-identity-chaining-12, 11
+              May 2026, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-oauth-identity-chaining-12>.
+
+   [I-D.ietf-oauth-spiffe-client-auth]
+              Schwenkschuster, A., Kasselman, P., Rose, S., and S.
+              Thorgersen, "OAuth SPIFFE Client Authentication", Work in
+              Progress, Internet-Draft, draft-ietf-oauth-spiffe-client-
+              auth-01, 2 March 2026,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
+              spiffe-client-auth-01>.
+
+   [I-D.ietf-oauth-status-list]
+              Looker, T., Bastian, P., and C. Bormann, "Token Status
+              List (TSL)", Work in Progress, Internet-Draft, draft-ietf-
+              oauth-status-list-20, 20 April 2026,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
+              status-list-20>.
+
+   [I-D.ietf-oauth-transaction-tokens]
+              Tulshibagwale, A., Fletcher, G., and P. Kasselman,
+              "Transaction Tokens", Work in Progress, Internet-Draft,
+              draft-ietf-oauth-transaction-tokens-08, 2 March 2026,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
+              transaction-tokens-08>.
+
+   [I-D.ietf-scitt-architecture]
+              Birkholz, H., Delignat-Lavaud, A., Fournet, C., Deshpande,
+              Y., and S. Lasker, "An Architecture for Trustworthy and
+              Transparent Digital Supply Chains", Work in Progress,
+              Internet-Draft, draft-ietf-scitt-architecture-22, 10
+              October 2025, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-scitt-architecture-22>.
+
+   [I-D.ietf-wimse-arch]
+              Salowey, J. A., Rosomakho, Y., and H. Tschofenig,
+              "Workload Identity in a Multi System Environment (WIMSE)
+              Architecture", Work in Progress, Internet-Draft, draft-
+              ietf-wimse-arch-07, 2 March 2026,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-wimse-
+              arch-07>.
+
+   [I-D.ietf-wimse-identifier]
+              Rosomakho, Y. and J. A. Salowey, "Workload Identifier",
+              Work in Progress, Internet-Draft, draft-ietf-wimse-
+              identifier-02, 2 March 2026,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-wimse-
+              identifier-02>.
+
+   [I-D.ietf-wimse-workload-creds]
+              Campbell, B., Salowey, J. A., Schwenkschuster, A.,
+              Sheffer, Y., and Y. Rosomakho, "WIMSE Workload
+              Credentials", Work in Progress, Internet-Draft, draft-
+              ietf-wimse-workload-creds-01, 5 May 2026,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-wimse-
+              workload-creds-01>.
+
+   [RFC6749]  Hardt, D., Ed., "The OAuth 2.0 Authorization Framework",
+              RFC 6749, DOI 10.17487/RFC6749, October 2012,
+              <https://www.rfc-editor.org/rfc/rfc6749>.
+
+   [RFC8693]  Jones, M., Nadalin, A., Campbell, B., Ed., Bradley, J.,
+              and C. Mortimore, "OAuth 2.0 Token Exchange", RFC 8693,
+              DOI 10.17487/RFC8693, January 2020,
+              <https://www.rfc-editor.org/rfc/rfc8693>.
+
+   [RFC9334]  Birkholz, H., Thaler, D., Richardson, M., Smith, N., and
+              W. Pan, "Remote ATtestation procedureS (RATS)
+              Architecture", RFC 9334, DOI 10.17487/RFC9334, January
+              2023, <https://www.rfc-editor.org/rfc/rfc9334>.
+
+   [RFC9396]  Lodderstedt, T., Richer, J., and B. Campbell, "OAuth 2.0
+              Rich Authorization Requests", RFC 9396,
+              DOI 10.17487/RFC9396, May 2023,
+              <https://www.rfc-editor.org/rfc/rfc9396>.
+
+   [RFC9449]  Fett, D., Campbell, B., Bradley, J., Lodderstedt, T.,
+              Jones, M., and D. Waite, "OAuth 2.0 Demonstrating Proof of
+              Possession (DPoP)", RFC 9449, DOI 10.17487/RFC9449,
+              September 2023, <https://www.rfc-editor.org/rfc/rfc9449>.
+
+4.2.  Informative References
+
+   [I-D.birkholz-verifiable-agent-conversations]
+              Birkholz, H., Heldt, T., and O. Steele, "Verifiable Agent
+              Conversation Records", Work in Progress, Internet-Draft,
+              draft-birkholz-verifiable-agent-conversations-00, 25
+              February 2026, <https://datatracker.ietf.org/doc/html/
+              draft-birkholz-verifiable-agent-conversations-00>.
+
+   [I-D.johansson-direct-presentation-arch]
+              Johansson, L., Zundel, B., and T. Cappalli, "A reference
+              architecture for direct presentation credential flows",
+              Work in Progress, Internet-Draft, draft-johansson-direct-
+              presentation-arch-01, 4 November 2025,
+              <https://datatracker.ietf.org/doc/html/draft-johansson-
+              direct-presentation-arch-01>.
+
+   [I-D.mcguinness-oauth-actor-profile]
+              McGuinness, K., "OAuth Actor Profile for Delegation", Work
+              in Progress, Internet-Draft, draft-mcguinness-oauth-actor-
+              profile-00, 30 April 2026,
+              <https://datatracker.ietf.org/doc/html/draft-mcguinness-
+              oauth-actor-profile-00>.
+
+   [I-D.mw-oauth-actor-chain]
+              Prasad, A., Krishnan, R., Lopez, D., and S. Addepalli,
+              "Cryptographically Verifiable Actor Chains for OAuth 2.0
+              Token Exchange", Work in Progress, Internet-Draft, draft-
+              mw-oauth-actor-chain-00, 1 May 2026,
+              <https://datatracker.ietf.org/doc/html/draft-mw-oauth-
+              actor-chain-00>.
+
+Authors' Addresses
+
+   Mirja Kuehlewind
+   Ericsson
+   Email: mirja.kuehlewind@ericsson.com
+
+
+   Henk Birkholz
+   Fraunhofer SIT
+   Email: henk.birkholz@ietf.contact
