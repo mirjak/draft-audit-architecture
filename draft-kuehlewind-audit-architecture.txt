@@ -495,7 +495,7 @@ Table of Contents
    This document proposes an initial set of four record types for agent
    auditing:
 
-   Interaction Records:  capture user-facing events (prompts, model
+   *Interaction Records:*  capture user-facing events (prompts, model
       responses, instructions, approvals, refusals) and agent-to-agent
       dialogue treated as conversation.
 
@@ -508,14 +508,14 @@ Table of Contents
    not, appear as identifiable records bindable to the run's Interaction
    Record.
 
-   Action Records:  capture system-facing events at the boundary where
+   *Action Records:*  capture system-facing events at the boundary where
       the action took effect.
 
    An Action Record may carry inline Evidence, an Attestation Result, or
    a stable reference to either; where Evidence is unavailable, that
    absence is itself an audit-relevant fact and can be recorded.
 
-   Delegation Records:  capture the assignment of authority from one
+   *Delegation Records:*  capture the assignment of authority from one
       entity to another,e.g., delegator, delegatee, scope, and
       constraints on use.
 
