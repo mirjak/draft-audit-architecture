@@ -5,8 +5,8 @@
 Network Working Group                                      M. Kuehlewind
 Internet-Draft                                                  Ericsson
 Intended status: Informational                               H. Birkholz
-Expires: 19 November 2026                                 Fraunhofer SIT
-                                                             18 May 2026
+Expires: 20 November 2026                                 Fraunhofer SIT
+                                                             19 May 2026
 
 
    An Architecture for Auditing AI Agent Delegation and Interactions
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 November 2026.
+   This Internet-Draft will expire on 20 November 2026.
 
 Copyright Notice
 
@@ -659,7 +659,7 @@ Table of Contents
    carrying correlation and tracing-chain information alongside the
    conventional OAuth claims.  The cryptographic delegation chain
    remains in the OAuth act claim [RFC8693]; the audit claim carries the
-   tracing-layer chain (SC-2) and the correlation identifiers used to
+   tracing-layer chain (WI-2) and the correlation identifiers used to
    link records:
 
    {
@@ -680,8 +680,8 @@ Table of Contents
      }
    }
 
-   The same information MAY be propagated using HTTP headers (SC-11) or
-   included in standalone audit records.
+   The same information could be propagated using HTTP headers (WI-11)
+   or included in standalone audit records.
 
 7.2.  Action Record
 
@@ -713,7 +713,7 @@ Table of Contents
    }
 
    The parent_id references the Interaction Record that motivated the
-   action.  The delegation_chain is the SC-2 tracing chain.  The
+   action.  The delegation_chain is the WI-2 tracing chain.  The
    cryptographic chain lives in the authorizing token and is not
    duplicated here.
 
