@@ -1375,33 +1375,86 @@ Without detailed auditing, it is difficult to verify what data was accessed, wha
 <p id="section-3-1"><a href="#fig-arch" class="auto internal xref">Figure 1</a> shows a high level end-to-end view of the proposed architecture: three principal acting roles produce records about their own behaviour. These records flow into supporting services that store, attest, and expose them to consumers that can verify their authenticity and provenance.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <span id="name-roles-view-principal-acting"></span><div id="fig-arch">
 <figure id="figure-1">
-        <div class="alignLeft art-text artwork" id="section-3-2.1">
-<pre>
-+---------------+        +---------------+        +---------------+
-|     User      |        |   AI Agent    |        |   External    |
-|               +-------&gt;+               +-------&gt;+   Services /  |
-+---------------+        +---------------+        |   Tools       |
-         |                        |               +---------------+
-         |                        |                       |
-         v                        v                       v
-   Interaction Records     Agent Records           Service Records
-         |                        |                       |
-         +------------------------+-----------------------+
-                                  |
-                                  v
-       +--------------------------+---------------------------+
-       |                   Auditing Service                   |
-       |  +--------------+  +--------------+  +------------+  |
-       |  |  Attestation |  |   Audit      |  |Transparency|  |
-       |  |              |  |   Store      |  |Log         |  |
-       |  +--------------+  +--------------+  +------------+  |
-       +------------------------------------------------------+
-                                  |
-                                  v
-                +-----------------+-------------------+
-                |    Audit Consumers / Verifiers      |
-                +-------------------------------------+
-</pre>
+        <div id="section-3-2.1">
+          <div class="alignLeft art-svg artwork" id="section-3-2.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="416" width="544" viewBox="0 0 544 416" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+              <path d="M 8,32 L 8,80" fill="none" stroke="black"></path>
+              <path d="M 64,224 L 64,320" fill="none" stroke="black"></path>
+              <path d="M 80,88 L 80,128" fill="none" stroke="black"></path>
+              <path d="M 80,160 L 80,176" fill="none" stroke="black"></path>
+              <path d="M 88,256 L 88,304" fill="none" stroke="black"></path>
+              <path d="M 136,32 L 136,80" fill="none" stroke="black"></path>
+              <path d="M 136,368 L 136,400" fill="none" stroke="black"></path>
+              <path d="M 208,32 L 208,80" fill="none" stroke="black"></path>
+              <path d="M 208,256 L 208,304" fill="none" stroke="black"></path>
+              <path d="M 232,256 L 232,304" fill="none" stroke="black"></path>
+              <path d="M 280,88 L 280,128" fill="none" stroke="black"></path>
+              <path d="M 280,160 L 280,216" fill="none" stroke="black"></path>
+              <path d="M 280,328 L 280,360" fill="none" stroke="black"></path>
+              <path d="M 336,32 L 336,80" fill="none" stroke="black"></path>
+              <path d="M 352,256 L 352,304" fill="none" stroke="black"></path>
+              <path d="M 376,256 L 376,304" fill="none" stroke="black"></path>
+              <path d="M 408,32 L 408,96" fill="none" stroke="black"></path>
+              <path d="M 440,368 L 440,400" fill="none" stroke="black"></path>
+              <path d="M 472,104 L 472,128" fill="none" stroke="black"></path>
+              <path d="M 472,160 L 472,176" fill="none" stroke="black"></path>
+              <path d="M 480,256 L 480,304" fill="none" stroke="black"></path>
+              <path d="M 504,224 L 504,320" fill="none" stroke="black"></path>
+              <path d="M 536,32 L 536,96" fill="none" stroke="black"></path>
+              <path d="M 8,32 L 136,32" fill="none" stroke="black"></path>
+              <path d="M 208,32 L 336,32" fill="none" stroke="black"></path>
+              <path d="M 408,32 L 536,32" fill="none" stroke="black"></path>
+              <path d="M 136,64 L 200,64" fill="none" stroke="black"></path>
+              <path d="M 336,64 L 400,64" fill="none" stroke="black"></path>
+              <path d="M 8,80 L 136,80" fill="none" stroke="black"></path>
+              <path d="M 208,80 L 336,80" fill="none" stroke="black"></path>
+              <path d="M 408,96 L 536,96" fill="none" stroke="black"></path>
+              <path d="M 80,176 L 472,176" fill="none" stroke="black"></path>
+              <path d="M 64,224 L 504,224" fill="none" stroke="black"></path>
+              <path d="M 88,256 L 208,256" fill="none" stroke="black"></path>
+              <path d="M 232,256 L 352,256" fill="none" stroke="black"></path>
+              <path d="M 376,256 L 480,256" fill="none" stroke="black"></path>
+              <path d="M 88,304 L 208,304" fill="none" stroke="black"></path>
+              <path d="M 232,304 L 352,304" fill="none" stroke="black"></path>
+              <path d="M 376,304 L 480,304" fill="none" stroke="black"></path>
+              <path d="M 64,320 L 504,320" fill="none" stroke="black"></path>
+              <path d="M 136,368 L 440,368" fill="none" stroke="black"></path>
+              <path d="M 136,400 L 440,400" fill="none" stroke="black"></path>
+              <polygon class="arrowhead" points="480,128 468,122.4 468,133.6" fill="black" transform="rotate(90,472,128)"></polygon>
+              <polygon class="arrowhead" points="408,64 396,58.4 396,69.6" fill="black" transform="rotate(0,400,64)"></polygon>
+              <polygon class="arrowhead" points="288,360 276,354.4 276,365.6" fill="black" transform="rotate(90,280,360)"></polygon>
+              <polygon class="arrowhead" points="288,216 276,210.4 276,221.6" fill="black" transform="rotate(90,280,216)"></polygon>
+              <polygon class="arrowhead" points="288,128 276,122.4 276,133.6" fill="black" transform="rotate(90,280,128)"></polygon>
+              <polygon class="arrowhead" points="208,64 196,58.4 196,69.6" fill="black" transform="rotate(0,200,64)"></polygon>
+              <polygon class="arrowhead" points="88,128 76,122.4 76,133.6" fill="black" transform="rotate(90,80,128)"></polygon>
+              <g class="text">
+                <text x="68" y="52">User</text>
+                <text x="244" y="52">AI</text>
+                <text x="280" y="52">Agent</text>
+                <text x="468" y="52">External</text>
+                <text x="468" y="68">Services</text>
+                <text x="512" y="68">/</text>
+                <text x="456" y="84">Tools</text>
+                <text x="72" y="148">Interaction</text>
+                <text x="152" y="148">Records</text>
+                <text x="240" y="148">Agent</text>
+                <text x="296" y="148">Records</text>
+                <text x="440" y="148">Service</text>
+                <text x="504" y="148">Records</text>
+                <text x="252" y="244">Auditing</text>
+                <text x="320" y="244">Service</text>
+                <text x="152" y="276">Attestation</text>
+                <text x="280" y="276">Audit</text>
+                <text x="428" y="276">Transparency</text>
+                <text x="280" y="292">Store</text>
+                <text x="392" y="292">Log</text>
+                <text x="192" y="388">Audit</text>
+                <text x="256" y="388">Consumers</text>
+                <text x="304" y="388">/</text>
+                <text x="352" y="388">Verifiers</text>
+              </g>
+            </svg><a href="#section-3-2.1.1" class="pilcrow">¶</a>
+</div>
 </div>
 <figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
 <a href="#name-roles-view-principal-acting" class="selfRef">Roles view: principal acting roles, auditing services, and the records that flow among them.</a>
