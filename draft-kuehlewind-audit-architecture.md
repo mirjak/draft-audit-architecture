@@ -304,7 +304,7 @@ The architecture's requirements apply across role boundaries even when those rol
 
 This document proposes an initial set of four record types for agent auditing:
 
-Interaction Records:
+**Interaction Records:**
 : capture user-facing events (prompts, model responses, instructions, approvals, refusals) and agent-to-agent dialogue treated as conversation.
 
 The Verifiable Agent Conversations data model {{-vac}} is the principal candidate format
@@ -312,12 +312,12 @@ for the user-Agent dialogue subtype.
 
 Human-in-the-loop escalations, like step-up approvals, refusals, or the rarer case of an action that should have been escalated but was not, appear as identifiable records bindable to the run's Interaction Record.
 
-Action Records:
+**Action Records:**
 : capture system-facing events at the boundary where the action took effect.
 
 An Action Record may carry inline Evidence, an Attestation Result, or a stable reference to either; where Evidence is unavailable, that absence is itself an audit-relevant fact and can be recorded.
 
-Delegation Records:
+**Delegation Records:**
 : capture the assignment of authority from one entity to another,e.g., delegator, delegatee, scope, and constraints
 on use.
 
