@@ -395,7 +395,7 @@ The record also captures relevant authorization state, such as scope and validit
 ## Audit Context in an Access Token {#ex-audit-token}
 
 An access token or similar credential MAY include an `audit` claim carrying correlation and tracing-chain information alongside the conventional OAuth claims.
-The cryptographic delegation chain remains in the OAuth `act` claim {{-token-exchange}}; the `audit` claim carries the tracing-layer chain (SC-2) and the correlation identifiers used to link records:
+The cryptographic delegation chain remains in the OAuth `act` claim {{-token-exchange}}; the `audit` claim carries the tracing-layer chain (WI-2) and the correlation identifiers used to link records:
 
 ~~~ json
 {
@@ -417,7 +417,7 @@ The cryptographic delegation chain remains in the OAuth `act` claim {{-token-exc
 }
 ~~~
 
-The same information MAY be propagated using HTTP headers (SC-11)
+The same information could be propagated using HTTP headers (WI-11)
 or included in standalone audit records.
 
 ## Action Record {#ex-action}
@@ -451,7 +451,7 @@ An Action Record produced at the boundary where a tool or service call took effe
 ~~~
 
 The `parent_id` references the Interaction Record that motivated the action.
-The `delegation_chain` is the SC-2 tracing chain.
+The `delegation_chain` is the WI-2 tracing chain.
 The cryptographic chain lives in the authorizing token and is not duplicated here.
 
 ## Delegation Record {#ex-delegation}
