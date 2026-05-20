@@ -1,6 +1,6 @@
 # Agent Use of Delegation and Interaction Traceability (AUDIT) Working Group Charter
 
-Autonomous and semi-autonomous software agents, including those based on artificial intelligence (AI), are increasingly deployed to act on behalf of users, organizations, and services across the Internet. These agents interact across multiple administrative or trust domains and can initiate actions without direct human oversight at each step.
+Autonomous and semi-autonomous software agents, including those based on LLM-based machine learning systems, are increasingly deployed to act on behalf of users, organizations, and services across the Internet. These agents interact across multiple administrative or trust domains and can initiate actions without direct human oversight at each step.
 
 This introduces challenges for auditability, accountability, and transparency, including:
 
@@ -9,17 +9,17 @@ This introduces challenges for auditability, accountability, and transparency, i
 * Inconsistent capture of delegation relationships, authorization context, and identity transitions
 * Cross-domain interactions lack interoperable means to exchange or verify audit-relevant information about the participating agents and their interactions
 
-AI agents participate in two distinct classes of interactions that must be audited:
+Agents participate in two distinct classes of interactions that must be audited:
 
 * User-facing interactions, such as prompts, conversations, and approvals, capturing user intent and human-in-the-loop decisions
 * System-facing interactions, such as API calls, tool usage, and delegation to other agents or services
 
-Effective auditing requires linking user intent to resulting system actions across protocol and administrative boundaries. While traditional workflows support evolving authorization, these transitions are usually explicit and predefined. AI agent systems introduce dynamic, fine-grained authorization changes that arise during execution, driven by agent decisions, delegation, and human interaction. Auditing must therefore capture authorization as a time-evolving state and correlate these transitions across interactions and domains.
+Effective auditing requires linking user intent to resulting system actions across protocol and administrative boundaries. While traditional workflows support evolving authorization, these transitions are usually explicit and predefined. Agent systems introduce dynamic, fine-grained authorization changes that arise during execution, driven by agent decisions, delegation, and human interaction. Auditing must therefore capture authorization as a time-evolving state and correlate these transitions across interactions and domains.
 
-Additionally, AI agent behavior may be non-deterministic and not fully predefined, requiring auditing mechanisms to capture execution context and structure as they emerge. Auditing must also distinguish between user, agent, and service identities, and ensure audit data remains interpretable across systems without shared assumptions.
+Additionally, Agent behavior may be non-deterministic and not fully predefined, requiring auditing mechanisms to capture execution context and structure as they emerge. Auditing must also distinguish between user, agent, and service identities, and ensure audit data remains interpretable across systems without shared assumptions.
 
 ## Scope and Goals
-The AUDIT working group will define interoperable mechanisms for auditing and accountability of AI agents and delegated systems across Internet protocols.
+The AUDIT working group will define interoperable mechanisms for auditing and accountability of Agents and delegated systems across Internet protocols.
 
 The group will focus on architectures, protocol-layer specifications, and data representations that enable systems to record, exchange, and verify audit-relevant information across user-facing and system-facing interactions. This includes capturing delegation chains, evolving authorization state, and enabling consistent interpretation and correlation of audit data across domains.
 
