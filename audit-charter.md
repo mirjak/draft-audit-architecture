@@ -1,4 +1,4 @@
-# Agent Use of Delegation and Interaction Traceability (AUDIT) Working Group Charte
+# Agent Use of Delegation and Interaction Traceability (AUDIT) Working Group Charter
 
 Autonomous and semi-autonomous software agents, including those based on artificial intelligence (AI), are increasingly deployed to act on behalf of users, organizations, and services across the Internet. These agents interact across multiple administrative or trust domains and can initiate actions without direct human oversight at each step.
 
