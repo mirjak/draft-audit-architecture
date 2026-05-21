@@ -1,0 +1,81 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2026-05-21T02:42:12.871145+00:00",
+  "repo": "mirjak/draft-audit-architecture",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    }
+  ],
+  "issues": [],
+  "pulls": [
+    {
+      "number": 1,
+      "id": "PR_kwDOShPbiM7dpHKJ",
+      "title": "Omit word \"AI\"",
+      "url": "https://github.com/mirjak/draft-audit-architecture/pull/1",
+      "state": "OPEN",
+      "author": "mcr",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-05-20T17:58:25Z",
+      "updatedAt": "2026-05-20T17:58:25Z",
+      "baseRepository": "mirjak/draft-audit-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "45cb14988357cb763dee87a5fe2f11d2d8d5490e",
+      "headRepository": "mcr/draft-audit-architecture",
+      "headRefName": "patch-1",
+      "headRefOid": "06ea858e4b738a0ebc2056dc07b0d21782af6eea",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    }
+  ]
+}
