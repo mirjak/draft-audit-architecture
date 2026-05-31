@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-05-28T02:33:18.729148+00:00",
+  "timestamp": "2026-05-31T02:48:10.598229+00:00",
   "repo": "mirjak/draft-audit-architecture",
   "labels": [
     {
@@ -55,15 +55,15 @@
       "id": "I_kwDOShPbiM8AAAABDbhOLQ",
       "title": "Thomas Fossati ' comments",
       "url": "https://github.com/mirjak/draft-audit-architecture/issues/3",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "junzhanghw",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Achieved from \nhttps://mailarchive.ietf.org/arch/msg/agent2agent/SUGlc6vgg5CoViVh1dkk8c6PiOU/\n\n1. Many of the challenges described (cross-domain visibility, delegation\nchains, evolving authorisation) apply to *any* complex distributed\nmicroservice architecture.  Unsure of what makes this problem strictly\nunique to AI agents?  Could this work be generalised to something like\n\"dynamic workload delegation\" without the AI buzzword? :-)\n\n2. There seems to be quite a lot of overlap with WIMSE, OAUTH, SCITT,\nRATS -- at least, which is both good and bad.  To minimise the risk of\noverlap, conflict, et cetera, I suggest you make the proposal visibile\nto these groups (if you haven't already done it).  I understand it may\nbe a bit too early to properly engage, but a quick heads-up would not\nhurt (_maybe_).\n\n3. It is not entirely clear to me how does this work would differ from\nexisting distributed tracing standards, e.g., OpenTelemetry / W3C Trace\nContext?  Is the goal to add cryptographic proof to traces, or to define\nan entirely new transport mechanism?\n\n4. The charter proposes linking user-facing interactions (the prompts)\nwith system-facing interactions (the API calls) across domains.  How is\nthe architecture going to handle the mega privacy implications of\ntransmitting user prompts / intent across administrative boundaries?\n\n5. What is the threat model for the audit data itself?  I may be missing\nsomething but I don't get how we can ensure that a compromised agent\ncannot forge/alter/drop its own audit trails before they are recorded?\n\n6. The charter mentions that AI agent behavior may be non-deterministic.\nIf an agent hallucinates a step or takes an odd path, is the intention\nto standardise a data model that can also capture \"why\" an agent did\nsomething, rather than just \"what\" it did?\n\n7. The chapter mentiones the need to distinguish between user, agent,\nand service identities.  I hope this doesn't require new identity\nprimitives and instead leverages existing ones like SPIFFE IDs, DIDs &\nco.  It'd help if this was made more explitic.\n\n8. I am especially ignorant in this space, so it's a bit unclear to me\nwhat the target audience is for this audit data?  Is it for end-users to\nsee what an agent did on their behalf, for compliance folks to audit an\norganisation, or for downstream APIs to decide whether to authorise an\naction?  Or all of the the above?  I guess tHe answer to this may have a\nmajor impact on the data model.\n\n8. Have major AI framework developers expressed interest in implementing\nany interoperable standards that would come out of this pipeline?",
       "createdAt": "2026-05-26T14:55:56Z",
-      "updatedAt": "2026-05-26T16:12:20Z",
-      "closedAt": null,
+      "updatedAt": "2026-05-28T10:09:11Z",
+      "closedAt": "2026-05-28T10:09:11Z",
       "comments": [
         {
           "author": "junzhanghw",
@@ -78,6 +78,13 @@
           "body": "comments from Thomas\nhttps://mailarchive.ietf.org/arch/msg/agent2agent/dyZGwcq6aObZgZhfyoOrUpOWWTM/\n\nit seems that AUDIT and VCON are\ncomplementary, at the very least, and it'd be worth adding VCON to the\nset of identified technology overlaps alongside RATS, SCITT & co.\nCould AUDIT perhaps reuse the VCON data model for packaging interactions\non the user-to-agent interface, for example?",
           "createdAt": "2026-05-26T16:11:44Z",
           "updatedAt": "2026-05-26T16:12:02Z"
+        },
+        {
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "body": "All moved to new repo.",
+          "createdAt": "2026-05-28T10:09:11Z",
+          "updatedAt": "2026-05-28T10:09:11Z"
         }
       ]
     },
@@ -86,142 +93,313 @@
       "id": "I_kwDOShPbiM8AAAABDbhxAQ",
       "title": "Jun zhang's comment",
       "url": "https://github.com/mirjak/draft-audit-architecture/issues/4",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "junzhanghw",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Achieved from\nhttps://mailarchive.ietf.org/arch/msg/agent2agent/3BigB5-BvkiMHs0_PNbvvVN4c0c/\n\n\n\n1. I think scalability is a key concern, specifically regarding the potential for state explosion (keeping track of too many states). This should be carefully considered.\n\n2. Additionally, the definition and detection of LLM hallucinations might be another issue that requires further study.",
       "createdAt": "2026-05-26T14:57:10Z",
-      "updatedAt": "2026-05-26T14:57:10Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2026-05-28T08:29:09Z",
+      "closedAt": "2026-05-28T08:29:09Z",
+      "comments": [
+        {
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "body": "new issues created on new repo.",
+          "createdAt": "2026-05-28T08:29:09Z",
+          "updatedAt": "2026-05-28T08:29:09Z"
+        }
+      ]
     },
     {
       "number": 5,
       "id": "I_kwDOShPbiM8AAAABDbpeSA",
       "title": "Michael Richardson\u2018s comments",
       "url": "https://github.com/mirjak/draft-audit-architecture/issues/5",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "junzhanghw",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Achieved from\nhttps://mailarchive.ietf.org/arch/msg/agent2agent/ZX6mUUD8htUCyOFt7OfnD0-KKPw/\n\n\n1. Terminology & Naming\n\n- On the term \"AI\":\n\n\"AI\" is a decade specific marketing term, and has negative technical content. It used to mean \"plays chess\", then it meant \"Expert System\", and then... What we have today are machine learning systems based upon LLM. Please say so once, and then use the term \"Agent\" in the rest of the charter.\n\n- On the acronym \"AUDIT\":\n\nI am, however, concerned that the TLA AUDIT, does not on its own convey much without knowing its expansion. Pass that TLA through a few layers of PHB, and too much context is lost, and it can mean all sorts of things way out of our scope.\n\n- Proposal for a new name:\n\nmaybe something like: AGENTIC = AGent Engagement with Non-repudable Traceable In Cross-domain\n\n2. Architecture Document Details\n\n- On the diagram label:\n\n(\"Attestation\" alone in a diagram that Henk wrote? Surely, that should be \"Attestation Results\"?)\n\n- On Section 7 (JSON Example):\n\nI like that section 7 is trying to provide an Illustration of an EXAMPLE, but perhaps the use of what looks like very concrete JSON will confuse some. Is there a way to be slightly less detailed here?\n\n3. Granular Authorization Complexity\n\n- On the need for detailed permissions:\n\nOn the whole, I think that Agentic uses are going to force most resource providers to create many low-level detailed permissions that can be seperately delegatable. It's not enough to just split out every day operations from accounting/data affecting ones. Many of the every day operations will need to be split into multiple authorizations.\n\n- On historical failures (VMS/NTFS):\n\nMany systems have a primitive two-level view... There is a long history of the challenges of very detailed permissions problems. VMS and NTFS have quite detailed lists of permissions, and it was often difficult for administrators to know exactly what permissions were needed for a particular operation. After three iterations with the admin trying to figure things out, the admin would often just throw every possible permission at the user in frustration.\n\n- On the risk of \"Overly specific\" vs \"too coarse\":\n\nOverly specific and too coarse permissions/authorizations are a problem. We continue to see some of this legacy in some of the local priviledge escalation attacks against core desktop security tools like MS-Defender: it has privileges beyond what one would think it needs because it has to get around somethings else.\n\n4. Standardization of Authorization Description\n\n- Critique of OAuth2 approach:\n\nOAUTH2 has, wisely I think, punted on the problem of what is being authorized to the resource owner. This made sense at the time, although I think it has put too much power into a few resource owners. I do not think that it will be effective for this WG to do the same.\n\n- The \"Rabbit Hole\" warning:\n\nAt the time, we also can't go down the rabbit hole of trying to define an entire ontology of authorizations required for any particular target (i.e., \"booking a hotel room\" or seting up a pre-authorized debit for \"a municipal tax authority\")\n\n- The Proposal (Mechanism for Experts):\n\nWhat I think that we can do is create a concise process for experts in that domain to describe their authorization ontology. Yes, it will need to be machine readable.\n\n- Challenge to the Charter (Scope):\n\nso I don't know how we can audit delegations of authorizations without having a good way to describe them. Particularly across \"ADMINISTRATIVE\" boundaries.\n\nRequirement for Relationships:\n\nAt least, I think that we need to know if a FINE-GRAINED authorization is part of some other coarse-grained authorization, and we might also have situations where there are multiple coarse-grained authorizations which contain the same FINE-GRAINED authorization.\n",
       "createdAt": "2026-05-26T15:14:48Z",
-      "updatedAt": "2026-05-26T15:14:48Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2026-05-29T07:07:39Z",
+      "closedAt": "2026-05-29T07:07:39Z",
+      "comments": [
+        {
+          "author": "mcr",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "These changes to charter seem to have been executed already in: https://github.com/mirjak/audit-bof-preparation/commit/78c571c941642424a64bcbe9144899cf9c0b93b1\n",
+          "createdAt": "2026-05-28T10:12:15Z",
+          "updatedAt": "2026-05-28T10:12:15Z"
+        },
+        {
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "body": "@mcr yes I created a separate issues for your points 1) and 4) in the new repo here:\n\nhttps://github.com/mirjak/audit-bof-preparation/issues/1\nhttps://github.com/mirjak/audit-bof-preparation/issues/11\nhttps://github.com/mirjak/audit-bof-preparation/issues/16\n\nFor the two points in 2) it would be good to create separate small issues in this repo (as they relate to the draft).\n\nHowever, I not quite sure what to do about 3). Is that related to the charter directly or more general?\n",
+          "createdAt": "2026-05-28T10:54:30Z",
+          "updatedAt": "2026-05-28T10:54:30Z"
+        },
+        {
+          "author": "mcr",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> However, I not quite sure what to do about 3). Is that related to the charter directly or more general?\n\nNor am I at this point.\nThese are comments on how an ontology of authorizations would be constructed.\nWe (computer-using humans) have gotten this wrong repeatedly.  \n\nI am not yet sure if an ontology of authorizations is in charter or not.\nI have suggested that we should not attempt to create any such ontology, but rather we should find a way (a technique, a process, a way to describe/encode) to make these ontology easier.  (Spell checker does not think ontologies is a word...)\nPerhaps \n\n1. there is work that belongs in a recharter.\n2. that prior to writing that part, we need some input from people with such expertise to educate us\n3. maybe there is external work (of which I'm certainly ignorant) which should just be cited/used ... encoded-in-CDDL\n\nProbably such things as (2) do not need to said now in the charter, and can be included by WG chairs into agenda based upon chair's fiat, until such time as we can charter in the right thing.\n\n",
+          "createdAt": "2026-05-28T13:31:36Z",
+          "updatedAt": "2026-05-28T13:31:36Z"
+        },
+        {
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "body": "I think we should not explicitly add this to the chapter (now). This might come up during working group discussion but I do hope that this is actually more a question for other groups like oauth and we \"just\" put in the record whatever they provide.\n\nIf you roughly agree, can we maybe just close the issue for now?",
+          "createdAt": "2026-05-28T15:29:55Z",
+          "updatedAt": "2026-05-28T15:29:55Z"
+        }
+      ]
     },
     {
       "number": 6,
       "id": "I_kwDOShPbiM8AAAABDbrCEQ",
       "title": "Yuqiang's comments",
       "url": "https://github.com/mirjak/draft-audit-architecture/issues/6",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "junzhanghw",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Achieved from\nhttps://mailarchive.ietf.org/arch/msg/agent2agent/cZRbivCQvViTXmoO_vtg3ASLCZE/\n\nBefore moving toward a BoF, it may be useful to review these related efforts and clarify the boundaries: what belongs to the overall audit architecture, what belongs to identity and authorization, what belongs to delegation provenance, what belongs to judgment/accountability events, what belongs to receipts/provenance, and what should remain reusable across these layers.\n\nfor example\n\ndraft-sharif-agent-audit-trail\n\n\n\ndraft-nelson-agent-delegation-receipts\n\n\n\ndraft-helixar-hdp-agentic-delegation\n\n\n\ndraft-wang-jep-judgment-event-protocol\n\n\n\ndraft-klrc-aiagent-auth\n\n\n\ndraft-munoz-wimse-authorization-evidence\n\n\n\ndraft-munoz-scitt-permit-profile\n\n\n\ndraft-somoza-atn-agent-trust-negotiation\n\n\n\nother provenance/receipt-oriented drafts",
       "createdAt": "2026-05-26T15:18:35Z",
-      "updatedAt": "2026-05-26T15:18:35Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2026-05-28T08:29:30Z",
+      "closedAt": "2026-05-28T08:29:30Z",
+      "comments": [
+        {
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "body": "moved to new repo and reply by email. No action here.",
+          "createdAt": "2026-05-28T08:29:30Z",
+          "updatedAt": "2026-05-28T08:29:30Z"
+        }
+      ]
     },
     {
       "number": 7,
       "id": "I_kwDOShPbiM8AAAABDb0wUw",
       "title": "Chris Hood\u2019s comments",
       "url": "https://github.com/mirjak/draft-audit-architecture/issues/7",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "junzhanghw",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Achieved from\nhttps://mailarchive.ietf.org/arch/msg/agent2agent/R5vtkX7ipQKY8oK8-WKu_uo3Jx8/\n\nEveryone is trying to solve this at the http level, by bolting on and manipulating a protocol that was never designed for agents. Meanwhile, AGTP is solving for all of these issues and more, within a dedicated layer.\n\nI have a charter, vision, BoF proposal as well in the process.\n\nCharter: [https://github.com/nomoticai/agtp-ietf/blob/main/CHARTER.md](https://mailarchive.ietf.org/arch/msg/agent2agent/R5vtkX7ipQKY8oK8-WKu_uo3Jx8/%3Ca%20href=)\" target=\"_blank\" rel=\"nofollow\">https://github.com/nomoticai/agtp-ietf/blob/main/CHARTER.md\nVision: [https://github.com/nomoticai/agtp-ietf/blob/main/VISION.md](https://mailarchive.ietf.org/arch/msg/agent2agent/R5vtkX7ipQKY8oK8-WKu_uo3Jx8/%3Ca%20href=)\" target=\"_blank\" rel=\"nofollow\">https://github.com/nomoticai/agtp-ietf/blob/main/VISION.md\n\nWith conversations happening currently with multiple enterprises regarding implementing AGTP.",
       "createdAt": "2026-05-26T15:41:53Z",
-      "updatedAt": "2026-05-26T15:41:53Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2026-05-28T08:00:38Z",
+      "closedAt": "2026-05-28T08:00:38Z",
+      "comments": [
+        {
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "body": "This is about a different proposal, so I don't think we can address this here without providing further detailed comment on the auditing part only.",
+          "createdAt": "2026-05-28T08:00:38Z",
+          "updatedAt": "2026-05-28T08:00:38Z"
+        }
+      ]
     },
     {
       "number": 8,
       "id": "I_kwDOShPbiM8AAAABDb28qg",
       "title": "Orie's comments",
       "url": "https://github.com/mirjak/draft-audit-architecture/issues/8",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "junzhanghw",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Achieved from\nhttps://mailarchive.ietf.org/arch/msg/agent2agent/pIzlRmmmBTIAOmm9hJxHDxz4hmw/\n\n1) Is there general interest in agent auditing work in the IETF? Are there\nother people who maybe already work on this topic or a planning to?\n\nI'm interested in this work, particularly the OpenTelemetry\n(OTEL) and trajectory aspects.\nI'm suspicious of grand architecture though, it feels like a lot of this\nlayer is being tackled with Langfuse/LangSmith given the speed of iteration\nin open source, is standardization of this layer beneficial or likely to be\nadopted?\n\n2) Any comments on the proposed scope of the work? Is the scope clear? Is\nthe IETF the right place for this work? Does this need a new working group?\n\nIt probably needs its own WG... especially if it builds off other working\ngroups but is just narrowed to agentic domain modeling.\n\n3) Any comments on the proposed architecture or any additional work in the\nspace!\n\nI worry a lot about the scope of deliverable 2... feels, like there is a\nlot of room to invent there, but maybe all that is needed is mapping of\nexisting success stories?\nA single deliverable with a clearer scope could probably make this section\nbetter.\n\nI might suggest deferring 3 to future work, or other groups... seems a\nmistake to extend oauth outside the oauth wg.\n\n4). probably too soon for a BCP, I would cut it...\n\n... so in summary, I think 1 and 2 could be useful, especially if 2 is \"no\nnew inventions, just mappings for ietf protocols that are being mapped\ndifferently by everyone running custom otel stuff\".",
       "createdAt": "2026-05-26T15:47:16Z",
-      "updatedAt": "2026-05-26T15:47:16Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2026-05-28T10:03:09Z",
+      "closedAt": "2026-05-28T10:03:09Z",
+      "comments": [
+        {
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "body": "These comments have been added to the issues in the new repo.",
+          "createdAt": "2026-05-28T10:03:09Z",
+          "updatedAt": "2026-05-28T10:03:09Z"
+        }
+      ]
     },
     {
       "number": 9,
       "id": "I_kwDOShPbiM8AAAABDb4Dlg",
-      "title": "Yaroslav Rosomakho's comments",
+      "title": "Yaroslav Rosomakho's comments on the arch draft",
       "url": "https://github.com/mirjak/draft-audit-architecture/issues/9",
       "state": "OPEN",
       "author": "junzhanghw",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
-      "body": "Achieved from\nhttps://mailarchive.ietf.org/arch/msg/agent2agent/sN24EBWv1kD7xTzP6O2LdSCqgbs/\n\n\n1.  You may want to strengthen privacy considerations. Something along the\n   lines of \"The working group will treat privacy, confidentiality, selective\n   disclosure and retention constraints as core design considerations.\n   Mechanisms defined by the working group are expected to support\n   auditability without requiring indiscriminate disclosure of prompts, user\n   content, personal data, or unrelated execution context.\"\n   \n   2.  as most audit transports and frameworks reside outside the IETF. I would\n   change the third deliverable to: \"Protocol Extensions or Profiles: One or\n   more Standards Track RFCs specifying extensions to existing protocols to\n   convey audit-related information. The working group may also define\n   protocol-independent data representations intended for use by non-IETF\n   logging, telemetry, or audit systems, while avoiding standardization of\n   those external systems themselves.\"\n   \n3. I would suggest replacing \"AI agents\" with \"software agents\" or\n   \"delegated systems\" from the charter text outside of the introductory\n   motivation paragraph.\n\n   4. It is worth adding coordination with relevant IETF working groups and\n   organisations outside of IETF.\n\n\n 5.  There seems to be too much emphasis on attestation. Attestation is\n   clearly important, but it cannot be required for all useful audit\n   deployments.\n   \n  6. Privacy considerations appear mostly late in the document. The\n   architecture itself still assumes propagation of trace IDs, parent IDs,\n   delegation chains, and actor identity across boundaries. I would stress the\n   importance of opaque references, selective disclosure, or encrypted fields\n   especially concerning cross-domain audit.\n   \n 7.The architecture suggests that full prompts and model responses are\n   expected to be recorded. These may contain personal data and other\n   sensitive information. The architecture should support recording\n   audit-relevant information and approval signals without requiring full\n   conversational content.\n\n   8. Is there a good reason to restrict architecture to \"AI\" agents? I\n   think it could work for deterministic software where users can delegate\n   some tasks.",
+      "body": "Comments related to the draft from\nhttps://mailarchive.ietf.org/arch/msg/agent2agent/sN24EBWv1kD7xTzP6O2LdSCqgbs/\n\n 5.  There seems to be too much emphasis on attestation. Attestation is\n   clearly important, but it cannot be required for all useful audit\n   deployments.\n   \n  6. Privacy considerations appear mostly late in the document. The\n   architecture itself still assumes propagation of trace IDs, parent IDs,\n   delegation chains, and actor identity across boundaries. I would stress the\n   importance of opaque references, selective disclosure, or encrypted fields\n   especially concerning cross-domain audit.\n   \n  7. The architecture suggests that full prompts and model responses are\n   expected to be recorded. These may contain personal data and other\n   sensitive information. The architecture should support recording\n   audit-relevant information and approval signals without requiring full\n   conversational content.\n\n   8. Is there a good reason to restrict architecture to \"AI\" agents? I\n   think it could work for deterministic software where users can delegate\n   some tasks.",
       "createdAt": "2026-05-26T15:49:58Z",
-      "updatedAt": "2026-05-26T15:49:58Z",
+      "updatedAt": "2026-05-28T10:56:27Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "mcr",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "\n>     6. Privacy considerations appear mostly late in the document. The\n>        architecture itself still assumes propagation of trace IDs, parent IDs,\n>        delegation chains, and actor identity across boundaries. I would stress the\n>        importance of opaque references, selective disclosure, or encrypted fields\n>        especially concerning cross-domain audit.\n\n*selective disclosure* <-- emphasizing.\n\n>     8. Is there a good reason to restrict architecture to \"AI\" agents? I\n>        think it could work for deterministic software where users can delegate\n>        some tasks.\n\nI completely agree.\n\n",
+          "createdAt": "2026-05-28T10:30:18Z",
+          "updatedAt": "2026-05-28T10:30:18Z"
+        },
+        {
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "body": "> > ```\n> > 8. Is there a good reason to restrict architecture to \"AI\" agents? I\n> >    think it could work for deterministic software where users can delegate\n> >    some tasks.\n> > ```\n> \n> \n> I completely agree.\n\nI agree. As I explained in my email reply to Thomas it wasn't the intention to restrict this but more have AI agents as Amin use case. I created PR #13 to address this part.",
+          "createdAt": "2026-05-28T10:56:27Z",
+          "updatedAt": "2026-05-28T10:56:27Z"
+        }
+      ]
     },
     {
       "number": 10,
       "id": "I_kwDOShPbiM8AAAABDb--eQ",
       "title": "LUCIA CABANILLAS RODRIGUEZ\u2018s comments",
       "url": "https://github.com/mirjak/draft-audit-architecture/issues/10",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "junzhanghw",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "achieved from \nhttps://mailarchive.ietf.org/arch/msg/agent2agent/ucCt6vdc2v_RN53Ylbkq2BiAn4k/\n\n\n1. On making policy evolution a first-class auditable object:\n\n\"One aspect that may deserve additional emphasis is making policy evolution and authorization provenance first-class auditable objects, not only the resulting actions. In many AI-agent scenarios, understanding why a policy changed, which context or behavioural signals triggered it, and which authority or component approved or derived the change may become as important as auditing the final action itself.\"\n\n2. On standardizing evidence correlation across trust boundaries:\n\n\"I think it could be useful to explicitly consider standardized mechanisms for correlating evidence across domains, especially when delegation chains span multiple trust boundaries with partially shared policies and heterogeneous enforcement models.\"\n\n3. On ensuring the audit structure supports specific relationships:\n\n\"I think there is a strong connection with the need you identify for a common and interoperable audit structure capable of correlating identities, delegation chains, authorization transitions, and causal relationships across domains and over time. The ability to consistently represent trace identifiers, preceding-event relationships, 'on-behalf-of' delegation semantics, authorization scope, validity, and policy provenance becomes critical once agents dynamically derive, transform, and share authorization state during execution.\"\n\n4. On connecting policy provenance mechanisms to the auditing architecture:\n\n\"I think those provenance mechanisms could naturally complement the auditing architecture, particularly for reconstructing how a specific authorization state or decision was reached at a given point in time.\"\n\n5. On integrating with existing policy sharing models:\n\n\"The draft focuses on interoperable representation and distribution of authorization policies across heterogeneous and automated environments using a common YANG-based model. While it already considers accounting aspects, I think it would need further evolution to fully support auditing.\"",
       "createdAt": "2026-05-26T16:05:34Z",
-      "updatedAt": "2026-05-26T16:05:34Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2026-05-28T12:29:13Z",
+      "closedAt": "2026-05-28T12:29:13Z",
+      "comments": [
+        {
+          "author": "mcr",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> achieved from https://mailarchive.ietf.org/arch/msg/agent2agent/ucCt6vdc2v_RN53Ylbkq2BiAn4k/\n>     2. On standardizing evidence correlation across trust boundaries:\n> \n> \n> \"I think it could be useful to explicitly consider standardized mechanisms for correlating evidence across domains, especially when delegation chains span multiple trust boundaries with partially shared policies and heterogeneous enforcement models.\"\n\nThere is a specification called https://opentelemetry.io/ which might be useful to doing this correlation.\n",
+          "createdAt": "2026-05-28T10:28:45Z",
+          "updatedAt": "2026-05-28T10:28:45Z"
+        },
+        {
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "body": "I created two new specific issues the policy/provenance aspects and delegation chains, see here: #15  and #16\n\nThe part related to the work on YANG model has been added to the issue in the charter repo on \"relation to existing working groups\"\n\n@mcr note that OpenTelemetry has been mentioned already by Orie and is noted in the other repo in the issue on \"Relation to existing logging/monitoring works\". However, I would be really interesting to learn more about OpenTelemetry and how it could maybe be extended to also cover audit use cases. I think that would be a good discussion for the mailing list.\n\nIn favour of the other new issues I will close this issue now.",
+          "createdAt": "2026-05-28T12:29:13Z",
+          "updatedAt": "2026-05-28T12:29:13Z"
+        }
+      ]
     },
     {
       "number": 11,
       "id": "I_kwDOShPbiM8AAAABDcAhqw",
       "title": "toshiyuki sato's comments",
       "url": "https://github.com/mirjak/draft-audit-architecture/issues/11",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "junzhanghw",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "achieved from \nhttps://mailarchive.ietf.org/arch/msg/agent2agent/_yXD3mlY7PbexK0H-EoMq6Xo7Gs/\n\nThe result is that the audit record contains a pre-action statement of\nintent that is structurally prior to the action, making ex-post fabrication\nof reasoning impossible in a conforming implementation. \"Why\" is captured\nbefore \"what\" happens, not reconstructed after.\n\nThis is the architectural distinction Chris Hood flagged in this thread \u2014\npre-commitment intent declaration is different in kind from post-hoc audit\nrecording. The two compose: IDP provides the \"why before what\" record;\nGAR-00 provides the non-suppressible session audit that carries it.\n\nhttps://datatracker.ietf.org/doc/draft-sato-soos-idp/\nhttps://datatracker.ietf.org/doc/draft-sato-soos-gar/",
       "createdAt": "2026-05-26T16:09:04Z",
-      "updatedAt": "2026-05-26T16:09:04Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2026-05-28T10:47:07Z",
+      "closedAt": "2026-05-28T10:47:06Z",
+      "comments": [
+        {
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "body": "Replied by email for now.",
+          "createdAt": "2026-05-28T10:47:06Z",
+          "updatedAt": "2026-05-28T10:47:06Z"
+        }
+      ]
     },
     {
       "number": 12,
       "id": "I_kwDOShPbiM8AAAABDcCXEQ",
       "title": "Diego R. Lopez's comments",
       "url": "https://github.com/mirjak/draft-audit-architecture/issues/12",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "junzhanghw",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Achieved from\nhttps://mailarchive.ietf.org/arch/msg/agent2agent/7ynLOIMhS9KvmsMOpSkq743YK2w/\n\n\n1) Is there general interest in agent auditing work in the IETF? Are there other people who maybe already work on this topic or a planning to?\n\nI do believe this is rather interesting work though, as Thomas said, I think it would be much more interesting if we refrain from limiting it to the fashionable agents, and it is made clear this would be applicable to any workload (to use the WIMSE terminology) or, if you want to keep the \u201cA\u201d in the proposed name, to any *actor* able to interact with other actors and services in the Internet. Even a broad enough definition of the term \u201cagent\u201d would do...\n\nI am aware this would imply the need of defining the \u201cactor\u201d term, but I think the extra work would be justified by the evident advantages of generality, and also by not tying the fate of this proposal to something that could follow the not-so-glorious path of other past hot topics.\n\nRegarding the second part of the question, we have been working in mechanisms that could be applicable to this idea, such as the draft on YANG data provenance (suitable to be generalized in this context, see https://datatracker.ietf.org/doc/draft-ietf-opsawg-yang-provenance/) another draft on identity chaining (where the \u201cactor\u201d term is used intentionally, see https://datatracker.ietf.org/doc/draft-mw-oauth-actor-chain/) and an open-source approach to evidence collection we had the intention to bring to the IETF soon.\n\n2) Any comments on the proposed scope of the work? Is the scope clear? Is the IETF the right place for this work? Does this need a new working group?\n\nThe scope seems clear to me, though I would prefer to make it less \u201cagentical\u201d. In despite of having many potential intersections with other WGs, or even precisely because of this, I believe the proposed work deserves a specific WG.\n\nRegarding the deliverables, I think it could be interesting to make deliverable (1) identify those protocols and models suitable to be considered in the deliverables mentioned in (3), to avoid any future profile creep when trying to address those documents.\n\nAnd I agree with Lionel that the mention in (1) to only user-facing and system-facing signals seems a little bit limiting, excluding agent/actor chains.\n\n3) Any comments on the proposed architecture or any additional work in the space!\n\nLet me insist in two of my previous comments:\n\n\n  1.\nMake it less \u201cagentical\u201d, with either agents as a relevant (may the most relevant) use case, or a definition of \u201cagent\u201d that is wide enough to accommodate other use cases.\n  2.\nConsider in the introduction (and the diagram in Figure 1) the idea of a chain of agents/actors",
       "createdAt": "2026-05-26T16:13:34Z",
-      "updatedAt": "2026-05-26T16:13:34Z",
+      "updatedAt": "2026-05-28T10:42:01Z",
+      "closedAt": "2026-05-28T10:42:01Z",
+      "comments": [
+        {
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "body": "All comments have been moved to the new charter repo or into (one) new issue.",
+          "createdAt": "2026-05-28T10:42:01Z",
+          "updatedAt": "2026-05-28T10:42:01Z"
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "id": "I_kwDOShPbiM8AAAABDpb3vA",
+      "title": "Consider in the introduction (and the diagram in Figure 1) the idea of a chain of agents/actors",
+      "url": "https://github.com/mirjak/draft-audit-architecture/issues/14",
+      "state": "OPEN",
+      "author": "mirjak",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "I created this issue based on feedback from Diego Lopez, see here: https://mailarchive.ietf.org/arch/msg/agent2agent/7ynLOIMhS9KvmsMOpSkq743YK2w/",
+      "createdAt": "2026-05-28T10:40:32Z",
+      "updatedAt": "2026-05-28T10:40:32Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 15,
+      "id": "I_kwDOShPbiM8AAAABDqAgmg",
+      "title": "Make policy evolution and authorization provenance first-class auditable objects",
+      "url": "https://github.com/mirjak/draft-audit-architecture/issues/15",
+      "state": "OPEN",
+      "author": "mirjak",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Feedback from Lucia Cabanillas Rodriguez:\nhttps://mailarchive.ietf.org/arch/msg/agent2agent/ucCt6vdc2v_RN53Ylbkq2BiAn4k/\n\nRegarding the proposed architecture itself, I think the overall direction makes a lot of sense. One aspect that may deserve additional emphasis is making policy evolution and authorization provenance first-class auditable objects, not only the resulting actions. In many AI-agent scenarios, understanding why a policy changed, which context or behavioural signals triggered it, and which authority or component approved or derived the change may become as important as auditing the final action itself.",
+      "createdAt": "2026-05-28T12:21:43Z",
+      "updatedAt": "2026-05-28T12:25:01Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 16,
+      "id": "I_kwDOShPbiM8AAAABDqB5YQ",
+      "title": "Consider cross-domain delegation chains",
+      "url": "https://github.com/mirjak/draft-audit-architecture/issues/16",
+      "state": "OPEN",
+      "author": "mirjak",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Feedback from Lucia Cabanillas Rodriguez:\nhttps://mailarchive.ietf.org/arch/msg/agent2agent/ucCt6vdc2v_RN53Ylbkq2BiAn4k/\n\nSimilarly, I think it could be useful to explicitly consider standardized mechanisms for correlating evidence across domains, especially when delegation chains span multiple trust boundaries with partially shared policies and heterogeneous enforcement models.",
+      "createdAt": "2026-05-28T12:25:33Z",
+      "updatedAt": "2026-05-28T12:25:33Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 17,
+      "id": "I_kwDOShPbiM8AAAABDqPuNQ",
+      "title": "Highlight multiple (auditor) domains in the diagram",
+      "url": "https://github.com/mirjak/draft-audit-architecture/issues/17",
+      "state": "OPEN",
+      "author": "mirjak",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Comment by Jari Arkko:\nhttps://mailarchive.ietf.org/arch/msg/agent2agent/9zGt68jc6YLEsl1Ipps4B4gDdHo/\n\nIn the architecture draft Figure 1 presents an arrangement where there is one auditing service. I wonder if that is the case in reality, or even if your drawing reflects what the rest of the document says, as it does say that the entities produce records independently. And as you say, there are multiple administrative domains involved. Perhaps a drawing how such domains interact would be useful. Or maybe that\u2019s work that we still need to do.",
+      "createdAt": "2026-05-28T13:01:36Z",
+      "updatedAt": "2026-05-28T13:01:36Z",
       "closedAt": null,
       "comments": []
     }
@@ -232,24 +410,26 @@
       "id": "PR_kwDOShPbiM7dpHKJ",
       "title": "Omit word \"AI\"",
       "url": "https://github.com/mirjak/draft-audit-architecture/pull/1",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "mcr",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-05-20T17:58:25Z",
-      "updatedAt": "2026-05-20T17:58:25Z",
+      "updatedAt": "2026-05-28T07:19:52Z",
       "baseRepository": "mirjak/draft-audit-architecture",
       "baseRefName": "main",
       "baseRefOid": "45cb14988357cb763dee87a5fe2f11d2d8d5490e",
       "headRepository": "mcr/draft-audit-architecture",
       "headRefName": "patch-1",
       "headRefOid": "06ea858e4b738a0ebc2056dc07b0d21782af6eea",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-05-28T07:19:52Z",
+      "mergedAt": "2026-05-28T07:19:51Z",
+      "mergedBy": "mirjak",
+      "mergeCommit": {
+        "oid": "8a2136dd7ccd19fdb2ae704b3a84b45d706efe65"
+      },
       "comments": [],
       "reviews": []
     },
@@ -258,24 +438,26 @@
       "id": "PR_kwDOShPbiM7fWD5D",
       "title": "Explicit note to compose existing protocols",
       "url": "https://github.com/mirjak/draft-audit-architecture/pull/2",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "mirjak",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "This addition was proposed by Thomas Howe.",
       "createdAt": "2026-05-26T09:11:44Z",
-      "updatedAt": "2026-05-26T09:11:44Z",
+      "updatedAt": "2026-05-28T07:20:29Z",
       "baseRepository": "mirjak/draft-audit-architecture",
       "baseRefName": "main",
       "baseRefOid": "45cb14988357cb763dee87a5fe2f11d2d8d5490e",
       "headRepository": "mirjak/draft-audit-architecture",
       "headRefName": "mirjak-patch-1",
       "headRefOid": "8c1be510bbec57e85453a039c543f1d32035cefe",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-05-28T07:20:29Z",
+      "mergedAt": "2026-05-28T07:20:29Z",
+      "mergedBy": "mirjak",
+      "mergeCommit": {
+        "oid": "ee4322f6c069e2987e194709d5d53aacfd7056b4"
+      },
       "comments": [],
       "reviews": []
     },
@@ -291,7 +473,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2026-05-27T09:17:03Z",
-      "updatedAt": "2026-05-27T09:30:10Z",
+      "updatedAt": "2026-05-28T10:31:00Z",
       "baseRepository": "mirjak/draft-audit-architecture",
       "baseRefName": "main",
       "baseRefOid": "45cb14988357cb763dee87a5fe2f11d2d8d5490e",
@@ -323,6 +505,19 @@
               "updatedAt": "2026-05-27T09:29:38Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOShPbiM8AAAABBRQwJw",
+          "commit": {
+            "abbreviatedOid": "a4f699a"
+          },
+          "author": "mcr",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-05-28T10:31:00Z",
+          "updatedAt": "2026-05-28T10:31:00Z",
+          "comments": []
         }
       ]
     }
