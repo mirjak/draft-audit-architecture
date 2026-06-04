@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-05-31T02:48:10.598229+00:00",
+  "timestamp": "2026-06-04T02:57:40.737285+00:00",
   "repo": "mirjak/draft-audit-architecture",
   "labels": [
     {
@@ -400,6 +400,22 @@
       "body": "Comment by Jari Arkko:\nhttps://mailarchive.ietf.org/arch/msg/agent2agent/9zGt68jc6YLEsl1Ipps4B4gDdHo/\n\nIn the architecture draft Figure 1 presents an arrangement where there is one auditing service. I wonder if that is the case in reality, or even if your drawing reflects what the rest of the document says, as it does say that the entities produce records independently. And as you say, there are multiple administrative domains involved. Perhaps a drawing how such domains interact would be useful. Or maybe that\u2019s work that we still need to do.",
       "createdAt": "2026-05-28T13:01:36Z",
       "updatedAt": "2026-05-28T13:01:36Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 18,
+      "id": "I_kwDOShPbiM8AAAABEHLlqA",
+      "title": "Described interface to Audit Store",
+      "url": "https://github.com/mirjak/draft-audit-architecture/issues/18",
+      "state": "OPEN",
+      "author": "mirjak",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Should we specify the interface to the Audit store in this document?",
+      "createdAt": "2026-06-02T11:16:32Z",
+      "updatedAt": "2026-06-02T11:16:32Z",
       "closedAt": null,
       "comments": []
     }
