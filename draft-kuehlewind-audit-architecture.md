@@ -70,7 +70,7 @@ These agents interact across administrative and trust domains, delegate tasks an
 The question of whether the recorded actions of an agent faithfully represent what the agent actually did has acquired new urgency.
 
 Autonomous agents may run long-lived workflows without tight user interaction or may be very short-lived, e.g. for a delegated sub-tasks.
-Agents may be authenticated to several services, request step-up approval from a human, spawn further sub-agents, and produc records that long outlive its own process.
+Agents may be authenticated to several services, request step-up approval from a human, spawn further sub-agents, and produce records that long outlive its own process.
 Existing auditing mechanisms often capture isolated system events but do not consistently represent delegation relationships, user intent, or evolving authorization.
 In agent-driven systems, auditability requires linking intent, delegation, authorization, and execution.
 
@@ -99,7 +99,7 @@ Transparency follows SCITT {{-scitt-arch}}that makes a record's existence later 
 
 The Verifiable Agent Conversations data model {{-vac}} could be utilizd as an Interaction Record.
 
-HTTP may be used as the transport mechanism for conveying audit context alongside requests. JSON-based formats, including JWT and COSE, can proide representations for audit records and attestations, along with mechanisms for cryptographic protection.
+HTTP may be used as the transport mechanism for conveying audit context alongside requests. JSON-based formats, including JWT and COSE, can provide representations for audit records and attestations, along with mechanisms for cryptographic protection.
 
 Authority and delegation are based on by OAuth 2.0 {{-oauth2}}, Token Exchange {{-token-exchange}}, Transaction Tokens {{-trat}}, Identity Chaining {{-id-chain}}, Identity Assertion Authorization Grants {{-id-jag}}, RAR {{-rar}}, attestation-based client authentication {{-oauth-attest}}, DPoP {{-dpop}}, Status Lists {{-status-list}}, and SPIFFE client authentication {{-spiffe-oauth}}.
 
