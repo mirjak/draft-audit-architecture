@@ -5,8 +5,8 @@
 Network Working Group                                      M. Kuehlewind
 Internet-Draft                                                  Ericsson
 Intended status: Informational                               H. Birkholz
-Expires: 29 November 2026                                 Fraunhofer SIT
-                                                             28 May 2026
+Expires: 11 December 2026                                 Fraunhofer SIT
+                                                             9 June 2026
 
 
    An Architecture for Auditing AI Agent Delegation and Interactions
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 November 2026.
+   This Internet-Draft will expire on 11 December 2026.
 
 Copyright Notice
 
@@ -111,7 +111,7 @@ Table of Contents
    Autonomous agents may run long-lived workflows without tight user
    interaction or may be very short-lived, e.g. for a delegated sub-
    tasks.  Agents may be authenticated to several services, request
-   step-up approval from a human, spawn further sub-agents, and produc
+   step-up approval from a human, spawn further sub-agents, and produce
    records that long outlive its own process.  Existing auditing
    mechanisms often capture isolated system events but do not
    consistently represent delegation relationships, user intent, or
@@ -172,7 +172,7 @@ Table of Contents
 
    HTTP may be used as the transport mechanism for conveying audit
    context alongside requests.  JSON-based formats, including JWT and
-   COSE, can proide representations for audit records and attestations,
+   COSE, can provide representations for audit records and attestations,
    along with mechanisms for cryptographic protection.
 
    Authority and delegation are based on by OAuth 2.0 [RFC6749], Token
@@ -872,9 +872,9 @@ Table of Contents
               Schwenkschuster, A., Kasselman, P., Burgin, K., Jenkins,
               M. J., Campbell, B., and A. Parecki, "OAuth Identity and
               Authorization Chaining Across Domains", Work in Progress,
-              Internet-Draft, draft-ietf-oauth-identity-chaining-12, 11
-              May 2026, <https://datatracker.ietf.org/doc/html/draft-
-              ietf-oauth-identity-chaining-12>.
+              Internet-Draft, draft-ietf-oauth-identity-chaining-14, 2
+              June 2026, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-oauth-identity-chaining-14>.
 
    [I-D.ietf-oauth-spiffe-client-auth]
               Schwenkschuster, A., Kasselman, P., Rose, S., and S.
