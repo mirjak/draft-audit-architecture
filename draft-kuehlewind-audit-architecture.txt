@@ -5,8 +5,8 @@
 Network Working Group                                      M. Kuehlewind
 Internet-Draft                                                  Ericsson
 Intended status: Informational                               H. Birkholz
-Expires: 11 December 2026                                 Fraunhofer SIT
-                                                             9 June 2026
+Expires: 16 January 2027                                  Fraunhofer SIT
+                                                            15 July 2026
 
 
    An Architecture for Auditing AI Agent Delegation and Interactions
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 11 December 2026.
+   This Internet-Draft will expire on 16 January 2027.
 
 Copyright Notice
 
@@ -639,10 +639,9 @@ Table of Contents
 
    This section is informative.  It illustrates the four classes of
    audit record introduced in Section 5 and the audit context introduced
-   in SC-2 and SC-11 with concrete examples.  The exact field names,
-   claim names, and encodings shown here are placeholders pending the
-   specifications defined in SC-1 through SC-11.  They are intended to
-   convey the relationships among the artifacts.
+   in WI-2 and WI-11 with concrete examples.  The exact field names,
+   claim names, and encodings shown here are placeholders pending.  They
+   are intended to convey the relationships among the artifacts.
 
    To enable interoperability, audit records require a common structure
    that captures identity, delegation, and causal relationships.  Each
@@ -856,9 +855,9 @@ Table of Contents
               Looker, T., Bastian, P., and C. Bormann, "OAuth 2.0
               Attestation-Based Client Authentication", Work in
               Progress, Internet-Draft, draft-ietf-oauth-attestation-
-              based-client-auth-09, 25 May 2026,
+              based-client-auth-10, 6 July 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              attestation-based-client-auth-09>.
+              attestation-based-client-auth-10>.
 
    [I-D.ietf-oauth-identity-assertion-authz-grant]
               Parecki, A., McGuinness, K., and B. Campbell, "Identity
@@ -872,31 +871,31 @@ Table of Contents
               Schwenkschuster, A., Kasselman, P., Burgin, K., Jenkins,
               M. J., Campbell, B., and A. Parecki, "OAuth Identity and
               Authorization Chaining Across Domains", Work in Progress,
-              Internet-Draft, draft-ietf-oauth-identity-chaining-14, 2
+              Internet-Draft, draft-ietf-oauth-identity-chaining-16, 26
               June 2026, <https://datatracker.ietf.org/doc/html/draft-
-              ietf-oauth-identity-chaining-14>.
+              ietf-oauth-identity-chaining-16>.
 
    [I-D.ietf-oauth-spiffe-client-auth]
-              Schwenkschuster, A., Kasselman, P., Rose, S., and S.
-              Thorgersen, "OAuth SPIFFE Client Authentication", Work in
-              Progress, Internet-Draft, draft-ietf-oauth-spiffe-client-
-              auth-01, 2 March 2026,
+              Schwenkschuster, A., Kasselman, P., Rose, S., Thorgersen,
+              S., and N. Cam-Winget, "OAuth SPIFFE Client
+              Authentication", Work in Progress, Internet-Draft, draft-
+              ietf-oauth-spiffe-client-auth-02, 15 June 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              spiffe-client-auth-01>.
+              spiffe-client-auth-02>.
 
    [I-D.ietf-oauth-status-list]
               Looker, T., Bastian, P., and C. Bormann, "Token Status
               List (TSL)", Work in Progress, Internet-Draft, draft-ietf-
-              oauth-status-list-20, 20 April 2026,
+              oauth-status-list-21, 21 June 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              status-list-20>.
+              status-list-21>.
 
    [I-D.ietf-oauth-transaction-tokens]
               Tulshibagwale, A., Fletcher, G., and P. Kasselman,
               "Transaction Tokens", Work in Progress, Internet-Draft,
-              draft-ietf-oauth-transaction-tokens-08, 2 March 2026,
+              draft-ietf-oauth-transaction-tokens-09, 6 July 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              transaction-tokens-08>.
+              transaction-tokens-09>.
 
    [I-D.ietf-scitt-architecture]
               Birkholz, H., Delignat-Lavaud, A., Fournet, C., Deshpande,
@@ -910,24 +909,24 @@ Table of Contents
               Salowey, J. A., Rosomakho, Y., and H. Tschofenig,
               "Workload Identity in a Multi System Environment (WIMSE)
               Architecture", Work in Progress, Internet-Draft, draft-
-              ietf-wimse-arch-07, 2 March 2026,
+              ietf-wimse-arch-08, 6 July 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-wimse-
-              arch-07>.
+              arch-08>.
 
    [I-D.ietf-wimse-identifier]
               Rosomakho, Y. and J. A. Salowey, "Workload Identifier",
               Work in Progress, Internet-Draft, draft-ietf-wimse-
-              identifier-02, 2 March 2026,
+              identifier-03, 6 July 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-wimse-
-              identifier-02>.
+              identifier-03>.
 
    [I-D.ietf-wimse-workload-creds]
               Campbell, B., Salowey, J. A., Schwenkschuster, A.,
               Sheffer, Y., and Y. Rosomakho, "WIMSE Workload
               Credentials", Work in Progress, Internet-Draft, draft-
-              ietf-wimse-workload-creds-01, 5 May 2026,
+              ietf-wimse-workload-creds-02, 2 July 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-wimse-
-              workload-creds-01>.
+              workload-creds-02>.
 
    [RFC6749]  Hardt, D., Ed., "The OAuth 2.0 Authorization Framework",
               RFC 6749, DOI 10.17487/RFC6749, October 2012,
@@ -981,9 +980,9 @@ Table of Contents
               Prasad, A., Krishnan, R., Lopez, D., and S. Addepalli,
               "Cryptographically Verifiable Actor Chains for OAuth 2.0
               Token Exchange", Work in Progress, Internet-Draft, draft-
-              mw-oauth-actor-chain-00, 1 May 2026,
+              mw-oauth-actor-chain-01, 15 June 2026,
               <https://datatracker.ietf.org/doc/html/draft-mw-oauth-
-              actor-chain-00>.
+              actor-chain-01>.
 
 Authors' Addresses
 
