@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-06-04T02:57:40.737285+00:00",
+  "timestamp": "2026-07-21T02:00:30.186119+00:00",
   "repo": "mirjak/draft-audit-architecture",
   "labels": [
     {
@@ -416,6 +416,70 @@
       "body": "Should we specify the interface to the Audit store in this document?",
       "createdAt": "2026-06-02T11:16:32Z",
       "updatedAt": "2026-06-02T11:16:32Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 19,
+      "id": "I_kwDOShPbiM8AAAABJbBJtA",
+      "title": "WI-4 Action Record Profile: candidate input + worked contract-negotiation use case (ran at IETF 126 hackathon)",
+      "url": "https://github.com/mirjak/draft-audit-architecture/issues/19",
+      "state": "OPEN",
+      "author": "StevenMih",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Opening this to follow up my comments in the session happening right now.  \nGreat open discussion. Thanks for running it this way.\n\nWI-4 currently names no candidate format (WI-3 names verifiable-agent-conversations\nfor Interaction Records). Offering the Agent Action Capsule as input for the Action\nRecord slot, in the same spirit as input only.\n\nWhy it matches WI-4's stated bindings:\n\n- Produced at the effect boundary: `effect.status` (planned/dispatched/confirmed/\n  failed/reverted) with a MUST-digest over the OBSERVED response for `confirmed` \u2014\n  overclaim is a protocol violation, not a convention.\n\n- Bound to the authorizing token: `effect.authorization` carries typed references\n  {type, digest_alg, digest} to permits/mandates \u2014 the token body never enters the\n  record (Delegation-Record privacy by construction).\n\n- Bound to attestation: `effect_attestation` (runtime_claimed | gate_executed), and\n  the record's outcome digest has been bound into a RATS TPM quote (AEP composition).\n\n- \"Absence of Evidence is itself audit-relevant\": refusals, timeouts, and\n  countersign-refusals are first-class verdicts (`verdict_class`), not gaps \u2014\n  including bilateral/cross-org endings (draft-mih-agent-bilateral-attestation-01).\n\n- SCITT-native: COSE_Sign1 Signed Statement, registered to transparency services;\n  relevant to WI-7 as well \u2014 this weekend at the IETF 126 hackathon one statement was\n  registered on two independent Transparency Services (a CCF instance and an\n  RFC9162_SHA256 log) with both receipts verified by independent verifiers.\n\nWorked use case, ran at the 126 hackathon: agent-negotiated contracts.\nA buyer agent (identity: an AI-Catalog entry, by digest) discovers multiple seller agents\non a second agent registry (NANDA Index), opens a private room per vendor, and they\nnegotiate autonomously \u2014 offers, counters, trades. One consequential act closes\nit: buyer accepts, seller countersigns, both hold a byte-identical sealed record\nof the agreed terms, anchored to a public transparency log. Per 126 side meeting BoF Q2, this is the provable side. \n\nHow that run maps to this draft's record types:\n\n- Interaction Record \u2014 the negotiation dialogue: recorded and digest-committed,\n  disclosed to no one; any line is promotable to provable later if a dispute\n  needs it. Per 126 side meeting BoF Q2, this is the recorded side.\n\n- Action Record \u2014 the acceptance: the boundary event, provable to a stranger;\n  live example still running this week at IETF 126: GET /v1/bindings/{id}/verify on the hackathon demo service returns\n  verified:true with the recomputed sealed-terms hash. Here is one such record of the buyer-accepts/seller-countersigns contract record, sealed Saturday, anchored, checkable by anyone : https://accountable-dealroom-1020437450833.us-central1.run.app/v1/bindings/544f9878a449473588b6f424b36fec51/verify\n\n- Delegation Record \u2014 each agent acts under its principal's mandate (budget\n  ceiling, must-have terms), cited BY DIGEST: the record proves the agent stayed\n  inside its authority without the ceiling ever being revealed to the counterparty.\n\n- Authorization Transition \u2014 the endings where the other side doesn't play:\n  vendor timeout, delivery-unconfirmed, countersign-refused \u2014 each a signed,\n  anchored, first-class outcome. A contract system that cannot prove \"they never\n  answered\" cannot support a dispute. Getting \"ghosted\" has meaning. \n\nThe general split this run suggests for Section 5: boundary events and authority\nare provable-by-default; deliberation is recorded-and-committed, promotable on\ndemand.\n\nRunning code + evidence: 32 frozen conformance vectors (pos/neg, named failing\nstages), Python + clean-room Go verifiers, cross-implementation re-runs by\nindependent parties at the hackathon. \nRepo: \ngithub.com/action-state-group/agent-action-capsule \n(vectors pinned at tag `vectors-ietf126`).\n\nI-Ds: \ndraft-mih-scitt-agent-action-capsule \ndraft-mih-scitt-agent-action-capsule-sel-disc\ndraft-mih-sato-agent-accountability-composition \ndraft-mih-agent-bilateral-attestation\n\nHappy to write a WI-4 mapping section against this architecture's vocabulary\n(Interaction/Delegation/Transition bindings via SC-2/SC-11 identifiers) if useful.",
+      "createdAt": "2026-07-20T08:45:34Z",
+      "updatedAt": "2026-07-20T08:45:34Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 20,
+      "id": "I_kwDOShPbiM8AAAABJbId6w",
+      "title": "WI-6 (Profile of RATS Evidence): freshness should bind to the action, and the assumed root of trust should be explicit",
+      "url": "https://github.com/mirjak/draft-audit-architecture/issues/20",
+      "state": "OPEN",
+      "author": "tyche-dev",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Raised briefly at the IETF 126 side meeting this morning; writing it up as promised.\n\nTwo findings from an implementation of an action record carrying an attestation result for its executing environment, appraised by an independently-built RATS verifier \u2014 a different implementation from the one that produced the evidence, so the appraisal is not self-confirming.\n\n### 1. Freshness is the hard part, and it is an action-level property\n\nThe architecture lets a record carry inline Evidence, an Attestation Result, or a stable reference to either. What it does not yet pin down is *what the appraisal is fresh with respect to*.\n\nBinding freshness to the session is the intuitive choice, and I think it is the wrong one. An agent's session may outlive many actions, and the executing environment can change between them. A profile that does not force the appraisal to bind to the individual action admits records that are individually well-formed and jointly misleading \u2014 every record verifies, and the sequence still misrepresents what executed what.\n\nThis seems worth stating as a requirement in WI-6 rather than leaving it to implementers.\n\n### 2. The architecture currently reads as software-rooted\n\nRATS Evidence, Attestation Results and Endorsements are all reused as the vocabulary for environmental claims, which is the right foundation. But nothing in the document says whether the executing environment's root of trust is expected to be hardware, and that distinction changes what the profile has to carry.\n\nIt matters most in exactly the case the problem statement is aimed at. Where the relying party does not trust the agent's operator, a software-rooted appraisal reduces to \"the operator says so\" \u2014 which is the assumption the audit store was introduced to remove. Cross-domain is where that reduction bites.\n\nI am not arguing the profile should mandate hardware roots. I am arguing it should be explicit about which it assumes, because the security properties differ and today a reader cannot tell.\n\n---\n\nHappy to contribute concrete text for WI-6, or evidence samples if that is more useful. I can share the implementation details on request; one of the papers describing it is under blind review at the moment, so I have kept links out of this issue rather than out of any reluctance to show the work.\n",
+      "createdAt": "2026-07-20T09:03:00Z",
+      "updatedAt": "2026-07-20T09:03:00Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 21,
+      "id": "I_kwDOShPbiM8AAAABJbSacA",
+      "title": "Confidentiality & leakage across the architecture: content, identity, correlation. Suggested text for Section 9 and WI-7",
+      "url": "https://github.com/mirjak/draft-audit-architecture/issues/21",
+      "state": "OPEN",
+      "author": "StevenMih",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Per the 126 side meeting Q3 about confidentiality and info-leakage considerations, proposing to address leakage at 3 different layers, with different mechanisms.\n\n1. CONTENT. Prove bindings without disclosing payloads. Content-addressing plus salted commitments for low-entropy fields: a verifier checks the digest; the subject discloses selectively (the SD-JWT model, RFC 9901, applies per-field to JSON records). This ran cross-org at the 126 hackathon \u2014 bindings verified end to end without any invoice contents traveling.\n\n2. IDENTITY. Records should carry role descriptors, not end-user identities. The approver/principal reference belongs in the authorization document the record cites by digest, not in the audit-record body itself. Audit trails that embed natural-person identity inherit data-protection obligations they don't need.\n\n3. CORRELATION. The transparency layer itself leaks. A single TS observing all of an operator's registrations is a traffic-analysis channel (volume, timing, counterparty patterns) even when payloads are digests only. Two multi-TS modes should be distinguished, because they serve opposite goals: MIRRORING the same statement to several logs increases trust-diversity and availability but multiplies observers; \nPARTITIONING different registrations across logs (per counterparty, per context, or rotating) means each log sees only a slice, and correlation requires collusion especially when combined with pseudonymous registration identity. \n\nSuggest WI-7's registration-policy profile name both modes and their trade-offs, and state what an authorized Auditor may correlate across logs (WI-9) versus what the public may. Cross-TS interop is practical today: at the 126 hackathon one signed statement was verified against receipts from two independent TS (a CCF instance and an RFC9162_SHA256 log) that was mirroring, for trust-diversity; the partitioning mode uses the same machinery.\n\nAnd one architectural point for Section 9: the record types differ BY CONSTRUCTION in disclosure burden \u2014 conversation records carry content and inherit retention/redaction obligations; action records can be content-free entirely. This way deployments can pick the grain that matches their disclosure constraints. I believe its worth a line to describe this feature of the four-type split.",
+      "createdAt": "2026-07-20T09:22:41Z",
+      "updatedAt": "2026-07-20T09:22:41Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 22,
+      "id": "I_kwDOShPbiM8AAAABJb4SvQ",
+      "title": "Audit references should be content-addressed: a name is not evidence",
+      "url": "https://github.com/mirjak/draft-audit-architecture/issues/22",
+      "state": "OPEN",
+      "author": "StevenMih",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Wherever the architecture carries references: audit context, SC-2/SC-11 tracing identifiers, record-to-record links, we suggest requiring a digest alongside (or as) the identifier. \nRationale from two incidents in 24 hours at the 126 hackathon: a regenerated evidence bundle under an unchanged filename, and a pinned commit orphaned by a force-push; both caught only by re-hashing, both fixed by naming immutable coordinates. \n\nIdentifiers dangle; digests don't. For an audit architecture, references that can silently change referents are themselves an\nintegrity hole. ",
+      "createdAt": "2026-07-20T10:47:11Z",
+      "updatedAt": "2026-07-20T10:47:11Z",
       "closedAt": null,
       "comments": []
     }
