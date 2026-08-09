@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-07-21T02:00:30.186119+00:00",
+  "timestamp": "2026-08-09T01:09:00.267499+00:00",
   "repo": "mirjak/draft-audit-architecture",
   "labels": [
     {
@@ -479,9 +479,17 @@
       "labels": [],
       "body": "Wherever the architecture carries references: audit context, SC-2/SC-11 tracing identifiers, record-to-record links, we suggest requiring a digest alongside (or as) the identifier. \nRationale from two incidents in 24 hours at the 126 hackathon: a regenerated evidence bundle under an unchanged filename, and a pinned commit orphaned by a force-push; both caught only by re-hashing, both fixed by naming immutable coordinates. \n\nIdentifiers dangle; digests don't. For an audit architecture, references that can silently change referents are themselves an\nintegrity hole. ",
       "createdAt": "2026-07-20T10:47:11Z",
-      "updatedAt": "2026-07-20T10:47:11Z",
+      "updatedAt": "2026-08-07T08:01:20Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "LembaGang",
+          "authorAssociation": "NONE",
+          "body": "Two more data points for this, and one is a different class from the two you name.\n\nYours are references to artifacts a human placed: a regenerated bundle under an unchanged filename, a commit orphaned by a force-push. Both were caught because a person went back and re-hashed.\n\nThe third is a published package version. `@headlessoracle/chirindo@0.3.0` on npm, while the source tree it was cut from was ten commits and an entire feature ahead of it. The test suite was green throughout, because the tests import `src/` and nothing imports `dist/`. Nothing in the repository bound the published artifact to the source tree, so no check could observe the difference.\n\nThat matters here because a version string is the identifier a resolver consumes automatically, at install time, with no human looking. A person notices when a documented function is missing. An agent gets `undefined`, routes around it, and reports success on a narrower task. Version numbers are assertions by the publisher, not proofs about contents.\n\nConcretely for the architecture: wherever a record cites a software artifact, a version identifier alone is insufficient for the same reason a filename is. The integrity hash of the distributed artifact is the coordinate that doesn't dangle.\n\n(Note the numbering in this issue predates the SC to WI rename, so the tracing identifiers referenced here are now WI-2 / WI-11.)",
+          "createdAt": "2026-08-07T08:01:20Z",
+          "updatedAt": "2026-08-07T08:01:20Z"
+        }
+      ]
     }
   ],
   "pulls": [
