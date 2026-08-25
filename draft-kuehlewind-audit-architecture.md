@@ -353,7 +353,7 @@ The following work items are proposed for potential specifications that support 
   This work item does not preclude additional profiles for non-conversational interactions, such as network device interaction.
 
 * **WI-4: Action Record Profile.**
-  A canonical Action Record produced at the boundary where each tool or service call took effect, bound to its parent Interaction Record via SC-2/SC-11 tracing identifiers, to its authorizing Token, and (when available) to the Attestation Result for the executing environment.
+  A canonical Action Record produced at the boundary where each tool or service call took effect, bound to its parent Interaction Record via WI-2/WI-11 tracing identifiers, to its authorizing Token, and (when available) to the Attestation Result for the executing environment.
   Distinguishes the Recorder's signing identity from the recorded Agent's identity where the two are operationally separated.
 
 * **WI-5: HITL Escalation Signalling.**
@@ -376,7 +376,7 @@ The following work items are proposed for potential specifications that support 
   {{privconsec}} relies on.
 
 * **WI-11: Audit Context Propagation Protocol Extensions.**
-  This could be realized by an HTTP headers carrying the Audit Context, e.g. a workflow-wide `Audit-Trace-ID`, an immediate-redecessor `Audit-Parent-ID`, the current `Audit-Actor`, the upstream `Audit-On-Behalf-Of`, the SC-2 tracing chain as `Audit-Delegation-Chain`, and a reference to the current `Audit-Auth-State`.
+  This could be realized by an HTTP headers carrying the Audit Context, e.g. a workflow-wide `Audit-Trace-ID`, an immediate-redecessor `Audit-Parent-ID`, the current `Audit-Actor`, the upstream `Audit-On-Behalf-Of`, the WI-2 tracing chain as `Audit-Delegation-Chain`, and a reference to the current `Audit-Auth-State`.
   Alternatively, a single composite `Audit-Context` header could be defined that provides the audit context embedded in OAuth token claims ({{ex-audit-token}}).
   The relationship to existing distributed-tracing conventions (W3C Trace Context, OpenTelemetry) need to be considered.
 
