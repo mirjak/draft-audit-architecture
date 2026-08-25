@@ -124,6 +124,14 @@ The following examples highlight scenarios where traditional logging is insuffic
 
 The proposed auditing architecture provides traceability of data access and enables reconstruction of the full chain from user intent to execution, including the full delegation chain that might change dynamically and authorization decisions, providing the desired verifiable audit trail suitable for compliance and review.
 
+## Interaction Checks and Reliability Claims for Users
+
+Consumer use cases benefit from auditing that lets a user check whether a chain of delegating agents acted as claimed.
+For example, a user asks their Agent to book a cheap flight.
+The Agent contacts an Agent operated by a booking agency, which in turn contacts an Agent operated by an airline.
+The result is a booked flight, but it is a non-cancellable business-class ticket rather than the cheap fare the user asked for.
+Without auditing linking intent, delegation, and execution, the user has no way to determine, e.g. to request a refund, whether the fault lies with their own Agent, the booking agency's Agent, or the airline's Agent.
+
 ## Financial Transactions by Agents
 
 Agents may execute financial operations such as payments or procurement actions on behalf of users, often involving multiple systems.
@@ -138,12 +146,6 @@ Some agents operate continuously over extended periods, making decisions and per
 For example, a procurement agent may manage ordering and inventory over days or weeks.
 In such scenarios, authorization evolves over time due to policy changes, approvals, or context-dependent decisions.
 Delegation paths may also change dynamically.
-
-## Everyday Agent Interaction
-
-Even simple consumer use cases benefit from improved auditing.
-For example, an assistant may book a restaurant on behalf of a user by selecting a venue and interacting with a booking service.
-If the result is unexpected, traditional logs provide limited insight into how the decision was made or which services were involved.
 
 ## Data Sharing and User Trust
 
