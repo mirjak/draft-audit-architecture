@@ -89,6 +89,10 @@ Two principles frame the rest of this document:
 2. Unlike traditional delegated workflows in which authorization transitions are explicit and predefined, AI agent systems introduce dynamic, fine-grained authorization changes that arise during execution and are driven by agent decisions, sub-agent delegation, and human interaction.
    Auditing must therefore capture authorization as a *time-evolving state* and must correlate transitions across interactions and domains by maintaining common context.
 
+This architecture is not a session or context-management mechanism: an Agent still performs its own session handling and context tracking, and the audit layer's records reference that context without replacing it.
+Also, while audit records may be generated in real time as interactions occur, the auditing use case addressed by this document is inherently post-hoc: it enables an Auditor to prove after the fact what happened over the course of an interaction.
+Using the same records to drive real-time in-session reasoning or enforcement may be possible but is out of scope for this document.
+
 ## Relationship to Other IETF Work
 
 The architecture is designed to compose existing IETF building blocks to make verifiable what these layers already do rather than redefining them.
