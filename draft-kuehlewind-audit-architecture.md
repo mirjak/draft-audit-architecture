@@ -104,17 +104,12 @@ The Agent may invoke multiple Sub-Agents, and any Sub-Agent may itself delegate 
                                   |          +---------------+
                                   |
                                   |          +---------------+        +---------------+
-                                  +--------->+  Sub-Agent C  +------->+  Sub-Agent C1 |
-                                             +---------------+        +-------+-------+
-                                                                              |
-                                                                              v
-                                                                      +---------------+
-                                                                      |   External    |
-                                                                      |   Service /   |
+                                  +--------->+  Sub-Agent C  +------->+   External    |
+                                             +---------------+        |   Service /   |
                                                                       |   Tool        |
                                                                       +---------------+
 ~~~
-{: #fig-workflow title="Agent interaction workflow: an Agent delegating to multiple Sub-Agents, one of which delegates further."}
+{: #fig-workflow title="Agent interaction workflow with multiple Sub-Agents."}
 
 ## Relationship to Other IETF Work
 
