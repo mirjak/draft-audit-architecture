@@ -165,18 +165,12 @@ Table of Contents
                                   |          +---------------+
                                   |
                                   |          +---------------+        +---------------+
-                                  +--------->+  Sub-Agent C  +------->+  Sub-Agent C1 |
-                                             +---------------+        +-------+-------+
-                                                                              |
-                                                                              v
-                                                                      +---------------+
-                                                                      |   External    |
-                                                                      |   Service /   |
+                                  +--------->+  Sub-Agent C  +------->+   External    |
+                                             +---------------+        |   Service /   |
                                                                       |   Tool        |
                                                                       +---------------+
 
-     Figure 1: Agent interaction workflow: an Agent delegating to
-        multiple Sub- Agents, one of which delegates further.
+    Figure 1: Agent interaction workflow with multiple Sub-Agents.
 
 1.2.  Relationship to Other IETF Work
 
