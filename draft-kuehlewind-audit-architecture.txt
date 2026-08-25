@@ -5,8 +5,8 @@
 Network Working Group                                      M. Kuehlewind
 Internet-Draft                                                  Ericsson
 Intended status: Informational                               H. Birkholz
-Expires: 16 January 2027                                  Fraunhofer SIT
-                                                            15 July 2026
+Expires: 26 February 2027                                 Fraunhofer SIT
+                                                          25 August 2026
 
 
    An Architecture for Auditing AI Agent Delegation and Interactions
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 January 2027.
+   This Internet-Draft will expire on 26 February 2027.
 
 Copyright Notice
 
@@ -581,7 +581,7 @@ Table of Contents
 
    *  *WI-4: Action Record Profile.* A canonical Action Record produced
       at the boundary where each tool or service call took effect, bound
-      to its parent Interaction Record via SC-2/SC-11 tracing
+      to its parent Interaction Record via WI-2/WI-11 tracing
       identifiers, to its authorizing Token, and (when available) to the
       Attestation Result for the executing environment.  Distinguishes
       the Recorder's signing identity from the recorded Agent's identity
@@ -627,7 +627,7 @@ Table of Contents
       be realized by an HTTP headers carrying the Audit Context, e.g. a
       workflow-wide Audit-Trace-ID, an immediate-redecessor Audit-
       Parent-ID, the current Audit-Actor, the upstream Audit-On-Behalf-
-      Of, the SC-2 tracing chain as Audit-Delegation-Chain, and a
+      Of, the WI-2 tracing chain as Audit-Delegation-Chain, and a
       reference to the current Audit-Auth-State.  Alternatively, a
       single composite Audit-Context header could be defined that
       provides the audit context embedded in OAuth token claims
@@ -871,9 +871,9 @@ Table of Contents
               Schwenkschuster, A., Kasselman, P., Burgin, K., Jenkins,
               M. J., Campbell, B., and A. Parecki, "OAuth Identity and
               Authorization Chaining Across Domains", Work in Progress,
-              Internet-Draft, draft-ietf-oauth-identity-chaining-16, 26
-              June 2026, <https://datatracker.ietf.org/doc/html/draft-
-              ietf-oauth-identity-chaining-16>.
+              Internet-Draft, draft-ietf-oauth-identity-chaining-17, 19
+              July 2026, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-oauth-identity-chaining-17>.
 
    [I-D.ietf-oauth-spiffe-client-auth]
               Schwenkschuster, A., Kasselman, P., Rose, S., Thorgersen,
@@ -893,9 +893,9 @@ Table of Contents
    [I-D.ietf-oauth-transaction-tokens]
               Tulshibagwale, A., Fletcher, G., and P. Kasselman,
               "Transaction Tokens", Work in Progress, Internet-Draft,
-              draft-ietf-oauth-transaction-tokens-09, 6 July 2026,
+              draft-ietf-oauth-transaction-tokens-11, 30 July 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              transaction-tokens-09>.
+              transaction-tokens-11>.
 
    [I-D.ietf-scitt-architecture]
               Birkholz, H., Delignat-Lavaud, A., Fournet, C., Deshpande,
