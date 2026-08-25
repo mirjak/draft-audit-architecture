@@ -218,6 +218,12 @@ Existing approaches such as W3C's trace context propagation can serve as a basis
 As such, correlation is not performed by a centralized component.
 Instead, it emerges from consistent use of shared identifiers and structures across all participants.
 
+## In-Band Record Storage
+
+Rather than exporting records to a separate, external Audit Store, each Agent may run its own Audit Store and send its records to the Audit Store of the Agent it is interacting with, reusing the existing transport connection between them instead of a separate out-of-band channel.
+This is an alternative, not a replacement, to using an external Audit Store, and the two approaches may be combined.
+Since each Agent's Audit Store is then operated by the same party as the Agent itself, this approach places more trust in that party than an independent, external Audit Store would.
+
 ## Attestation Model
 
 Audit records may include attestation evidence that provides verifiable assurances about their content.
