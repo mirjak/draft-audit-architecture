@@ -343,39 +343,36 @@ The following work items are proposed for potential specifications that support 
 * **WI-1: Audit Data Models and Semantics.**
   The canonical structure of Interaction, Action, Delegation, and Authorization Transition Records ({{interactions}}), encoded in at least one IETF-recognised serialisation (CBOR/COSE or JSON/JWS) with support for detached payloads, and carrying actor identity unambiguously across User, Agent, Sub-Agent, Tool, and Service.
 
-* **WI-2: Delegation-Chain Wire Profile.**
-  Specify both a Cryptographic Delegation Chain carried in token bodies (nested `act` per {{-token-exchange}}; `acti`/`actc` candidates from {{-actor-chain}}) as well as a Tracing Delegation Chain (a flat, lightweight Actor sequence suitable for audit context, HTTP headers, and standalone records) with a defined reconciliation path between them.
+* **WI-1-1: Delegation-Chain Record Format.**
+  Record format for a Cryptographic Delegation Chain carried in token bodies (nested `act` per {{-token-exchange}}; `acti`/`actc` candidates from {{-actor-chain}}) as well as a Tracing Delegation Chain (a flat, lightweight Actor sequence suitable for audit context, HTTP headers, and standalone records) with a defined reconciliation path between them.
   This item includes a representation for cross-domain transitions, and a `sub_profile` {{-actor-profile}} vocabulary that distinguishes AI Agent, Sub-Agent, Tool, Service, and Human.
 
-* **WI-3: Interaction Record Profile.**
+* **WI-1-2: Interaction Record Format.**
   A canonical Interaction Record format for prompts, responses, instructions, approvals, refusals, tool-invocation traces, reasoning traces (where exposed by the model), and system events, potentially with an identifiable HITL subtype and a registration profile compatible with SCITT.
   {{-vac}} is the principal candidate for the User-Agent dialogue subtype.
   This work item does not preclude additional profiles for non-conversational interactions, such as network device interaction.
 
-* **WI-4: Action Record Profile.**
+* **WI-1-3: Action Record Format.**
   A canonical Action Record produced at the boundary where each tool or service call took effect, bound to its parent Interaction Record via WI-2/WI-11 tracing identifiers, to its authorizing Token, and (when available) to the Attestation Result for the executing environment.
   Distinguishes the Recorder's signing identity from the recorded Agent's identity where the two are operationally separated.
 
-* **WI-5: HITL Escalation Signalling.**
-  Communication of step-up requests from Agent to User and the User's response, e.g., approval, refusal, or timeout, in a form auditable end-to-end and bindable to the resulting authorization state.
-
-* **WI-6: Profile of RATS Evidence.**
-  How Evidence is referenced from Interaction and Action Records using {{-rats-arch}}'s encoding-agnostic Conceptual Messages, and how Attestation Results derived from such Evidence are consumed by Identity Issuance Authorities, Services, and Auditors.
-
-* **WI-7: Profile of SCITT Transparency.**
-  A Registraton Policy profile of {{-scitt-arch}} for auditing records--admissible Issuers (Agents, Sub-Agents, Recorders) and required payload media types--and a Receipt presentation profile permitting Auditors to verify non-repudiation independently of any single Transparency Service.
-
-* **WI-8: Authorization Transition Encoding.**
+* **WI-1-4: Authorization Transition Record.**
   A canonical Authorization Transition Record format carrying previous state, new state, triggering event, and responsible actor (see {{ex-auth-transition}}), reusing {{-status-list}} where the state is a token-status state, and replayable to reconstruct authorization in force at any timestamp within a run.
 
-* **WI-9: Auditor-Facing Query Interface.**
+* **WI-2: Profile of RATS Evidence.**
+  How Evidence is referenced from Interaction and Action Records using {{-rats-arch}}'s encoding-agnostic Conceptual Messages, and how Attestation Results derived from such Evidence are consumed by Identity Issuance Authorities, Services, and Auditors.
+
+* **WI-3: Profile of SCITT Transparency.**
+  A Registraton Policy profile of {{-scitt-arch}} for auditing records--admissible Issuers (Agents, Sub-Agents, Recorders) and required payload media types--and a Receipt presentation profile permitting Auditors to verify non-repudiation independently of any single Transparency Service.
+
+* **WI-4: Auditor-Facing Query Interface.**
   An optional specialised query profile over the Audit Store and Transparency Log, surfacing records by session, workflow, principal, agent, tool, or time range, with authorization and privacy controls.
 
-* **WI-10: Deployment and Operations Best Practices.**
+* **WI-5: Deployment and Operations Best Practices.**
   Recorder placement, Identity Issuance Authority configuration for ephemeral Workloads, Trust Domain partitioning, operational separation between Agent runtime and audit pipeline, and the privacy guidance on redaction, retention, and disclosure that
   {{privconsec}} relies on.
 
-* **WI-11: Audit Context Propagation Protocol Extensions.**
+* **WI-6: Audit Context Propagation Protocol Extensions.**
   This could be realized by an HTTP headers carrying the Audit Context, e.g. a workflow-wide `Audit-Trace-ID`, an immediate-redecessor `Audit-Parent-ID`, the current `Audit-Actor`, the upstream `Audit-On-Behalf-Of`, the WI-2 tracing chain as `Audit-Delegation-Chain`, and a reference to the current `Audit-Auth-State`.
   Alternatively, a single composite `Audit-Context` header could be defined that provides the audit context embedded in OAuth token claims ({{ex-audit-token}}).
   The relationship to existing distributed-tracing conventions (W3C Trace Context, OpenTelemetry) need to be considered.
