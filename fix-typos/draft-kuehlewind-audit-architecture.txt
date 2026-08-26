@@ -5,8 +5,8 @@
 Network Working Group                                      M. Kuehlewind
 Internet-Draft                                                  Ericsson
 Intended status: Informational                               H. Birkholz
-Expires: 26 February 2027                                 Fraunhofer SIT
-                                                          25 August 2026
+Expires: 27 February 2027                                 Fraunhofer SIT
+                                                          26 August 2026
 
 
    An Architecture for Auditing AI Agent Delegation and Interactions
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 February 2027.
+   This Internet-Draft will expire on 27 February 2027.
 
 Copyright Notice
 
@@ -581,7 +581,7 @@ Table of Contents
 
    *  *WI-4: Action Record Profile.* A canonical Action Record produced
       at the boundary where each tool or service call took effect, bound
-      to its parent Interaction Record via SC-2/SC-11 tracing
+      to its parent Interaction Record via WI-2/WI-11 tracing
       identifiers, to its authorizing Token, and (when available) to the
       Attestation Result for the executing environment.  Distinguishes
       the Recorder's signing identity from the recorded Agent's identity
@@ -639,10 +639,9 @@ Table of Contents
 
    This section is informative.  It illustrates the four classes of
    audit record introduced in Section 5 and the audit context introduced
-   in SC-2 and SC-11 with concrete examples.  The exact field names,
-   claim names, and encodings shown here are placeholders pending the
-   specifications defined in SC-1 through SC-11.  They are intended to
-   convey the relationships among the artifacts.
+   in WI-2 and WI-11 with concrete examples.  The exact field names,
+   claim names, and encodings shown here are placeholders pending.  They
+   are intended to convey the relationships among the artifacts.
 
    To enable interoperability, audit records require a common structure
    that captures identity, delegation, and causal relationships.  Each
