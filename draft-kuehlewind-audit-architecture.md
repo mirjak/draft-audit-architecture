@@ -353,7 +353,7 @@ The following work items are proposed for potential specifications that support 
   This work item does not preclude additional profiles for non-conversational interactions, such as network device interaction.
 
 * **WI-4: Action Record Profile.**
-  A canonical Action Record produced at the boundary where each tool or service call took effect, bound to its parent Interaction Record via SC-2/SC-11 tracing identifiers, to its authorizing Token, and (when available) to the Attestation Result for the executing environment.
+  A canonical Action Record produced at the boundary where each tool or service call took effect, bound to its parent Interaction Record via WI-2/WI-11 tracing identifiers, to its authorizing Token, and (when available) to the Attestation Result for the executing environment.
   Distinguishes the Recorder's signing identity from the recorded Agent's identity where the two are operationally separated.
 
 * **WI-5: HITL Escalation Signalling.**
@@ -383,8 +383,8 @@ The following work items are proposed for potential specifications that support 
 # Illustrative Audit Record Examples {#examples}
 
 This section is informative.
-It illustrates the four classes of audit record introduced in {{interactions}} and the audit context introduced in SC-2 and SC-11 with concrete examples.
-The exact field names, claim names, and encodings shown here are placeholders pending the specifications defined in SC-1 through SC-11.
+It illustrates the four classes of audit record introduced in {{interactions}} and the audit context introduced in WI-2 and WI-11 with concrete examples.
+The exact field names, claim names, and encodings shown here are placeholders pending.
 They are intended to convey the relationships among the artifacts.
 
 To enable interoperability, audit records require a common structure that captures identity, delegation, and causal relationships.
