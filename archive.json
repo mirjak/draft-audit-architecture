@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-08-11T01:09:20.633324+00:00",
+  "timestamp": "2026-08-27T06:33:22.194321+00:00",
   "repo": "mirjak/draft-audit-architecture",
   "labels": [
     {
@@ -629,6 +629,293 @@
           "body": "",
           "createdAt": "2026-05-28T10:31:00Z",
           "updatedAt": "2026-05-28T10:31:00Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "id": "PR_kwDOShPbiM8AAAABA7yn6g",
+      "title": "Fix typos and minor grammatical issues in draft text",
+      "url": "https://github.com/mirjak/draft-audit-architecture/pull/24",
+      "state": "OPEN",
+      "author": "mirjak",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-08-25T12:25:37Z",
+      "updatedAt": "2026-08-26T10:51:56Z",
+      "baseRepository": "mirjak/draft-audit-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "05dc280a7ff210eaf86427bf5e7393f6ec49d10c",
+      "headRepository": "mirjak/draft-audit-architecture",
+      "headRefName": "fix-typos",
+      "headRefOid": "58deb8bcabc3ab00fb175c56c7a3c02308b3b397",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOShPbiM8AAAABK8jwXQ",
+          "commit": {
+            "abbreviatedOid": "58deb8b"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-08-26T10:51:56Z",
+          "updatedAt": "2026-08-26T10:51:56Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "id": "PR_kwDOShPbiM8AAAABA75Hpg",
+      "title": "Add new Agent Interaction Workflow subsection",
+      "url": "https://github.com/mirjak/draft-audit-architecture/pull/25",
+      "state": "OPEN",
+      "author": "mirjak",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-08-25T12:39:40Z",
+      "updatedAt": "2026-08-26T10:58:56Z",
+      "baseRepository": "mirjak/draft-audit-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "40431238ad0f8baf807ed285213de2c81550e662",
+      "headRepository": "mirjak/draft-audit-architecture",
+      "headRefName": "add-agent-workflow-intro",
+      "headRefOid": "2a88a6960d1d0a1b6eb1386b457d4e121f462c0c",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOShPbiM8AAAABK8mnBA",
+          "commit": {
+            "abbreviatedOid": "2a88a69"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-08-26T10:58:04Z",
+          "updatedAt": "2026-08-26T10:58:04Z",
+          "comments": [
+            {
+              "originalPosition": 1,
+              "body": "```suggestion\n2. Unlike classic delegated workflows in which authorization transitions are explicit and predefined, AI agent systems introduce dynamic, fine-grained authorization changes that arise during execution and are driven by agent decisions, sub-agent delegation, and human interaction.\n```",
+              "createdAt": "2026-08-26T10:58:04Z",
+              "updatedAt": "2026-08-26T10:58:04Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOShPbiM8AAAABK8mwPg",
+          "commit": {
+            "abbreviatedOid": "2a88a69"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-08-26T10:58:23Z",
+          "updatedAt": "2026-08-26T10:58:24Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "```suggestion\nA single User request may result in a chain of further Agent interactions.\n```",
+              "createdAt": "2026-08-26T10:58:23Z",
+              "updatedAt": "2026-08-26T10:58:24Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOShPbiM8AAAABK8nAjQ",
+          "commit": {
+            "abbreviatedOid": "2a88a69"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-08-26T10:58:56Z",
+          "updatedAt": "2026-08-26T10:58:56Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 26,
+      "id": "PR_kwDOShPbiM8AAAABA8DtDA",
+      "title": "Rework Everyday Agent Interaction use case into flight-booking example",
+      "url": "https://github.com/mirjak/draft-audit-architecture/pull/26",
+      "state": "OPEN",
+      "author": "mirjak",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-08-25T13:01:17Z",
+      "updatedAt": "2026-08-26T10:57:33Z",
+      "baseRepository": "mirjak/draft-audit-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "40431238ad0f8baf807ed285213de2c81550e662",
+      "headRepository": "mirjak/draft-audit-architecture",
+      "headRefName": "rework-everyday-usecase",
+      "headRefOid": "98d8fcec41171a675db6062b76d247a76c96328c",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOShPbiM8AAAABK8mXKQ",
+          "commit": {
+            "abbreviatedOid": "98d8fce"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-08-26T10:57:33Z",
+          "updatedAt": "2026-08-26T10:57:33Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "One comment in side-meeting was that Autonomous Agent and Human Travel Agent is a place where the use of \"Agent\" can be confusing or unwanted.",
+              "createdAt": "2026-08-26T10:57:33Z",
+              "updatedAt": "2026-08-26T10:57:33Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 27,
+      "id": "PR_kwDOShPbiM8AAAABA8KErg",
+      "title": "Add In-Band Record Storage subsection to Architectural Overview",
+      "url": "https://github.com/mirjak/draft-audit-architecture/pull/27",
+      "state": "OPEN",
+      "author": "mirjak",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-08-25T13:13:49Z",
+      "updatedAt": "2026-08-26T10:54:38Z",
+      "baseRepository": "mirjak/draft-audit-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "40431238ad0f8baf807ed285213de2c81550e662",
+      "headRepository": "mirjak/draft-audit-architecture",
+      "headRefName": "add-inband-records-subsection",
+      "headRefOid": "17cd43e82a1faf589dc5c892ae44b85e023226f2",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOShPbiM8AAAABK8lAkA",
+          "commit": {
+            "abbreviatedOid": "17cd43e"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-08-26T10:54:38Z",
+          "updatedAt": "2026-08-26T10:54:38Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 28,
+      "id": "PR_kwDOShPbiM8AAAABA8igVw",
+      "title": "Clarify scope: not session/context management, and auditing is post-hoc",
+      "url": "https://github.com/mirjak/draft-audit-architecture/pull/28",
+      "state": "OPEN",
+      "author": "mirjak",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-08-25T14:00:22Z",
+      "updatedAt": "2026-08-26T10:53:29Z",
+      "baseRepository": "mirjak/draft-audit-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "40431238ad0f8baf807ed285213de2c81550e662",
+      "headRepository": "mirjak/draft-audit-architecture",
+      "headRefName": "add-scope-clarification",
+      "headRefOid": "d9a9d42a0430a39f77bf2dda835816ee0182a2e9",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOShPbiM8AAAABK8kd4g",
+          "commit": {
+            "abbreviatedOid": "d9a9d42"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "+1, especially to the scope part",
+          "createdAt": "2026-08-26T10:53:29Z",
+          "updatedAt": "2026-08-26T10:53:29Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 29,
+      "id": "PR_kwDOShPbiM8AAAABA849rQ",
+      "title": "Re-org WIs",
+      "url": "https://github.com/mirjak/draft-audit-architecture/pull/29",
+      "state": "OPEN",
+      "author": "mirjak",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-08-25T14:42:49Z",
+      "updatedAt": "2026-08-26T11:01:07Z",
+      "baseRepository": "mirjak/draft-audit-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "05dc280a7ff210eaf86427bf5e7393f6ec49d10c",
+      "headRepository": "mirjak/draft-audit-architecture",
+      "headRefName": "mirjak-patch-3",
+      "headRefOid": "93b07691e235cea3a5e7b05efe7986c1bf0b7cf4",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOShPbiM8AAAABK8oAWg",
+          "commit": {
+            "abbreviatedOid": "93b0769"
+          },
+          "author": "henkbirkholz",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "+1",
+          "createdAt": "2026-08-26T11:01:07Z",
+          "updatedAt": "2026-08-26T11:01:07Z",
           "comments": []
         }
       ]
