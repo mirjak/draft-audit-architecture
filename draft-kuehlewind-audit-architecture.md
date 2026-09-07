@@ -86,8 +86,30 @@ Two principles frame the rest of this document:
 1. Agents participate in *two distinct classes of interaction* that must each be auditable: user-facing interactions (prompts, approvals, human-in-the-loop confirmations) and system-facing interactions (API calls, tool invocations, delegation to other agents or services).
    Effective auditing requires linking user intent to resulting system actions across protocol and administrative boundaries.
 
-2. Unlike traditional delegated workflows in which authorization transitions are explicit and predefined, complex agent systems introduce dynamic, fine-grained authorization changes that arise during execution and are driven by agent decisions, sub-agent delegation, and human interaction.
+2. Unlike classic delegated workflows in which authorization transitions are explicit and predefined, complex agent systems introduce dynamic, fine-grained authorization changes that arise during execution and are driven by agent decisions, sub-agent delegation, and human interaction.
    Auditing must therefore capture authorization as a *time-evolving state* and must correlate transitions across interactions and domains by maintaining common context.
+
+## Agent Interaction Workflow {#agent-workflow}
+
+A single User request may result in a chain of further Agent interactions.
+The Agent may invoke multiple Sub-Agents, and any Sub-Agent may itself delegate further, as shown in {{fig-workflow}}.
+
+~~~ aasvg
++---------------+        +---------------+        +---------------+
+|     User      +------->+    Agent      +------->+  Sub-Agent A  |
++---------------+        +-------+-------+        +---------------+
+                                  |
+                                  |          +---------------+
+                                  +--------->+  Sub-Agent B  |
+                                  |          +---------------+
+                                  |
+                                  |          +---------------+        +---------------+
+                                  +--------->+  Sub-Agent C  +------->+   External    |
+                                             +---------------+        |   Service /   |
+                                                                      |   Tool        |
+                                                                      +---------------+
+~~~
+{: #fig-workflow title="Agent interaction workflow with multiple Sub-Agents."}
 
 ## Relationship to Other IETF Work
 
@@ -182,6 +204,8 @@ Without detailed auditing, it is difficult to verify what data was accessed, wha
                 +-------------------------------------+
 ~~~
 {: #fig-arch title="Roles view: principal acting roles, auditing services, and the records that flow among them."}
+
+{{fig-arch}} shows only one Agent for simplicity; any Agent chain as introduced in {{agent-workflow}} is covered by the same architecture.
 
 The proposed architecture enables interoperable auditing of agent-driven interactions by combining distributed audit record generation, audit context propagation, and optional attestation and transparency logging.
 Audit information is produced by multiple actors operating across administrative domains and is later reconstructed and validated by audit consumers through a shared audit context and may be accompanied by attestations.
