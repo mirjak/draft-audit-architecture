@@ -1188,10 +1188,13 @@ The proposed architecture enables this through distributed audit record generati
                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-audit-records-and-context" class="internal xref">Audit Records and Context</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
-                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-attestation-model" class="internal xref">Attestation Model</a></p>
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-in-band-record-storage" class="internal xref">In-Band Record Storage</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
-                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-identity-substrate" class="internal xref">Identity Substrate</a></p>
+                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-attestation-model" class="internal xref">Attestation Model</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.4">
+                <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-identity-substrate" class="internal xref">Identity Substrate</a></p>
 </li>
             </ul>
 </li>
@@ -1564,31 +1567,41 @@ As such, correlation is not performed by a centralized component.
 Instead, it emerges from consistent use of shared identifiers and structures across all participants.<a href="#section-3.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="attestation-model">
+<div id="in-band-record-storage">
 <section id="section-3.2">
-        <h3 id="name-attestation-model">
-<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-attestation-model" class="section-name selfRef">Attestation Model</a>
+        <h3 id="name-in-band-record-storage">
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-in-band-record-storage" class="section-name selfRef">In-Band Record Storage</a>
         </h3>
-<p id="section-3.2-1">Audit records may include attestation evidence that provides verifiable assurances about their content.
-An attestation binds a statement to a cryptographic identity and allows relying parties to validate claims about events, delegation, or execution.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
-<p id="section-3.2-2">Attestations are generated at or on behalf of the entity asserting a claim and are associated with audit records at creation time.
+<p id="section-3.2-1">Rather than exporting records to a separate, external Audit Store, each Agent may run its own Audit Store and send its records to the Audit Store of the Agent it is interacting with, reusing the existing transport connection between them instead of a separate out-of-band channel.
+This is an alternative, not a replacement, to using an external Audit Store, and the two approaches may be combined.
+Since each Agent's Audit Store is then operated by the same party as the Agent itself, this approach places more trust in that party than an independent, external Audit Store would.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="attestation-model">
+<section id="section-3.3">
+        <h3 id="name-attestation-model">
+<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-attestation-model" class="section-name selfRef">Attestation Model</a>
+        </h3>
+<p id="section-3.3-1">Audit records may include attestation evidence that provides verifiable assurances about their content.
+An attestation binds a statement to a cryptographic identity and allows relying parties to validate claims about events, delegation, or execution.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.3-2">Attestations are generated at or on behalf of the entity asserting a claim and are associated with audit records at creation time.
 Attestation can have different levels of assurance, depending on the type of origin (ranging from self-assertions to RATS evidence).
 An agent or service may self-attest its actions using mechanisms such as JSON Web Signatures or COSE-based signatures.
-In other cases, the producer interacts (taking on the role of a RATS Attester) with an external remote attestation service (i.e., a RATS Verifier) to obtain an additional statement (an Attestation Result).<a href="#section-3.2-2" class="pilcrow">¶</a></p>
-<p id="section-3.2-3">Further, the transparency service may attest that a record has been recorded in an append-only log.
+In other cases, the producer interacts (taking on the role of a RATS Attester) with an external remote attestation service (i.e., a RATS Verifier) to obtain an additional statement (an Attestation Result).<a href="#section-3.3-2" class="pilcrow">¶</a></p>
+<p id="section-3.3-3">Further, the transparency service may attest that a record has been recorded in an append-only log.
 And the audit store may provide additional attestations, such as timestamping or proof of inclusion.
-But this does not replace attestations generated by record producers.<a href="#section-3.2-3" class="pilcrow">¶</a></p>
+But this does not replace attestations generated by record producers.<a href="#section-3.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="identity-substrate">
-<section id="section-3.3">
+<section id="section-3.4">
         <h3 id="name-identity-substrate">
-<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-identity-substrate" class="section-name selfRef">Identity Substrate</a>
+<a href="#section-3.4" class="section-number selfRef">3.4. </a><a href="#name-identity-substrate" class="section-name selfRef">Identity Substrate</a>
         </h3>
-<p id="section-3.3-1">An Agent is treated as a specialisation of a Workload <span>[<a href="#I-D.ietf-wimse-arch" class="cite xref">I-D.ietf-wimse-arch</a>]</span>, with a Workload Identifier <span>[<a href="#I-D.ietf-wimse-identifier" class="cite xref">I-D.ietf-wimse-identifier</a>]</span> scoped within a Trust Domain and a Workload Identity Credential (e.g., a WIT <span>[<a href="#I-D.ietf-wimse-workload-creds" class="cite xref">I-D.ietf-wimse-workload-creds</a>]</span>) bound to a key the workload generates and retains.
+<p id="section-3.4-1">An Agent is treated as a specialisation of a Workload <span>[<a href="#I-D.ietf-wimse-arch" class="cite xref">I-D.ietf-wimse-arch</a>]</span>, with a Workload Identifier <span>[<a href="#I-D.ietf-wimse-identifier" class="cite xref">I-D.ietf-wimse-identifier</a>]</span> scoped within a Trust Domain and a Workload Identity Credential (e.g., a WIT <span>[<a href="#I-D.ietf-wimse-workload-creds" class="cite xref">I-D.ietf-wimse-workload-creds</a>]</span>) bound to a key the workload generates and retains.
 The credential is never a bearer token and is normally short-lived.
 For auditing it is beneficial if an Agent also carries a role profile (per <span>[<a href="#I-D.mcguinness-oauth-actor-profile" class="cite xref">I-D.mcguinness-oauth-actor-profile</a>]</span>'s <code>sub_profile</code> convention) so that downstream parties can distinguish an AI-driven Workload from a human-operated client or a traditional service.
-The role-profile vocabulary is the subject of a separate specification (WI-1-1 in <a href="#work-items" class="auto internal xref">Section 6</a>).<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+The role-profile vocabulary is the subject of a separate specification (WI-1-1 in <a href="#work-items" class="auto internal xref">Section 6</a>).<a href="#section-3.4-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
