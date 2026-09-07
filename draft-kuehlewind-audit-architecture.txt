@@ -67,7 +67,8 @@ Copyright Notice
 Table of Contents
 
    1.  Introduction
-     1.1.  Relationship to Other IETF Work
+     1.1.  Agent Interaction Workflow
+     1.2.  Relationship to Other IETF Work
    2.  Motivating Use Cases
      2.1.  Financial Transactions by Agents
      2.2.  Long-Running Autonomous Agents
@@ -144,7 +145,7 @@ Table of Contents
        intent to resulting system actions across protocol and
        administrative boundaries.
 
-   2.  Unlike traditional delegated workflows in which authorization
+   2.  Unlike classic delegated workflows in which authorization
        transitions are explicit and predefined, complex agent systems
        introduce dynamic, fine-grained authorization changes that arise
        during execution and are driven by agent decisions, sub-agent
@@ -153,7 +154,29 @@ Table of Contents
        correlate transitions across interactions and domains by
        maintaining common context.
 
-1.1.  Relationship to Other IETF Work
+1.1.  Agent Interaction Workflow
+
+   A single User request may result in a chain of further Agent
+   interactions.  The Agent may invoke multiple Sub-Agents, and any Sub-
+   Agent may itself delegate further, as shown in Figure 1.
+
++---------------+        +---------------+        +---------------+
+|     User      +------->+    Agent      +------->+  Sub-Agent A  |
++---------------+        +-------+-------+        +---------------+
+                                  |
+                                  |          +---------------+
+                                  +--------->+  Sub-Agent B  |
+                                  |          +---------------+
+                                  |
+                                  |          +---------------+        +---------------+
+                                  +--------->+  Sub-Agent C  +------->+   External    |
+                                             +---------------+        |   Service /   |
+                                                                      |   Tool        |
+                                                                      +---------------+
+
+    Figure 1: Agent interaction workflow with multiple Sub-Agents.
+
+1.2.  Relationship to Other IETF Work
 
    The architecture is designed to compose existing IETF building blocks
    to make verifiable what these layers already do rather than
@@ -193,7 +216,7 @@ Table of Contents
    document specializes for more complex agents like AI agents.
 
    The three principal acting roles as described in the next section and
-   shown in Figure 1 have parallel counterparts in OAuth and WIMSE; a
+   shown in Figure 2 have parallel counterparts in OAuth and WIMSE; a
    deployment may use both.  The following table shows a simple mapping:
 
    | Actor View (this document) | OAuth view [RFC6749] | WIMSE view
@@ -262,7 +285,7 @@ Table of Contents
 
 3.  Architectural Overview
 
-   Figure 1 shows a high level end-to-end view of the proposed
+   Figure 2 shows a high level end-to-end view of the proposed
    architecture: three principal acting roles produce records about
    their own behaviour.  These records flow into supporting services
    that store, attest, and expose them to consumers that can verify
@@ -293,8 +316,11 @@ Table of Contents
                    |    Audit Consumers / Verifiers      |
                    +-------------------------------------+
 
-      Figure 1: Roles view: principal acting roles, auditing services,
+      Figure 2: Roles view: principal acting roles, auditing services,
                    and the records that flow among them.
+
+   Figure 2 shows only one Agent for simplicity; any Agent chain as
+   introduced in Section 1.1 is covered by the same architecture.
 
    The proposed architecture enables interoperable auditing of agent-
    driven interactions by combining distributed audit record generation,

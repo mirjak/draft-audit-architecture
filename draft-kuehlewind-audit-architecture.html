@@ -1157,7 +1157,10 @@ The proposed architecture enables this through distributed audit record generati
             <p id="section-toc.1-1.1.1" class="keepWithNext"><a href="#section-1" class="auto internal xref">1</a>.  <a href="#name-introduction" class="internal xref">Introduction</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.1">
-                <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-relationship-to-other-ietf-" class="internal xref">Relationship to Other IETF Work</a></p>
+                <p id="section-toc.1-1.1.2.1.1" class="keepWithNext"><a href="#section-1.1" class="auto internal xref">1.1</a>.  <a href="#name-agent-interaction-workflow" class="internal xref">Agent Interaction Workflow</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.1.2.2">
+                <p id="section-toc.1-1.1.2.2.1" class="keepWithNext"><a href="#section-1.2" class="auto internal xref">1.2</a>.  <a href="#name-relationship-to-other-ietf-" class="internal xref">Relationship to Other IETF Work</a></p>
 </li>
             </ul>
 </li>
@@ -1165,7 +1168,7 @@ The proposed architecture enables this through distributed audit record generati
             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-motivating-use-cases" class="internal xref">Motivating Use Cases</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
-                <p id="section-toc.1-1.2.2.1.1" class="keepWithNext"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-financial-transactions-by-a" class="internal xref">Financial Transactions by Agents</a></p>
+                <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-financial-transactions-by-a" class="internal xref">Financial Transactions by Agents</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
                 <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-long-running-autonomous-age" class="internal xref">Long-Running Autonomous Agents</a></p>
@@ -1283,30 +1286,101 @@ In agent-driven systems, auditability requires linking intent, delegation, autho
 Effective auditing requires linking user intent to resulting system actions across protocol and administrative boundaries.<a href="#section-1-6.1.1" class="pilcrow">¶</a></p>
 </li>
         <li id="section-1-6.2">
-          <p id="section-1-6.2.1">Unlike traditional delegated workflows in which authorization transitions are explicit and predefined, complex agent systems introduce dynamic, fine-grained authorization changes that arise during execution and are driven by agent decisions, sub-agent delegation, and human interaction.
+          <p id="section-1-6.2.1">Unlike classic delegated workflows in which authorization transitions are explicit and predefined, complex agent systems introduce dynamic, fine-grained authorization changes that arise during execution and are driven by agent decisions, sub-agent delegation, and human interaction.
 Auditing must therefore capture authorization as a <em>time-evolving state</em> and must correlate transitions across interactions and domains by maintaining common context.<a href="#section-1-6.2.1" class="pilcrow">¶</a></p>
 </li>
       </ol>
-<div id="relationship-to-other-ietf-work">
+<div id="agent-workflow">
 <section id="section-1.1">
-        <h3 id="name-relationship-to-other-ietf-">
-<a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-relationship-to-other-ietf-" class="section-name selfRef">Relationship to Other IETF Work</a>
+        <h3 id="name-agent-interaction-workflow">
+<a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-agent-interaction-workflow" class="section-name selfRef">Agent Interaction Workflow</a>
         </h3>
-<p id="section-1.1-1">The architecture is designed to compose existing IETF building blocks to make verifiable what these layers already do rather than redefining them.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
-<p id="section-1.1-2">Remote attestation follows RATS <span>[<a href="#RFC9334" class="cite xref">RFC9334</a>]</span> supplies the environmental evidence of the record's origin: RATS Evidence, Attestation Results, and Endorsements are reused verbatim as the vocabulary for environmental claims about audit-record producers.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
-<p id="section-1.1-3">Transparency follows SCITT <span>[<a href="#I-D.ietf-scitt-architecture" class="cite xref">I-D.ietf-scitt-architecture</a>]</span> that makes a record's existence later undeniable: SCITT Signed Statements, Receipts, and Transparent Statements are the canonical artifacts, and SCITT-compatible Transparency Services are the canonical substrate for non-repudiable custody.<a href="#section-1.1-3" class="pilcrow">¶</a></p>
-<p id="section-1.1-4">The Verifiable Agent Conversations data model <span>[<a href="#I-D.birkholz-verifiable-agent-conversations" class="cite xref">I-D.birkholz-verifiable-agent-conversations</a>]</span> could be utilized as an Interaction Record.<a href="#section-1.1-4" class="pilcrow">¶</a></p>
-<p id="section-1.1-5">HTTP may be used as the transport mechanism for conveying audit context alongside requests. JSON-based formats, including JWT and COSE, can provide representations for audit records and attestations, along with mechanisms for cryptographic protection.<a href="#section-1.1-5" class="pilcrow">¶</a></p>
-<p id="section-1.1-6">Authority and delegation are based on OAuth 2.0 <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span>, Token Exchange <span>[<a href="#RFC8693" class="cite xref">RFC8693</a>]</span>, Transaction Tokens <span>[<a href="#I-D.ietf-oauth-transaction-tokens" class="cite xref">I-D.ietf-oauth-transaction-tokens</a>]</span>, Identity Chaining <span>[<a href="#I-D.ietf-oauth-identity-chaining" class="cite xref">I-D.ietf-oauth-identity-chaining</a>]</span>, Identity Assertion Authorization Grants <span>[<a href="#I-D.ietf-oauth-identity-assertion-authz-grant" class="cite xref">I-D.ietf-oauth-identity-assertion-authz-grant</a>]</span>, RAR <span>[<a href="#RFC9396" class="cite xref">RFC9396</a>]</span>, attestation-based client authentication <span>[<a href="#I-D.ietf-oauth-attestation-based-client-auth" class="cite xref">I-D.ietf-oauth-attestation-based-client-auth</a>]</span>, DPoP <span>[<a href="#RFC9449" class="cite xref">RFC9449</a>]</span>, Status Lists <span>[<a href="#I-D.ietf-oauth-status-list" class="cite xref">I-D.ietf-oauth-status-list</a>]</span>, and SPIFFE client authentication <span>[<a href="#I-D.ietf-oauth-spiffe-client-auth" class="cite xref">I-D.ietf-oauth-spiffe-client-auth</a>]</span>.<a href="#section-1.1-6" class="pilcrow">¶</a></p>
-<p id="section-1.1-7">Workload identity follows WIMSE <span>[<a href="#I-D.ietf-wimse-arch" class="cite xref">I-D.ietf-wimse-arch</a>]</span>, which this document specializes for more complex agents like AI agents.<a href="#section-1.1-7" class="pilcrow">¶</a></p>
-<p id="section-1.1-8">The three principal acting roles as described in the next section and shown in <a href="#fig-arch" class="auto internal xref">Figure 1</a> have parallel counterparts in OAuth and WIMSE; a deployment may use both.
-The following table shows a simple mapping:<a href="#section-1.1-8" class="pilcrow">¶</a></p>
-<p id="section-1.1-9">| Actor View (this document) | OAuth view <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> | WIMSE view <span>[<a href="#I-D.ietf-wimse-arch" class="cite xref">I-D.ietf-wimse-arch</a>]</span> |
+<p id="section-1.1-1">A single User request may result in a chain of further Agent interactions.
+The Agent may invoke multiple Sub-Agents, and any Sub-Agent may itself delegate further, as shown in <a href="#fig-workflow" class="auto internal xref">Figure 1</a>.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
+<span id="name-agent-interaction-workflow-"></span><div id="fig-workflow">
+<figure id="figure-1">
+          <div id="section-1.1-2.1">
+            <div class="alignLeft art-svg artwork" id="section-1.1-2.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="240" width="704" viewBox="0 0 704 240" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+                <path d="M 8,32 L 8,64" fill="none" stroke="black"></path>
+                <path d="M 136,32 L 136,64" fill="none" stroke="black"></path>
+                <path d="M 208,32 L 208,64" fill="none" stroke="black"></path>
+                <path d="M 280,72 L 280,176" fill="none" stroke="black"></path>
+                <path d="M 336,32 L 336,64" fill="none" stroke="black"></path>
+                <path d="M 368,96 L 368,128" fill="none" stroke="black"></path>
+                <path d="M 368,160 L 368,192" fill="none" stroke="black"></path>
+                <path d="M 408,32 L 408,64" fill="none" stroke="black"></path>
+                <path d="M 496,96 L 496,128" fill="none" stroke="black"></path>
+                <path d="M 496,160 L 496,192" fill="none" stroke="black"></path>
+                <path d="M 536,32 L 536,64" fill="none" stroke="black"></path>
+                <path d="M 568,160 L 568,224" fill="none" stroke="black"></path>
+                <path d="M 696,160 L 696,224" fill="none" stroke="black"></path>
+                <path d="M 8,32 L 136,32" fill="none" stroke="black"></path>
+                <path d="M 208,32 L 336,32" fill="none" stroke="black"></path>
+                <path d="M 408,32 L 536,32" fill="none" stroke="black"></path>
+                <path d="M 136,48 L 200,48" fill="none" stroke="black"></path>
+                <path d="M 336,48 L 400,48" fill="none" stroke="black"></path>
+                <path d="M 8,64 L 136,64" fill="none" stroke="black"></path>
+                <path d="M 208,64 L 336,64" fill="none" stroke="black"></path>
+                <path d="M 408,64 L 536,64" fill="none" stroke="black"></path>
+                <path d="M 368,96 L 496,96" fill="none" stroke="black"></path>
+                <path d="M 280,112 L 360,112" fill="none" stroke="black"></path>
+                <path d="M 368,128 L 496,128" fill="none" stroke="black"></path>
+                <path d="M 368,160 L 496,160" fill="none" stroke="black"></path>
+                <path d="M 568,160 L 696,160" fill="none" stroke="black"></path>
+                <path d="M 280,176 L 360,176" fill="none" stroke="black"></path>
+                <path d="M 496,176 L 560,176" fill="none" stroke="black"></path>
+                <path d="M 368,192 L 496,192" fill="none" stroke="black"></path>
+                <path d="M 568,224 L 696,224" fill="none" stroke="black"></path>
+                <path d="M 264,64 C 272.83064,64 280,71.16936 280,80" fill="none" stroke="black"></path>
+                <polygon class="arrowhead" points="568,176 556,170.4 556,181.6" fill="black" transform="rotate(0,560,176)"></polygon>
+                <polygon class="arrowhead" points="408,48 396,42.4 396,53.6" fill="black" transform="rotate(0,400,48)"></polygon>
+                <polygon class="arrowhead" points="368,176 356,170.4 356,181.6" fill="black" transform="rotate(0,360,176)"></polygon>
+                <polygon class="arrowhead" points="368,112 356,106.4 356,117.6" fill="black" transform="rotate(0,360,112)"></polygon>
+                <polygon class="arrowhead" points="208,48 196,42.4 196,53.6" fill="black" transform="rotate(0,200,48)"></polygon>
+                <g class="text">
+                  <text x="68" y="52">User</text>
+                  <text x="264" y="52">Agent</text>
+                  <text x="464" y="52">Sub-Agent</text>
+                  <text x="512" y="52">A</text>
+                  <text x="424" y="116">Sub-Agent</text>
+                  <text x="472" y="116">B</text>
+                  <text x="424" y="180">Sub-Agent</text>
+                  <text x="472" y="180">C</text>
+                  <text x="628" y="180">External</text>
+                  <text x="624" y="196">Service</text>
+                  <text x="664" y="196">/</text>
+                  <text x="612" y="212">Tool</text>
+                </g>
+              </svg><a href="#section-1.1-2.1.1" class="pilcrow">¶</a>
+</div>
+</div>
+<figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
+<a href="#name-agent-interaction-workflow-" class="selfRef">Agent interaction workflow with multiple Sub-Agents.</a>
+          </figcaption></figure>
+</div>
+</section>
+</div>
+<div id="relationship-to-other-ietf-work">
+<section id="section-1.2">
+        <h3 id="name-relationship-to-other-ietf-">
+<a href="#section-1.2" class="section-number selfRef">1.2. </a><a href="#name-relationship-to-other-ietf-" class="section-name selfRef">Relationship to Other IETF Work</a>
+        </h3>
+<p id="section-1.2-1">The architecture is designed to compose existing IETF building blocks to make verifiable what these layers already do rather than redefining them.<a href="#section-1.2-1" class="pilcrow">¶</a></p>
+<p id="section-1.2-2">Remote attestation follows RATS <span>[<a href="#RFC9334" class="cite xref">RFC9334</a>]</span> supplies the environmental evidence of the record's origin: RATS Evidence, Attestation Results, and Endorsements are reused verbatim as the vocabulary for environmental claims about audit-record producers.<a href="#section-1.2-2" class="pilcrow">¶</a></p>
+<p id="section-1.2-3">Transparency follows SCITT <span>[<a href="#I-D.ietf-scitt-architecture" class="cite xref">I-D.ietf-scitt-architecture</a>]</span> that makes a record's existence later undeniable: SCITT Signed Statements, Receipts, and Transparent Statements are the canonical artifacts, and SCITT-compatible Transparency Services are the canonical substrate for non-repudiable custody.<a href="#section-1.2-3" class="pilcrow">¶</a></p>
+<p id="section-1.2-4">The Verifiable Agent Conversations data model <span>[<a href="#I-D.birkholz-verifiable-agent-conversations" class="cite xref">I-D.birkholz-verifiable-agent-conversations</a>]</span> could be utilized as an Interaction Record.<a href="#section-1.2-4" class="pilcrow">¶</a></p>
+<p id="section-1.2-5">HTTP may be used as the transport mechanism for conveying audit context alongside requests. JSON-based formats, including JWT and COSE, can provide representations for audit records and attestations, along with mechanisms for cryptographic protection.<a href="#section-1.2-5" class="pilcrow">¶</a></p>
+<p id="section-1.2-6">Authority and delegation are based on OAuth 2.0 <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span>, Token Exchange <span>[<a href="#RFC8693" class="cite xref">RFC8693</a>]</span>, Transaction Tokens <span>[<a href="#I-D.ietf-oauth-transaction-tokens" class="cite xref">I-D.ietf-oauth-transaction-tokens</a>]</span>, Identity Chaining <span>[<a href="#I-D.ietf-oauth-identity-chaining" class="cite xref">I-D.ietf-oauth-identity-chaining</a>]</span>, Identity Assertion Authorization Grants <span>[<a href="#I-D.ietf-oauth-identity-assertion-authz-grant" class="cite xref">I-D.ietf-oauth-identity-assertion-authz-grant</a>]</span>, RAR <span>[<a href="#RFC9396" class="cite xref">RFC9396</a>]</span>, attestation-based client authentication <span>[<a href="#I-D.ietf-oauth-attestation-based-client-auth" class="cite xref">I-D.ietf-oauth-attestation-based-client-auth</a>]</span>, DPoP <span>[<a href="#RFC9449" class="cite xref">RFC9449</a>]</span>, Status Lists <span>[<a href="#I-D.ietf-oauth-status-list" class="cite xref">I-D.ietf-oauth-status-list</a>]</span>, and SPIFFE client authentication <span>[<a href="#I-D.ietf-oauth-spiffe-client-auth" class="cite xref">I-D.ietf-oauth-spiffe-client-auth</a>]</span>.<a href="#section-1.2-6" class="pilcrow">¶</a></p>
+<p id="section-1.2-7">Workload identity follows WIMSE <span>[<a href="#I-D.ietf-wimse-arch" class="cite xref">I-D.ietf-wimse-arch</a>]</span>, which this document specializes for more complex agents like AI agents.<a href="#section-1.2-7" class="pilcrow">¶</a></p>
+<p id="section-1.2-8">The three principal acting roles as described in the next section and shown in <a href="#fig-arch" class="auto internal xref">Figure 2</a> have parallel counterparts in OAuth and WIMSE; a deployment may use both.
+The following table shows a simple mapping:<a href="#section-1.2-8" class="pilcrow">¶</a></p>
+<p id="section-1.2-9">| Actor View (this document) | OAuth view <span>[<a href="#RFC6749" class="cite xref">RFC6749</a>]</span> | WIMSE view <span>[<a href="#I-D.ietf-wimse-arch" class="cite xref">I-D.ietf-wimse-arch</a>]</span> |
 |---|---|---|
 | User | Resource Owner | Principal of a run; may also be a Workload in machine-only runs |
 | Agent | OAuth Client | Workload (with <code>sub_profile=ai_agent</code>) presenting a Workload Identity Credential |
-| External Service / Tool | Resource Server | Service-side Workload or external endpoint of another Trust Domain |<a href="#section-1.1-9" class="pilcrow">¶</a></p>
-<p id="section-1.1-10">The auditing layer adds the cross-layer artifacts (audit records and context, agent interaction records, attestation references, and transparency receipts) that turn isolated layer events into a verifiable audit trail.<a href="#section-1.1-10" class="pilcrow">¶</a></p>
+| External Service / Tool | Resource Server | Service-side Workload or external endpoint of another Trust Domain |<a href="#section-1.2-9" class="pilcrow">¶</a></p>
+<p id="section-1.2-10">The auditing layer adds the cross-layer artifacts (audit records and context, agent interaction records, attestation references, and transparency receipts) that turn isolated layer events into a verifiable audit trail.<a href="#section-1.2-10" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -1368,9 +1442,9 @@ Without detailed auditing, it is difficult to verify what data was accessed, wha
       <h2 id="name-architectural-overview">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-architectural-overview" class="section-name selfRef">Architectural Overview</a>
       </h2>
-<p id="section-3-1"><a href="#fig-arch" class="auto internal xref">Figure 1</a> shows a high level end-to-end view of the proposed architecture: three principal acting roles produce records about their own behaviour. These records flow into supporting services that store, attest, and expose them to consumers that can verify their authenticity and provenance.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-1"><a href="#fig-arch" class="auto internal xref">Figure 2</a> shows a high level end-to-end view of the proposed architecture: three principal acting roles produce records about their own behaviour. These records flow into supporting services that store, attest, and expose them to consumers that can verify their authenticity and provenance.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <span id="name-roles-view-principal-acting"></span><div id="fig-arch">
-<figure id="figure-1">
+<figure id="figure-2">
         <div id="section-3-2.1">
           <div class="alignLeft art-svg artwork" id="section-3-2.1.1">
 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="416" width="544" viewBox="0 0 544 416" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
@@ -1451,26 +1525,27 @@ Without detailed auditing, it is difficult to verify what data was accessed, wha
             </svg><a href="#section-3-2.1.1" class="pilcrow">¶</a>
 </div>
 </div>
-<figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
+<figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
 <a href="#name-roles-view-principal-acting" class="selfRef">Roles view: principal acting roles, auditing services, and the records that flow among them.</a>
         </figcaption></figure>
 </div>
-<p id="section-3-3">The proposed architecture enables interoperable auditing of agent-driven interactions by combining distributed audit record generation, audit context propagation, and optional attestation and transparency logging.
-Audit information is produced by multiple actors operating across administrative domains and is later reconstructed and validated by audit consumers through a shared audit context and may be accompanied by attestations.<a href="#section-3-3" class="pilcrow">¶</a></p>
-<p id="section-3-4">Audit records are generated distributively.
+<p id="section-3-3"><a href="#fig-arch" class="auto internal xref">Figure 2</a> shows only one Agent for simplicity; any Agent chain as introduced in <a href="#agent-workflow" class="auto internal xref">Section 1.1</a> is covered by the same architecture.<a href="#section-3-3" class="pilcrow">¶</a></p>
+<p id="section-3-4">The proposed architecture enables interoperable auditing of agent-driven interactions by combining distributed audit record generation, audit context propagation, and optional attestation and transparency logging.
+Audit information is produced by multiple actors operating across administrative domains and is later reconstructed and validated by audit consumers through a shared audit context and may be accompanied by attestations.<a href="#section-3-4" class="pilcrow">¶</a></p>
+<p id="section-3-5">Audit records are generated distributively.
 Each principal acting role (user, agent, service/tool) records its own behaviour rather than relying on a central observer.
 These records are linked via a propagated audit context with a coherent trail:
 Interaction Records are generated by the User; Action and Delegation Records are generated by the Agent; Service Records are generated by external Services/Tools.
 Each actor may produce multiple records to, e.g., audit actions, delegation, or authorization changes.
 Distributed record generation limits the trust placed in any single point.
 Two trust mechanisms are composed (attestation and transparency logging).
-An auditing system may select either, both, or neither according to the strength of evidence its Auditors require.<a href="#section-3-4" class="pilcrow">¶</a></p>
-<p id="section-3-5">The auditing services (Attestation, Audit Store, and Transparency Log) are distinct from the interaction and authorization layers that drives the three acting roles.
+An auditing system may select either, both, or neither according to the strength of evidence its Auditors require.<a href="#section-3-5" class="pilcrow">¶</a></p>
+<p id="section-3-6">The auditing services (Attestation, Audit Store, and Transparency Log) are distinct from the interaction and authorization layers that drives the three acting roles.
 They can be or need to be operated by different parties depending on the trust requirements of the auditor.
 Attestations may be directly provided by the producer or supplied on request by an Attestation Service.
 An Audit Store canonicalises observable agent signals into the records and exposes them to Audit Consumers and Verifiers.
 The Store is logically distinct from the Agent it records, because an agent that records itself can produce useful telemetry but cannot, by itself, deliver non-repudiation to a third party.
-Transparency receipts provided by the Transparency Log are embedded in or referenced from the records.<a href="#section-3-5" class="pilcrow">¶</a></p>
+Transparency receipts provided by the Transparency Log are embedded in or referenced from the records.<a href="#section-3-6" class="pilcrow">¶</a></p>
 <div id="audit-records-and-context">
 <section id="section-3.1">
         <h3 id="name-audit-records-and-context">
