@@ -86,12 +86,12 @@ Two principles frame the rest of this document:
 1. Agents participate in *two distinct classes of interaction* that must each be auditable: user-facing interactions (prompts, approvals, human-in-the-loop confirmations) and system-facing interactions (API calls, tool invocations, delegation to other agents or services).
    Effective auditing requires linking user intent to resulting system actions across protocol and administrative boundaries.
 
-2. Unlike traditional delegated workflows in which authorization transitions are explicit and predefined, AI agent systems introduce dynamic, fine-grained authorization changes that arise during execution and are driven by agent decisions, sub-agent delegation, and human interaction.
+2. Unlike classic delegated workflows in which authorization transitions are explicit and predefined, AI agent systems introduce dynamic, fine-grained authorization changes that arise during execution and are driven by agent decisions, sub-agent delegation, and human interaction.
    Auditing must therefore capture authorization as a *time-evolving state* and must correlate transitions across interactions and domains by maintaining common context.
 
 ## Agent Interaction Workflow {#agent-workflow}
 
-A single User request may result in a chain of further agent interactions.
+A single User request may result in a chain of further Agent interactions.
 The Agent may invoke multiple Sub-Agents, and any Sub-Agent may itself delegate further, as shown in {{fig-workflow}}.
 
 ~~~ aasvg
