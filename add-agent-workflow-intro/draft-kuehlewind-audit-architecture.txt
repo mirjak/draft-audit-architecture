@@ -5,8 +5,8 @@
 Network Working Group                                      M. Kuehlewind
 Internet-Draft                                                  Ericsson
 Intended status: Informational                               H. Birkholz
-Expires: 26 February 2027                                 Fraunhofer SIT
-                                                          25 August 2026
+Expires: 11 March 2027                                    Fraunhofer SIT
+                                                        7 September 2026
 
 
    An Architecture for Auditing AI Agent Delegation and Interactions
@@ -48,7 +48,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 February 2027.
+   This Internet-Draft will expire on 11 March 2027.
 
 Copyright Notice
 
@@ -141,7 +141,7 @@ Table of Contents
        intent to resulting system actions across protocol and
        administrative boundaries.
 
-   2.  Unlike traditional delegated workflows in which authorization
+   2.  Unlike classic delegated workflows in which authorization
        transitions are explicit and predefined, AI agent systems
        introduce dynamic, fine-grained authorization changes that arise
        during execution and are driven by agent decisions, sub-agent
@@ -152,7 +152,7 @@ Table of Contents
 
 1.1.  Agent Interaction Workflow
 
-   A single User request may result in a chain of further agent
+   A single User request may result in a chain of further Agent
    interactions.  The Agent may invoke multiple Sub-Agents, and any Sub-
    Agent may itself delegate further, as shown in Figure 1.
 
@@ -881,9 +881,9 @@ Table of Contents
               Looker, T., Bastian, P., and C. Bormann, "OAuth 2.0
               Attestation-Based Client Authentication", Work in
               Progress, Internet-Draft, draft-ietf-oauth-attestation-
-              based-client-auth-10, 6 July 2026,
+              based-client-auth-11, 3 September 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              attestation-based-client-auth-10>.
+              attestation-based-client-auth-11>.
 
    [I-D.ietf-oauth-identity-assertion-authz-grant]
               Parecki, A., McGuinness, K., and B. Campbell, "Identity
@@ -983,9 +983,9 @@ Table of Contents
    [I-D.birkholz-verifiable-agent-conversations]
               Birkholz, H., Heldt, T., and O. Steele, "Verifiable Agent
               Conversation Records", Work in Progress, Internet-Draft,
-              draft-birkholz-verifiable-agent-conversations-00, 25
-              February 2026, <https://datatracker.ietf.org/doc/html/
-              draft-birkholz-verifiable-agent-conversations-00>.
+              draft-birkholz-verifiable-agent-conversations-01, 31
+              August 2026, <https://datatracker.ietf.org/doc/html/draft-
+              birkholz-verifiable-agent-conversations-01>.
 
    [I-D.johansson-direct-presentation-arch]
               Johansson, L., Zundel, B., and T. Cappalli, "A reference
