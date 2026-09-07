@@ -1293,6 +1293,9 @@ Effective auditing requires linking user intent to resulting system actions acro
 Auditing must therefore capture authorization as a <em>time-evolving state</em> and must correlate transitions across interactions and domains by maintaining common context.<a href="#section-1-6.2.1" class="pilcrow">¶</a></p>
 </li>
       </ol>
+<p id="section-1-7">This architecture is not a session or context-management mechanism: an Agent still performs its own session handling and context tracking, and the audit layer's records reference that context without replacing it.
+Also, while audit records may be generated in real time as interactions occur, the auditing use case addressed by this document is inherently post-hoc: it enables an Auditor to prove after the fact what happened over the course of an interaction.
+Using the same records to drive real-time in-session reasoning or enforcement may be possible but is out of scope for this document.<a href="#section-1-7" class="pilcrow">¶</a></p>
 <div id="agent-workflow">
 <section id="section-1.1">
         <h3 id="name-agent-interaction-workflow">
