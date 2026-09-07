@@ -1168,13 +1168,13 @@ The proposed architecture enables this through distributed audit record generati
             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-motivating-use-cases" class="internal xref">Motivating Use Cases</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
-                <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-financial-transactions-by-a" class="internal xref">Financial Transactions by Agents</a></p>
+                <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-interaction-checks-and-reli" class="internal xref">Interaction Checks and Reliability Claims for Users</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
-                <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-long-running-autonomous-age" class="internal xref">Long-Running Autonomous Agents</a></p>
+                <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-financial-transactions-by-a" class="internal xref">Financial Transactions by Agents</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3">
-                <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="auto internal xref">2.3</a>.  <a href="#name-everyday-agent-interaction" class="internal xref">Everyday Agent Interaction</a></p>
+                <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="auto internal xref">2.3</a>.  <a href="#name-long-running-autonomous-age" class="internal xref">Long-Running Autonomous Agents</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.4">
                 <p id="section-toc.1-1.2.2.4.1"><a href="#section-2.4" class="auto internal xref">2.4</a>.  <a href="#name-data-sharing-and-user-trust" class="internal xref">Data Sharing and User Trust</a></p>
@@ -1399,36 +1399,38 @@ The following table shows a simple mapping:<a href="#section-1.2-8" class="pilcr
 <p id="section-2-1">The need for interoperable auditing of agent-driven systems arises from both regulatory requirements and user trust expectations.
 The following examples highlight scenarios where traditional logging is insufficient and where an explicit auditing architecture for agents provides value.<a href="#section-2-1" class="pilcrow">¶</a></p>
 <p id="section-2-2">The proposed auditing architecture provides traceability of data access and enables reconstruction of the full chain from user intent to execution, including the full delegation chain that might change dynamically and authorization decisions, providing the desired verifiable audit trail suitable for compliance and review.<a href="#section-2-2" class="pilcrow">¶</a></p>
-<div id="financial-transactions-by-agents">
+<div id="interaction-checks-and-reliability-claims-for-users">
 <section id="section-2.1">
-        <h3 id="name-financial-transactions-by-a">
-<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-financial-transactions-by-a" class="section-name selfRef">Financial Transactions by Agents</a>
+        <h3 id="name-interaction-checks-and-reli">
+<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-interaction-checks-and-reli" class="section-name selfRef">Interaction Checks and Reliability Claims for Users</a>
         </h3>
-<p id="section-2.1-1">Agents may execute financial operations such as payments or procurement actions on behalf of users, often involving multiple systems.
-Regulatory frameworks (e.g., SOX, PSD2) require that transactions be attributable, authorized, and auditable.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
-<p id="section-2.1-2">Traditional logs typically capture only execution events (e.g., “payment executed”), without clearly linking them to user intent, approvals, or delegation steps.
-This makes it difficult to verify whether actions were properly authorized.<a href="#section-2.1-2" class="pilcrow">¶</a></p>
+<p id="section-2.1-1">Consumer use cases benefit from auditing that lets a user check whether a chain of delegating agents acted as claimed.
+For example, a user asks their Agent to book a cheap flight.
+The Agent contacts an Agent operated by a booking agency, which in turn contacts an Agent operated by an airline.
+The result is a booked flight, but it is a non-cancellable business-class ticket rather than the cheap fare the user asked for.
+Without auditing linking intent, delegation, and execution, the user has no way to determine, e.g. to request a refund, whether the fault lies with their own Agent, the booking agency's Agent, or the airline's Agent.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="financial-transactions-by-agents">
+<section id="section-2.2">
+        <h3 id="name-financial-transactions-by-a">
+<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-financial-transactions-by-a" class="section-name selfRef">Financial Transactions by Agents</a>
+        </h3>
+<p id="section-2.2-1">Agents may execute financial operations such as payments or procurement actions on behalf of users, often involving multiple systems.
+Regulatory frameworks (e.g., SOX, PSD2) require that transactions be attributable, authorized, and auditable.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+<p id="section-2.2-2">Traditional logs typically capture only execution events (e.g., “payment executed”), without clearly linking them to user intent, approvals, or delegation steps.
+This makes it difficult to verify whether actions were properly authorized.<a href="#section-2.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="long-running-autonomous-agents">
-<section id="section-2.2">
+<section id="section-2.3">
         <h3 id="name-long-running-autonomous-age">
-<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-long-running-autonomous-age" class="section-name selfRef">Long-Running Autonomous Agents</a>
+<a href="#section-2.3" class="section-number selfRef">2.3. </a><a href="#name-long-running-autonomous-age" class="section-name selfRef">Long-Running Autonomous Agents</a>
         </h3>
-<p id="section-2.2-1">Some agents operate continuously over extended periods, making decisions and performing actions based on changing conditions.
+<p id="section-2.3-1">Some agents operate continuously over extended periods, making decisions and performing actions based on changing conditions.
 For example, a procurement agent may manage ordering and inventory over days or weeks.
 In such scenarios, authorization evolves over time due to policy changes, approvals, or context-dependent decisions.
-Delegation paths may also change dynamically.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
-</section>
-</div>
-<div id="everyday-agent-interaction">
-<section id="section-2.3">
-        <h3 id="name-everyday-agent-interaction">
-<a href="#section-2.3" class="section-number selfRef">2.3. </a><a href="#name-everyday-agent-interaction" class="section-name selfRef">Everyday Agent Interaction</a>
-        </h3>
-<p id="section-2.3-1">Even simple consumer use cases benefit from improved auditing.
-For example, an assistant may book a restaurant on behalf of a user by selecting a venue and interacting with a booking service.
-If the result is unexpected, traditional logs provide limited insight into how the decision was made or which services were involved.<a href="#section-2.3-1" class="pilcrow">¶</a></p>
+Delegation paths may also change dynamically.<a href="#section-2.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="data-sharing-and-user-trust">
