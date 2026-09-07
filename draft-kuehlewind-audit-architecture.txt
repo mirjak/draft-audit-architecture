@@ -9,7 +9,7 @@ Expires: 11 March 2027                                    Fraunhofer SIT
                                                         7 September 2026
 
 
-   An Architecture for Auditing AI Agent Delegation and Interactions
+     An Architecture for Auditing Agent Delegation and Interactions
                draft-kuehlewind-audit-architecture-latest
 
 Abstract
@@ -99,14 +99,15 @@ Table of Contents
 
 1.  Introduction
 
-   Autonomous and semi-autonomous software agents based on large
-   language models (LLMs) and similar non-deterministic systems are
-   deployed to take consequential actions on behalf of users and
-   organizations.  These agents interact across administrative and trust
-   domains, delegate tasks and authority to other agents or tools, and
-   initiate consequential actions without per-step human oversight.  The
-   question of whether the recorded actions of an agent faithfully
-   represent what the agent actually did has acquired new urgency.
+   Autonomous and semi-autonomous software agents, including those based
+   on large language models (LLMs) and similar non-deterministic
+   systems, are deployed to take consequential actions on behalf of
+   users, organizations, and services across the Internet.  These agents
+   interact across administrative and trust domains, delegate tasks and
+   authority to other agents or tools, and initiate consequential
+   actions without per-step human oversight.  The question of whether
+   the recorded actions of an agent faithfully represent what the agent
+   actually did has acquired new urgency.
 
    Autonomous agents may run long-lived workflows without tight user
    interaction or may be very short-lived, e.g. for a delegated sub-
@@ -128,7 +129,10 @@ Table of Contents
    The architecture in this document identifies roles and their duties,
    describes the classes of interaction that must be audited, and
    discusses an example data model to make audits interoperable across
-   vendors, domains, and time.
+   vendors, domains, and time.  While AI agents is the driving use case,
+   as further discussed in Section 2, the proposed architecture provides
+   a general purpose auditing system for complex workloads delegated
+   authorization chains, potentially over the Internet.
 
    Two principles frame the rest of this document:
 
@@ -141,7 +145,7 @@ Table of Contents
        administrative boundaries.
 
    2.  Unlike traditional delegated workflows in which authorization
-       transitions are explicit and predefined, AI agent systems
+       transitions are explicit and predefined, complex agent systems
        introduce dynamic, fine-grained authorization changes that arise
        during execution and are driven by agent decisions, sub-agent
        delegation, and human interaction.  Auditing must therefore
@@ -186,7 +190,7 @@ Table of Contents
    authentication [I-D.ietf-oauth-spiffe-client-auth].
 
    Workload identity follows WIMSE [I-D.ietf-wimse-arch], which this
-   document specializes for AI Agents.
+   document specializes for more complex agents like AI agents.
 
    The three principal acting roles as described in the next section and
    shown in Figure 1 have parallel counterparts in OAuth and WIMSE; a
@@ -195,7 +199,7 @@ Table of Contents
    | Actor View (this document) | OAuth view [RFC6749] | WIMSE view
    [I-D.ietf-wimse-arch] | |---|---|---| | User | Resource Owner |
    Principal of a run; may also be a Workload in machine-only runs | |
-   AI Agent | OAuth Client | Workload (with sub_profile=ai_agent)
+   Agent | OAuth Client | Workload (with sub_profile=ai_agent)
    presenting a Workload Identity Credential | | External Service /
    Tool | Resource Server | Service-side Workload or external endpoint
    of another Trust Domain |
@@ -265,7 +269,7 @@ Table of Contents
    their authenticity and provenance.
 
    +---------------+        +---------------+        +---------------+
-   |     User      |        |   AI Agent    |        |   External    |
+   |     User      |        |     Agent     |        |   External    |
    |               +------->+               +------->+   Services /  |
    +---------------+        +---------------+        |   Tools       |
             |                        |               +---------------+
@@ -374,7 +378,7 @@ Table of Contents
 
 3.3.  Identity Substrate
 
-   An AI Agent is treated as a specialisation of a Workload
+   An Agent is treated as a specialisation of a Workload
    [I-D.ietf-wimse-arch], with a Workload Identifier
    [I-D.ietf-wimse-identifier] scoped within a Trust Domain and a
    Workload Identity Credential (e.g., a WIT
@@ -401,7 +405,7 @@ Table of Contents
    User's duty is to issue intent in a verifiable form--prompt,
    approval, or signed grant--and to respond to step-up escalations.
 
-   An AI Agent is a Workload [I-D.ietf-wimse-arch] whose behaviour is
+   An Agent is a Workload [I-D.ietf-wimse-arch] whose behaviour is
    driven, in whole or in part, by a non-deterministic decision process
    (typically an LLM).  Agents operate within the authorization they
    were issued, propagate the upstream Principal's identity and the
