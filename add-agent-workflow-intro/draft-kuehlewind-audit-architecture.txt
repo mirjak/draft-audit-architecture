@@ -9,7 +9,7 @@ Expires: 11 March 2027                                    Fraunhofer SIT
                                                         7 September 2026
 
 
-   An Architecture for Auditing AI Agent Delegation and Interactions
+     An Architecture for Auditing Agent Delegation and Interactions
                draft-kuehlewind-audit-architecture-latest
 
 Abstract
@@ -24,7 +24,7 @@ Abstract
    requires linking intent, delegation, authorization, and execution.
    The proposed architecture enables this through distributed audit
    record generation, propagation of audit context, optional
-   attestation, and additonal logging for transparency.
+   attestation, and additional logging for transparency.
 
 Discussion Venues
 
@@ -100,14 +100,15 @@ Table of Contents
 
 1.  Introduction
 
-   Autonomous and semi-autonomous software agents based on large
-   language models (LLMs) and similar non-deterministic systems are
-   deployed to take consequential actions on behalf of users and
-   organizations.  These agents interact across administrative and trust
-   domains, delegate tasks and authority to other agents or tools, and
-   initiate consequential actions without per-step human oversight.  The
-   question of whether the recorded actions of an agent faithfully
-   represent what the agent actually did has acquired new urgency.
+   Autonomous and semi-autonomous software agents, including those based
+   on large language models (LLMs) and similar non-deterministic
+   systems, are deployed to take consequential actions on behalf of
+   users, organizations, and services across the Internet.  These agents
+   interact across administrative and trust domains, delegate tasks and
+   authority to other agents or tools, and initiate consequential
+   actions without per-step human oversight.  The question of whether
+   the recorded actions of an agent faithfully represent what the agent
+   actually did has acquired new urgency.
 
    Autonomous agents may run long-lived workflows without tight user
    interaction or may be very short-lived, e.g. for a delegated sub-
@@ -129,7 +130,10 @@ Table of Contents
    The architecture in this document identifies roles and their duties,
    describes the classes of interaction that must be audited, and
    discusses an example data model to make audits interoperable across
-   vendors, domains, and time.
+   vendors, domains, and time.  While AI agents is the driving use case,
+   as further discussed in Section 2, the proposed architecture provides
+   a general purpose auditing system for complex workloads delegated
+   authorization chains, potentially over the Internet.
 
    Two principles frame the rest of this document:
 
@@ -142,7 +146,7 @@ Table of Contents
        administrative boundaries.
 
    2.  Unlike classic delegated workflows in which authorization
-       transitions are explicit and predefined, AI agent systems
+       transitions are explicit and predefined, complex agent systems
        introduce dynamic, fine-grained authorization changes that arise
        during execution and are driven by agent decisions, sub-agent
        delegation, and human interaction.  Auditing must therefore
@@ -183,14 +187,14 @@ Table of Contents
    and Endorsements are reused verbatim as the vocabulary for
    environmental claims about audit-record producers.
 
-   Transparency follows SCITT [I-D.ietf-scitt-architecture]that makes a
-   record's existence later un-deniable: SCITT Signed Statements,
+   Transparency follows SCITT [I-D.ietf-scitt-architecture] that makes a
+   record's existence later undeniable: SCITT Signed Statements,
    Receipts, and Transparent Statements are the canonical artifacts, and
    SCITT-compatible Transparency Services are the canonical substrate
    for non-repudiable custody.
 
    The Verifiable Agent Conversations data model
-   [I-D.birkholz-verifiable-agent-conversations] could be utilizd as an
+   [I-D.birkholz-verifiable-agent-conversations] could be utilized as an
    Interaction Record.
 
    HTTP may be used as the transport mechanism for conveying audit
@@ -198,7 +202,7 @@ Table of Contents
    COSE, can provide representations for audit records and attestations,
    along with mechanisms for cryptographic protection.
 
-   Authority and delegation are based on by OAuth 2.0 [RFC6749], Token
+   Authority and delegation are based on OAuth 2.0 [RFC6749], Token
    Exchange [RFC8693], Transaction Tokens
    [I-D.ietf-oauth-transaction-tokens], Identity Chaining
    [I-D.ietf-oauth-identity-chaining], Identity Assertion Authorization
@@ -209,7 +213,7 @@ Table of Contents
    authentication [I-D.ietf-oauth-spiffe-client-auth].
 
    Workload identity follows WIMSE [I-D.ietf-wimse-arch], which this
-   document specializes for AI Agents.
+   document specializes for more complex agents like AI agents.
 
    The three principal acting roles as described in the next section and
    shown in Figure 2 have parallel counterparts in OAuth and WIMSE; a
@@ -218,7 +222,7 @@ Table of Contents
    | Actor View (this document) | OAuth view [RFC6749] | WIMSE view
    [I-D.ietf-wimse-arch] | |---|---|---| | User | Resource Owner |
    Principal of a run; may also be a Workload in machine-only runs | |
-   AI Agent | OAuth Client | Workload (with sub_profile=ai_agent)
+   Agent | OAuth Client | Workload (with sub_profile=ai_agent)
    presenting a Workload Identity Credential | | External Service /
    Tool | Resource Server | Service-side Workload or external endpoint
    of another Trust Domain |
@@ -288,7 +292,7 @@ Table of Contents
    their authenticity and provenance.
 
    +---------------+        +---------------+        +---------------+
-   |     User      |        |   AI Agent    |        |   External    |
+   |     User      |        |     Agent     |        |   External    |
    |               +------->+               +------->+   Services /  |
    +---------------+        +---------------+        |   Tools       |
             |                        |               +---------------+
@@ -330,19 +334,19 @@ Table of Contents
    role (user, agent, service/tool) records its own behaviour rather
    than relying on a central observer.  These records are linked via a
    propagated audit context with a coherent trail: Interaction Records
-   flow are generated by the User; Action and Delegation Records flowby
-   the Agent; Service Records flow by external Services/Tools.  Each
-   actor may produce mutiple records to, e.g., audit actions,
-   delegation, or authorization changes.  Distributed record generation
-   limits the trust placed in any single point.  Two trust mechanisms
-   are composed (attestation and transparency logging).  An auditing
-   system may select either, both, or neither according to the strength
-   of evidence its Auditors require.
+   are generated by the User; Action and Delegation Records are
+   generated by the Agent; Service Records are generated by external
+   Services/Tools.  Each actor may produce multiple records to, e.g.,
+   audit actions, delegation, or authorization changes.  Distributed
+   record generation limits the trust placed in any single point.  Two
+   trust mechanisms are composed (attestation and transparency logging).
+   An auditing system may select either, both, or neither according to
+   the strength of evidence its Auditors require.
 
    The auditing services (Attestation, Audit Store, and Transparency
    Log) are distinct from the interaction and authorization layers that
    drives the three acting roles.  They can be or need to be operated by
-   different parties dependeing on trust requirements of auditor.
+   different parties depending on the trust requirements of the auditor.
    Attestations may be directly provided by the producer or supplied on
    request by an Attestation Service.  An Audit Store canonicalises
    observable agent signals into the records and exposes them to Audit
@@ -400,18 +404,18 @@ Table of Contents
 
 3.3.  Identity Substrate
 
-   An AI Agent is treated as a specialisation of a Workload
+   An Agent is treated as a specialisation of a Workload
    [I-D.ietf-wimse-arch], with a Workload Identifier
    [I-D.ietf-wimse-identifier] scoped within a Trust Domain and a
    Workload Identity Credential (e.g., a WIT
    [I-D.ietf-wimse-workload-creds]) bound to a key the workload
    generates and retains.  The credential is never a bearer token and is
-   normally short-lived.  For auditing it is benefical if an Agent also
+   normally short-lived.  For auditing it is beneficial if an Agent also
    carries a role profile (per [I-D.mcguinness-oauth-actor-profile]'s
    sub_profile convention) so that downstream parties can distinguish an
    AI-driven Workload from a human-operated client or a traditional
    service.  The role-profile vocabulary is the subject of a separate
-   specification (WI-2 in Section 6).
+   specification (WI-1-1 in Section 6).
 
 4.  Roles
 
@@ -427,7 +431,7 @@ Table of Contents
    User's duty is to issue intent in a verifiable form--prompt,
    approval, or signed grant--and to respond to step-up escalations.
 
-   An AI Agent is a Workload [I-D.ietf-wimse-arch] whose behaviour is
+   An Agent is a Workload [I-D.ietf-wimse-arch] whose behaviour is
    driven, in whole or in part, by a non-deterministic decision process
    (typically an LLM).  Agents operate within the authorization they
    were issued, propagate the upstream Principal's identity and the
@@ -459,14 +463,14 @@ Table of Contents
    bound to its own identity, and submits them for registration with a
    Transparency Log before they leave the operational environment.  The
    Auditing Service is logically distinct from the User, Agent, or Tool
-   it records: the architecture's accountability properties require
-   either an independent Auditing Service.
+   it records: the architecture's accountability properties require an
+   independent Auditing Service.
 
    The Audit Store is a generic role of storing audit records after they
    have been produced.  Substrates range from append-only databases and
    SIEM-fed log stores to fully transparent registries.  Deployment
-   requires only availability of records may use any type of Audit Store
-   implementation.
+   requires only availability of records and may use any type of Audit
+   Store implementation.
 
    Attestation binds a record to the operational state of the
    environment in which it was produced.  A record may carry inline
@@ -542,16 +546,16 @@ Table of Contents
    absence is itself an audit-relevant fact and can be recorded.
 
    *Delegation Records:*  capture the assignment of authority from one
-      entity to another,e.g., delegator, delegatee, scope, and
+      entity to another, e.g., delegator, delegatee, scope, and
       constraints on use.
 
-   Authorization delegation records are used to audit which authority is
-   transmitted along the chain from User through Agent through Sub-Agent
-   to Tool or Service.  Across that chain, the record remains append-
-   only, meaning no actor removes or reorders prior actors.  Any cross-
-   domain transition is recorded with enough fidelity that an Auditing
-   Service on either side can make sense of it without access to the
-   other side's pipeline.
+   Delegation records are used to audit which authority is transmitted
+   along the chain from User through Agent through Sub-Agent to Tool or
+   Service.  Across that chain, the delegation record set remains
+   append-only, meaning no actor removes or reorders prior actors.  Any
+   cross-domain transition is recorded with enough fidelity that an
+   Auditing Service on either side can make sense of it without access
+   to the other side's pipeline.
 
    Authorization Transition Records:  capture changes in permission
       state over time: initial grants, step-up approvals, scope
@@ -563,12 +567,12 @@ Table of Contents
 
    Concrete illustrative shapes for each are given in Section 7.  The
    four classes of records share a common correlation identifier in the
-   Audit Context (see Section 7.1 and WI-11), so that a User's stated
+   Audit Context (see Section 7.1 and WI-6), so that a User's stated
    intent and an Agent's executed action remain linkable across protocol
    and administrative boundaries.
 
    Consequential records are attested by an in-device or third-party
-   service, stored in the Audit Store for retrival by an authorized
+   service, stored in the Audit Store for retrieval by an authorized
    auditor, and registered with a Transparency Service before they leave
    the operational environment, or as soon as network conditions permit.
 
@@ -584,7 +588,7 @@ Table of Contents
       payloads, and carrying actor identity unambiguously across User,
       Agent, Sub-Agent, Tool, and Service.
 
-   *  *WI-2: Delegation-Chain Wire Profile.* Specify both a
+   *  *WI-1-1: Delegation-Chain Record Format.* Record format for a
       Cryptographic Delegation Chain carried in token bodies (nested act
       per [RFC8693]; acti/actc candidates from
       [I-D.mw-oauth-actor-chain]) as well as a Tracing Delegation Chain
@@ -595,63 +599,58 @@ Table of Contents
       [I-D.mcguinness-oauth-actor-profile] vocabulary that distinguishes
       AI Agent, Sub-Agent, Tool, Service, and Human.
 
-   *  *WI-3: Interaction Record Profile.* A canonical Interaction Record
-      format for prompts, responses, instructions, approvals, refusals,
-      tool-invocation traces, reasoning traces (where exposed by the
-      model), and system events, potentially with an identifiable HITL
-      subtype and a registration profile compatible with SCITT.
+   *  *WI-1-2: Interaction Record Format.* A canonical Interaction
+      Record format for prompts, responses, instructions, approvals,
+      refusals, tool-invocation traces, reasoning traces (where exposed
+      by the model), and system events, potentially with an identifiable
+      HITL subtype and a registration profile compatible with SCITT.
       [I-D.birkholz-verifiable-agent-conversations] is the principal
       candidate for the User-Agent dialogue subtype.  This work item
       does not preclude additional profiles for non-conversational
       interactions, such as network device interaction.
 
-   *  *WI-4: Action Record Profile.* A canonical Action Record produced
+   *  *WI-1-3: Action Record Format.* A canonical Action Record produced
       at the boundary where each tool or service call took effect, bound
-      to its parent Interaction Record via SC-2/SC-11 tracing
+      to its parent Interaction Record via WI-1-1/WI-6 tracing
       identifiers, to its authorizing Token, and (when available) to the
       Attestation Result for the executing environment.  Distinguishes
       the Recorder's signing identity from the recorded Agent's identity
       where the two are operationally separated.
 
-   *  *WI-5: HITL Escalation Signalling.* Communication of step-up
-      requests from Agent to User and the User's response, e.g.,
-      approval, refusal, or timeout, in a form auditable end-to-end and
-      bindable to the resulting authorization state.
-
-   *  *WI-6: Profile of RATS Evidence.* How Evidence is referenced from
-      Interaction and Action Records using [RFC9334]'s encoding-agnostic
-      Conceptual Messages, and how Attestation Results derived from such
-      Evidence are consumed by Identity Issuance Authorities, Services,
-      and Auditors.
-
-   *  *WI-7: Profile of SCITT Transparency.* A Registraton Policy
-      profile of [I-D.ietf-scitt-architecture] for auditing records--
-      admissible Issuers (Agents, Sub-Agents, Recorders) and required
-      payload media types--and a Receipt presentation profile permitting
-      Auditors to verify non-repudiation independently of any single
-      Transparency Service.
-
-   *  *WI-8: Authorization Transition Encoding.* A canonical
+   *  *WI-1-4: Authorization Transition Record.* A canonical
       Authorization Transition Record format carrying previous state,
       new state, triggering event, and responsible actor (see
       Section 7.4), reusing [I-D.ietf-oauth-status-list] where the state
       is a token-status state, and replayable to reconstruct
       authorization in force at any timestamp within a run.
 
-   *  *WI-9: Auditor-Facing Query Interface.* An optional specialised
+   *  *WI-2: Profile of RATS Evidence.* How Evidence is referenced from
+      Interaction and Action Records using [RFC9334]'s encoding-agnostic
+      Conceptual Messages, and how Attestation Results derived from such
+      Evidence are consumed by Identity Issuance Authorities, Services,
+      and Auditors.
+
+   *  *WI-3: Profile of SCITT Transparency.* A Registration Policy
+      profile of [I-D.ietf-scitt-architecture] for auditing records--
+      admissible Issuers (Agents, Sub-Agents, Recorders) and required
+      payload media types--and a Receipt presentation profile permitting
+      Auditors to verify non-repudiation independently of any single
+      Transparency Service.
+
+   *  *WI-4: Auditor-Facing Query Interface.* An optional specialised
       query profile over the Audit Store and Transparency Log, surfacing
       records by session, workflow, principal, agent, tool, or time
       range, with authorization and privacy controls.
 
-   *  *WI-10: Deployment and Operations Best Practices.* Recorder
+   *  *WI-5: Deployment and Operations Best Practices.* Recorder
       placement, Identity Issuance Authority configuration for ephemeral
       Workloads, Trust Domain partitioning, operational separation
       between Agent runtime and audit pipeline, and the privacy guidance
       on redaction, retention, and disclosure that Section 9 relies on.
 
-   *  *WI-11: Audit Context Propagation Protocol Extensions.* This could
-      be realized by an HTTP headers carrying the Audit Context, e.g. a
-      workflow-wide Audit-Trace-ID, an immediate-redecessor Audit-
+   *  *WI-6: Audit Context Propagation Protocol Extensions.* This could
+      be realized by HTTP headers carrying the Audit Context, e.g. a
+      workflow-wide Audit-Trace-ID, an immediate-predecessor Audit-
       Parent-ID, the current Audit-Actor, the upstream Audit-On-Behalf-
       Of, the SC-2 tracing chain as Audit-Delegation-Chain, and a
       reference to the current Audit-Auth-State.  Alternatively, a
@@ -665,7 +664,7 @@ Table of Contents
 
    This section is informative.  It illustrates the four classes of
    audit record introduced in Section 5 and the audit context introduced
-   in WI-2 and WI-11 with concrete examples.  The exact field names,
+   in WI-1-1 and WI-6 with concrete examples.  The exact field names,
    claim names, and encodings shown here are placeholders pending.  They
    are intended to convey the relationships among the artifacts.
 
@@ -684,7 +683,7 @@ Table of Contents
    carrying correlation and tracing-chain information alongside the
    conventional OAuth claims.  The cryptographic delegation chain
    remains in the OAuth act claim [RFC8693]; the audit claim carries the
-   tracing-layer chain (WI-2) and the correlation identifiers used to
+   tracing-layer chain (WI-1-1) and the correlation identifiers used to
    link records:
 
    {
@@ -705,8 +704,8 @@ Table of Contents
      }
    }
 
-   The same information could be propagated using HTTP headers (WI-11)
-   or included in standalone audit records.
+   The same information could be propagated using HTTP headers (WI-6) or
+   included in standalone audit records.
 
 7.2.  Action Record
 
@@ -738,7 +737,7 @@ Table of Contents
    }
 
    The parent_id references the Interaction Record that motivated the
-   action.  The delegation_chain is the WI-2 tracing chain.  The
+   action.  The delegation_chain is the WI-1-1 tracing chain.  The
    cryptographic chain lives in the authorizing token and is not
    duplicated here.
 
@@ -792,12 +791,12 @@ Table of Contents
    The architecture's security properties are properties of the
    combination of mitigations supplied by the underlying layers (RATS,
    SCITT, WIMSE, OAuth) plus the bindings added by this architecture and
-   any new potenial specification (Section 6).  No single layer suffices
-   on its own.
+   any new potential specification (Section 6).  No single layer
+   suffices on its own.
 
-   While the final architecture and set of specification require a
+   While the final architecture and set of specifications require a
    detailed security and threat model analysis, some initial
-   consideration are stated here:
+   considerations are stated here:
 
    First, the Agent is _not_ trusted; the architecture is designed
    precisely for the case where the Agent's internal behaviour is the
@@ -831,10 +830,10 @@ Table of Contents
    content under contractual confidentiality.  Records of this content
    registered to a Transparency Service may be visible to a broader set
    of parties than the original interlocutors.  Subsequent
-   specifications (WI-3) must permit detached payloads so that the
+   specifications (WI-1-2) must permit detached payloads so that the
    registered Signed Statement may carry only a hash of the
    conversation, with the content held elsewhere under deployment
-   controls; WI-10 best practice need to address redaction and retention
+   controls; WI-5 best practice need to address redaction and retention
    policies.
 
    The chain identifier required for cross-service correlation
@@ -847,10 +846,10 @@ Table of Contents
    not required.
 
    Tool-call outputs should be referenceable by hash rather than
-   included inline in WI-4 Action Records.  Where inline inclusion is
+   included inline in WI-1-3 Action Records.  Where inline inclusion is
    required, encryption to a specific Auditor should be supported.
    Receipts [I-D.ietf-scitt-architecture] bind a registration to a
-   position in the Transparency Service's data structure. the fact of
+   position in the Transparency Service's data structure.  The fact of
    registration leaks the existence of an interaction at a time even
    when the Statement payload is hash-only.
 
