@@ -1,5 +1,5 @@
 ---
-title: "An Architecture for Auditing AI Agent Delegation and Interactions"
+title: "An Architecture for Auditing Agent Delegation and Interactions"
 abbrev: "Agent Auditing Architecture"
 docname: draft-kuehlewind-audit-architecture-latest
 category: info
@@ -65,7 +65,7 @@ The proposed architecture enables this through distributed audit record generati
 
 # Introduction
 
-Autonomous and semi-autonomous software agents based on large language models (LLMs) and similar non-deterministic systems are deployed to take consequential actions on behalf of users and organizations.
+Autonomous and semi-autonomous software agents, including those based on large language models (LLMs) and similar non-deterministic systems, are deployed to take consequential actions on behalf of users, organizations, and services across the Internet.
 These agents interact across administrative and trust domains, delegate tasks and authority to other agents or tools, and initiate consequential actions without per-step human oversight.
 The question of whether the recorded actions of an agent faithfully represent what the agent actually did has acquired new urgency.
 
@@ -79,14 +79,14 @@ This document describes an architecture that enables this form of auditing throu
 - propagation of audit context across protocol interactions, and
 - optional attestation and independent third-party logging for transparency that provides verifiable assurances about the content and origin of records.
 
-The architecture in this document identifies roles and their duties, describes the classes of interaction that must be audited, and discusses an example data model to make audits interoperable across vendors, domains, and time.
+The architecture in this document identifies roles and their duties, describes the classes of interaction that must be audited, and discusses an example data model to make audits interoperable across vendors, domains, and time. While AI agents is the driving use case, as further discussed in {{usecases}}, the proposed architecture provides a general purpose auditing system for complex workloads delegated authorization chains, potentially over the Internet.
 
 Two principles frame the rest of this document:
 
 1. Agents participate in *two distinct classes of interaction* that must each be auditable: user-facing interactions (prompts, approvals, human-in-the-loop confirmations) and system-facing interactions (API calls, tool invocations, delegation to other agents or services).
    Effective auditing requires linking user intent to resulting system actions across protocol and administrative boundaries.
 
-2. Unlike traditional delegated workflows in which authorization transitions are explicit and predefined, AI agent systems introduce dynamic, fine-grained authorization changes that arise during execution and are driven by agent decisions, sub-agent delegation, and human interaction.
+2. Unlike traditional delegated workflows in which authorization transitions are explicit and predefined, complex agent systems introduce dynamic, fine-grained authorization changes that arise during execution and are driven by agent decisions, sub-agent delegation, and human interaction.
    Auditing must therefore capture authorization as a *time-evolving state* and must correlate transitions across interactions and domains by maintaining common context.
 
 ## Relationship to Other IETF Work
@@ -103,7 +103,7 @@ HTTP may be used as the transport mechanism for conveying audit context alongsid
 
 Authority and delegation are based on OAuth 2.0 {{-oauth2}}, Token Exchange {{-token-exchange}}, Transaction Tokens {{-trat}}, Identity Chaining {{-id-chain}}, Identity Assertion Authorization Grants {{-id-jag}}, RAR {{-rar}}, attestation-based client authentication {{-oauth-attest}}, DPoP {{-dpop}}, Status Lists {{-status-list}}, and SPIFFE client authentication {{-spiffe-oauth}}.
 
-Workload identity follows WIMSE {{-wimse-arch}}, which this document specializes for AI Agents.
+Workload identity follows WIMSE {{-wimse-arch}}, which this document specializes for more complex agents like AI agents.
 
 The three principal acting roles as described in the next section and shown in {{fig-arch}} have parallel counterparts in OAuth and WIMSE; a deployment may use both.
 The following table shows a simple mapping:
@@ -111,13 +111,13 @@ The following table shows a simple mapping:
 | Actor View (this document) | OAuth view {{-oauth2}} | WIMSE view {{-wimse-arch}} |
 |---|---|---|
 | User | Resource Owner | Principal of a run; may also be a Workload in machine-only runs |
-| AI Agent | OAuth Client | Workload (with `sub_profile=ai_agent`) presenting a Workload Identity Credential |
+| Agent | OAuth Client | Workload (with `sub_profile=ai_agent`) presenting a Workload Identity Credential |
 | External Service / Tool | Resource Server | Service-side Workload or external endpoint of another Trust Domain |
 <!--{: #tbl-role-mappings title="OAuth and WIMSE role mappings for the three principal acting roles."}-->
 
 The auditing layer adds the cross-layer artifacts (audit records and context, agent interaction records, attestation references, and transparency receipts) that turn isolated layer events into a verifiable audit trail.
 
-# Motivating Use Cases
+# Motivating Use Cases {#usecases}
 
 The need for interoperable auditing of agent-driven systems arises from both regulatory requirements and user trust expectations.
 The following examples highlight scenarios where traditional logging is insufficient and where an explicit auditing architecture for agents provides value.
@@ -157,7 +157,7 @@ Without detailed auditing, it is difficult to verify what data was accessed, wha
 
 ~~~ aasvg
 +---------------+        +---------------+        +---------------+
-|     User      |        |   AI Agent    |        |   External    |
+|     User      |        |     Agent     |        |   External    |
 |               +------->+               +------->+   Services /  |
 +---------------+        +---------------+        |   Tools       |
          |                        |               +---------------+
@@ -234,10 +234,10 @@ But this does not replace attestations generated by record producers.
 
 ## Identity Substrate
 
-An AI Agent is treated as a specialisation of a Workload {{-wimse-arch}}, with a Workload Identifier {{-wimse-id}} scoped within a Trust Domain and a Workload Identity Credential (e.g., a WIT {{-wimse-creds}}) bound to a key the workload generates and retains.
+An Agent is treated as a specialisation of a Workload {{-wimse-arch}}, with a Workload Identifier {{-wimse-id}} scoped within a Trust Domain and a Workload Identity Credential (e.g., a WIT {{-wimse-creds}}) bound to a key the workload generates and retains.
 The credential is never a bearer token and is normally short-lived.
 For auditing it is beneficial if an Agent also carries a role profile (per {{-actor-profile}}'s `sub_profile` convention) so that downstream parties can distinguish an AI-driven Workload from a human-operated client or a traditional service.
-The role-profile vocabulary is the subject of a separate specification (WI-2 in {{work-items}}).
+The role-profile vocabulary is the subject of a separate specification (WI-1-1 in {{work-items}}).
 
 # Roles {#roles}
 
@@ -250,7 +250,7 @@ The User is the human or organisation on whose behalf an Agent acts.
 Where the User is a natural person they are also the OAuth Principal of the run: the `sub` of any token issued for the run and the original authorizing party in any delegation chain.
 On the audit layer the User's duty is to issue intent in a verifiable form--prompt, approval, or signed grant--and to respond to step-up escalations.
 
-An AI Agent is a Workload {{-wimse-arch}} whose behaviour is driven, in whole or in part, by a non-deterministic decision process (typically an LLM).
+An Agent is a Workload {{-wimse-arch}} whose behaviour is driven, in whole or in part, by a non-deterministic decision process (typically an LLM).
 Agents operate within the authorization they were issued, propagate the upstream Principal's identity and the delegation context
 unmodified except where an exchange explicitly authorises a change, and emit observable signals, such as prompts, actions, tool calls, sub-agent invocations, terminations, that an Audit Store can canonicalise.
 Where an Agent signs records itself, it signs with a key bound to its Workload Identity Credential, never with a long-lived shared key.
@@ -332,7 +332,7 @@ Authorization is considered as a time-evolving state.
 The ordered sequence of Authorization Transition Records of a run reconstructs the authorization in force at any point within it.
 
 Concrete illustrative shapes for each are given in {{examples}}.
-The four classes of records share a common correlation identifier in the Audit Context (see {{ex-audit-token}} and WI-11), so that a User's stated intent and an Agent's executed action remain linkable across protocol and administrative boundaries.
+The four classes of records share a common correlation identifier in the Audit Context (see {{ex-audit-token}} and WI-6), so that a User's stated intent and an Agent's executed action remain linkable across protocol and administrative boundaries.
 
 Consequential records are attested by an in-device or third-party service, stored in the Audit Store for retrieval by an authorized auditor, and registered with a Transparency Service before they leave the operational environment, or as soon as network conditions permit.
 
@@ -343,39 +343,36 @@ The following work items are proposed for potential specifications that support 
 * **WI-1: Audit Data Models and Semantics.**
   The canonical structure of Interaction, Action, Delegation, and Authorization Transition Records ({{interactions}}), encoded in at least one IETF-recognised serialisation (CBOR/COSE or JSON/JWS) with support for detached payloads, and carrying actor identity unambiguously across User, Agent, Sub-Agent, Tool, and Service.
 
-* **WI-2: Delegation-Chain Wire Profile.**
-  Specify both a Cryptographic Delegation Chain carried in token bodies (nested `act` per {{-token-exchange}}; `acti`/`actc` candidates from {{-actor-chain}}) as well as a Tracing Delegation Chain (a flat, lightweight Actor sequence suitable for audit context, HTTP headers, and standalone records) with a defined reconciliation path between them.
+* **WI-1-1: Delegation-Chain Record Format.**
+  Record format for a Cryptographic Delegation Chain carried in token bodies (nested `act` per {{-token-exchange}}; `acti`/`actc` candidates from {{-actor-chain}}) as well as a Tracing Delegation Chain (a flat, lightweight Actor sequence suitable for audit context, HTTP headers, and standalone records) with a defined reconciliation path between them.
   This item includes a representation for cross-domain transitions, and a `sub_profile` {{-actor-profile}} vocabulary that distinguishes AI Agent, Sub-Agent, Tool, Service, and Human.
 
-* **WI-3: Interaction Record Profile.**
+* **WI-1-2: Interaction Record Format.**
   A canonical Interaction Record format for prompts, responses, instructions, approvals, refusals, tool-invocation traces, reasoning traces (where exposed by the model), and system events, potentially with an identifiable HITL subtype and a registration profile compatible with SCITT.
   {{-vac}} is the principal candidate for the User-Agent dialogue subtype.
   This work item does not preclude additional profiles for non-conversational interactions, such as network device interaction.
 
-* **WI-4: Action Record Profile.**
-  A canonical Action Record produced at the boundary where each tool or service call took effect, bound to its parent Interaction Record via WI-2/WI-11 tracing identifiers, to its authorizing Token, and (when available) to the Attestation Result for the executing environment.
+* **WI-1-3: Action Record Format.**
+  A canonical Action Record produced at the boundary where each tool or service call took effect, bound to its parent Interaction Record via WI-1-1/WI-6 tracing identifiers, to its authorizing Token, and (when available) to the Attestation Result for the executing environment.
   Distinguishes the Recorder's signing identity from the recorded Agent's identity where the two are operationally separated.
 
-* **WI-5: HITL Escalation Signalling.**
-  Communication of step-up requests from Agent to User and the User's response, e.g., approval, refusal, or timeout, in a form auditable end-to-end and bindable to the resulting authorization state.
-
-* **WI-6: Profile of RATS Evidence.**
-  How Evidence is referenced from Interaction and Action Records using {{-rats-arch}}'s encoding-agnostic Conceptual Messages, and how Attestation Results derived from such Evidence are consumed by Identity Issuance Authorities, Services, and Auditors.
-
-* **WI-7: Profile of SCITT Transparency.**
-  A Registration Policy profile of {{-scitt-arch}} for auditing records--admissible Issuers (Agents, Sub-Agents, Recorders) and required payload media types--and a Receipt presentation profile permitting Auditors to verify non-repudiation independently of any single Transparency Service.
-
-* **WI-8: Authorization Transition Encoding.**
+* **WI-1-4: Authorization Transition Record.**
   A canonical Authorization Transition Record format carrying previous state, new state, triggering event, and responsible actor (see {{ex-auth-transition}}), reusing {{-status-list}} where the state is a token-status state, and replayable to reconstruct authorization in force at any timestamp within a run.
 
-* **WI-9: Auditor-Facing Query Interface.**
+* **WI-2: Profile of RATS Evidence.**
+  How Evidence is referenced from Interaction and Action Records using {{-rats-arch}}'s encoding-agnostic Conceptual Messages, and how Attestation Results derived from such Evidence are consumed by Identity Issuance Authorities, Services, and Auditors.
+
+* **WI-3: Profile of SCITT Transparency.**
+  A Registration Policy profile of {{-scitt-arch}} for auditing records--admissible Issuers (Agents, Sub-Agents, Recorders) and required payload media types--and a Receipt presentation profile permitting Auditors to verify non-repudiation independently of any single Transparency Service.
+
+* **WI-4: Auditor-Facing Query Interface.**
   An optional specialised query profile over the Audit Store and Transparency Log, surfacing records by session, workflow, principal, agent, tool, or time range, with authorization and privacy controls.
 
-* **WI-10: Deployment and Operations Best Practices.**
+* **WI-5: Deployment and Operations Best Practices.**
   Recorder placement, Identity Issuance Authority configuration for ephemeral Workloads, Trust Domain partitioning, operational separation between Agent runtime and audit pipeline, and the privacy guidance on redaction, retention, and disclosure that
   {{privconsec}} relies on.
 
-* **WI-11: Audit Context Propagation Protocol Extensions.**
+* **WI-6: Audit Context Propagation Protocol Extensions.**
   This could be realized by HTTP headers carrying the Audit Context, e.g. a workflow-wide `Audit-Trace-ID`, an immediate-predecessor `Audit-Parent-ID`, the current `Audit-Actor`, the upstream `Audit-On-Behalf-Of`, the SC-2 tracing chain as `Audit-Delegation-Chain`, and a reference to the current `Audit-Auth-State`.
   Alternatively, a single composite `Audit-Context` header could be defined that provides the audit context embedded in OAuth token claims ({{ex-audit-token}}).
   The relationship to existing distributed-tracing conventions (W3C Trace Context, OpenTelemetry) need to be considered.
@@ -383,7 +380,7 @@ The following work items are proposed for potential specifications that support 
 # Illustrative Audit Record Examples {#examples}
 
 This section is informative.
-It illustrates the four classes of audit record introduced in {{interactions}} and the audit context introduced in WI-2 and WI-11 with concrete examples.
+It illustrates the four classes of audit record introduced in {{interactions}} and the audit context introduced in WI-1-1 and WI-6 with concrete examples.
 The exact field names, claim names, and encodings shown here are placeholders pending.
 They are intended to convey the relationships among the artifacts.
 
@@ -395,7 +392,7 @@ The record also captures relevant authorization state, such as scope and validit
 ## Audit Context in an Access Token {#ex-audit-token}
 
 An access token or similar credential MAY include an `audit` claim carrying correlation and tracing-chain information alongside the conventional OAuth claims.
-The cryptographic delegation chain remains in the OAuth `act` claim {{-token-exchange}}; the `audit` claim carries the tracing-layer chain (WI-2) and the correlation identifiers used to link records:
+The cryptographic delegation chain remains in the OAuth `act` claim {{-token-exchange}}; the `audit` claim carries the tracing-layer chain (WI-1-1) and the correlation identifiers used to link records:
 
 ~~~ json
 {
@@ -417,7 +414,7 @@ The cryptographic delegation chain remains in the OAuth `act` claim {{-token-exc
 }
 ~~~
 
-The same information could be propagated using HTTP headers (WI-11)
+The same information could be propagated using HTTP headers (WI-6)
 or included in standalone audit records.
 
 ## Action Record {#ex-action}
@@ -451,7 +448,7 @@ An Action Record produced at the boundary where a tool or service call took effe
 ~~~
 
 The `parent_id` references the Interaction Record that motivated the action.
-The `delegation_chain` is the WI-2 tracing chain.
+The `delegation_chain` is the WI-1-1 tracing chain.
 The cryptographic chain lives in the authorizing token and is not duplicated here.
 
 ## Delegation Record {#ex-delegation}
@@ -526,12 +523,12 @@ As such privacy considerations are of special importance for auditing.
 
 Prompt and response content frequently contain personally identifiable information, confidential business information, or content under contractual confidentiality.
 Records of this content registered to a Transparency Service may be visible to a broader set of parties than the original interlocutors.
-Subsequent specifications (WI-3) must permit detached payloads so that the registered Signed Statement may carry only a hash of the conversation, with the content held elsewhere under deployment controls; WI-10 best practice need to address redaction and retention policies.
+Subsequent specifications (WI-1-2) must permit detached payloads so that the registered Signed Statement may carry only a hash of the conversation, with the content held elsewhere under deployment controls; WI-5 best practice need to address redaction and retention policies.
 
 The chain identifier required for cross-service correlation ({{interactions}}) also enables correlation of an Agent's--and by extension a User's--activity across the Services it touches.
 Chain identifiers can be encrypted to specific Auditors when the Service does not need to correlate itself, and pairwise per-Service identifiers ({{-direct-presentation}}'s pairwise pattern) could substitute for a single global chain identifier where correlation is not required.
 
-Tool-call outputs should be referenceable by hash rather than included inline in WI-4 Action Records.
+Tool-call outputs should be referenceable by hash rather than included inline in WI-1-3 Action Records.
 Where inline inclusion is required, encryption to a specific Auditor should be supported.
 Receipts {{-scitt-arch}} bind a registration to a position in the Transparency Service's data structure. The fact of registration leaks the existence of an interaction at a time even when the Statement payload is hash-only.
 
@@ -546,5 +543,4 @@ This document has no IANA actions.
 
 
 --- back
-
 
