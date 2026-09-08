@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-09-01T02:58:06.713679+00:00",
+  "timestamp": "2026-09-08T02:27:13.311108+00:00",
   "repo": "mirjak/draft-audit-architecture",
   "labels": [
     {
@@ -344,16 +344,24 @@
       "id": "I_kwDOShPbiM8AAAABDpb3vA",
       "title": "Consider in the introduction (and the diagram in Figure 1) the idea of a chain of agents/actors",
       "url": "https://github.com/mirjak/draft-audit-architecture/issues/14",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "mirjak",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "I created this issue based on feedback from Diego Lopez, see here: https://mailarchive.ietf.org/arch/msg/agent2agent/7ynLOIMhS9KvmsMOpSkq743YK2w/",
       "createdAt": "2026-05-28T10:40:32Z",
-      "updatedAt": "2026-05-28T10:40:32Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2026-09-07T11:42:20Z",
+      "closedAt": "2026-09-07T11:42:20Z",
+      "comments": [
+        {
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "body": "This was address by PR #25 ",
+          "createdAt": "2026-09-07T11:42:20Z",
+          "updatedAt": "2026-09-07T11:42:20Z"
+        }
+      ]
     },
     {
       "number": 15,
@@ -406,7 +414,7 @@
     {
       "number": 18,
       "id": "I_kwDOShPbiM8AAAABEHLlqA",
-      "title": "Described interface to Audit Store",
+      "title": "Describe interface to Audit Store",
       "url": "https://github.com/mirjak/draft-audit-architecture/issues/18",
       "state": "OPEN",
       "author": "mirjak",
@@ -415,7 +423,7 @@
       "labels": [],
       "body": "Should we specify the interface to the Audit store in this document?",
       "createdAt": "2026-06-02T11:16:32Z",
-      "updatedAt": "2026-06-02T11:16:32Z",
+      "updatedAt": "2026-09-07T11:42:58Z",
       "closedAt": null,
       "comments": []
     },
@@ -585,24 +593,26 @@
       "id": "PR_kwDOShPbiM7fwgFJ",
       "title": "remove AI from Agents as central entity",
       "url": "https://github.com/mirjak/draft-audit-architecture/pull/13",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "mirjak",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-05-27T09:17:03Z",
-      "updatedAt": "2026-05-28T10:31:00Z",
+      "updatedAt": "2026-09-07T11:29:16Z",
       "baseRepository": "mirjak/draft-audit-architecture",
       "baseRefName": "main",
       "baseRefOid": "45cb14988357cb763dee87a5fe2f11d2d8d5490e",
       "headRepository": "mirjak/draft-audit-architecture",
       "headRefName": "mirjak-patch-2",
       "headRefOid": "a4f699ab3ba10652a6f69ba88ab020f23b1406a6",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-09-07T11:29:16Z",
+      "mergedAt": "2026-09-07T11:29:16Z",
+      "mergedBy": "mirjak",
+      "mergeCommit": {
+        "oid": "62f9e9adeeaf983e62996740ccfbbc500f6c9c1b"
+      },
       "comments": [],
       "reviews": [
         {
@@ -645,24 +655,26 @@
       "id": "PR_kwDOShPbiM8AAAABA7yn6g",
       "title": "Fix typos and minor grammatical issues in draft text",
       "url": "https://github.com/mirjak/draft-audit-architecture/pull/24",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "mirjak",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-08-25T12:25:37Z",
-      "updatedAt": "2026-08-26T10:51:56Z",
+      "updatedAt": "2026-09-07T11:31:19Z",
       "baseRepository": "mirjak/draft-audit-architecture",
       "baseRefName": "main",
-      "baseRefOid": "05dc280a7ff210eaf86427bf5e7393f6ec49d10c",
+      "baseRefOid": "62f9e9adeeaf983e62996740ccfbbc500f6c9c1b",
       "headRepository": "mirjak/draft-audit-architecture",
       "headRefName": "fix-typos",
-      "headRefOid": "58deb8bcabc3ab00fb175c56c7a3c02308b3b397",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "c026eaf85a4b827a0f56af32fc2d5b0d7b3ab1cb",
+      "closedAt": "2026-09-07T11:31:19Z",
+      "mergedAt": "2026-09-07T11:31:19Z",
+      "mergedBy": "mirjak",
+      "mergeCommit": {
+        "oid": "1a1741a084883e14cb33cca4f0c84eabfca071c0"
+      },
       "comments": [],
       "reviews": [
         {
@@ -685,24 +697,26 @@
       "id": "PR_kwDOShPbiM8AAAABA75Hpg",
       "title": "Add new Agent Interaction Workflow subsection",
       "url": "https://github.com/mirjak/draft-audit-architecture/pull/25",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "mirjak",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-08-25T12:39:40Z",
-      "updatedAt": "2026-08-26T10:58:56Z",
+      "updatedAt": "2026-09-07T11:34:09Z",
       "baseRepository": "mirjak/draft-audit-architecture",
       "baseRefName": "main",
-      "baseRefOid": "40431238ad0f8baf807ed285213de2c81550e662",
+      "baseRefOid": "1a1741a084883e14cb33cca4f0c84eabfca071c0",
       "headRepository": "mirjak/draft-audit-architecture",
       "headRefName": "add-agent-workflow-intro",
-      "headRefOid": "2a88a6960d1d0a1b6eb1386b457d4e121f462c0c",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "2e3f871730d5a2dfb8b5f84bd50d7d10a81837a1",
+      "closedAt": "2026-09-07T11:34:09Z",
+      "mergedAt": "2026-09-07T11:34:09Z",
+      "mergedBy": "mirjak",
+      "mergeCommit": {
+        "oid": "1be957d00ee740177a11926b984b309e82e7045d"
+      },
       "comments": [],
       "reviews": [
         {
@@ -765,24 +779,26 @@
       "id": "PR_kwDOShPbiM8AAAABA8DtDA",
       "title": "Rework Everyday Agent Interaction use case into flight-booking example",
       "url": "https://github.com/mirjak/draft-audit-architecture/pull/26",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "mirjak",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-08-25T13:01:17Z",
-      "updatedAt": "2026-08-26T10:57:33Z",
+      "updatedAt": "2026-09-07T11:41:40Z",
       "baseRepository": "mirjak/draft-audit-architecture",
       "baseRefName": "main",
       "baseRefOid": "40431238ad0f8baf807ed285213de2c81550e662",
       "headRepository": "mirjak/draft-audit-architecture",
       "headRefName": "rework-everyday-usecase",
       "headRefOid": "98d8fcec41171a675db6062b76d247a76c96328c",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-09-07T11:41:40Z",
+      "mergedAt": "2026-09-07T11:41:40Z",
+      "mergedBy": "mirjak",
+      "mergeCommit": {
+        "oid": "2ab1e6c57e18285e2e9d99f1d82ba7e99c50ffd6"
+      },
       "comments": [],
       "reviews": [
         {
@@ -804,6 +820,46 @@
               "updatedAt": "2026-08-26T10:57:33Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOShPbiM8AAAABMdyVhA",
+          "commit": {
+            "abbreviatedOid": "98d8fce"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-09-07T11:33:59Z",
+          "updatedAt": "2026-09-07T11:33:59Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "What do you propose?",
+              "createdAt": "2026-09-07T11:33:59Z",
+              "updatedAt": "2026-09-07T11:33:59Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOShPbiM8AAAABMd10lQ",
+          "commit": {
+            "abbreviatedOid": "98d8fce"
+          },
+          "author": "mirjak",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-09-07T11:41:28Z",
+          "updatedAt": "2026-09-07T11:41:28Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "After a quick offline chat with Henk, we will merge this now and continue to work this later.",
+              "createdAt": "2026-09-07T11:41:28Z",
+              "updatedAt": "2026-09-07T11:41:28Z"
+            }
+          ]
         }
       ]
     },
@@ -812,24 +868,26 @@
       "id": "PR_kwDOShPbiM8AAAABA8KErg",
       "title": "Add In-Band Record Storage subsection to Architectural Overview",
       "url": "https://github.com/mirjak/draft-audit-architecture/pull/27",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "mirjak",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-08-25T13:13:49Z",
-      "updatedAt": "2026-08-26T10:54:38Z",
+      "updatedAt": "2026-09-07T11:34:27Z",
       "baseRepository": "mirjak/draft-audit-architecture",
       "baseRefName": "main",
       "baseRefOid": "40431238ad0f8baf807ed285213de2c81550e662",
       "headRepository": "mirjak/draft-audit-architecture",
       "headRefName": "add-inband-records-subsection",
       "headRefOid": "17cd43e82a1faf589dc5c892ae44b85e023226f2",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-09-07T11:34:26Z",
+      "mergedAt": "2026-09-07T11:34:26Z",
+      "mergedBy": "mirjak",
+      "mergeCommit": {
+        "oid": "1c57058b026c461fd9169c883abe5410272a3eb9"
+      },
       "comments": [],
       "reviews": [
         {
@@ -852,24 +910,26 @@
       "id": "PR_kwDOShPbiM8AAAABA8igVw",
       "title": "Clarify scope: not session/context management, and auditing is post-hoc",
       "url": "https://github.com/mirjak/draft-audit-architecture/pull/28",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "mirjak",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-08-25T14:00:22Z",
-      "updatedAt": "2026-08-26T10:53:29Z",
+      "updatedAt": "2026-09-07T11:36:06Z",
       "baseRepository": "mirjak/draft-audit-architecture",
       "baseRefName": "main",
-      "baseRefOid": "40431238ad0f8baf807ed285213de2c81550e662",
+      "baseRefOid": "1c57058b026c461fd9169c883abe5410272a3eb9",
       "headRepository": "mirjak/draft-audit-architecture",
       "headRefName": "add-scope-clarification",
-      "headRefOid": "d9a9d42a0430a39f77bf2dda835816ee0182a2e9",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "11c9825daea6966819d7563a971b8129aff0f411",
+      "closedAt": "2026-09-07T11:36:06Z",
+      "mergedAt": "2026-09-07T11:36:06Z",
+      "mergedBy": "mirjak",
+      "mergeCommit": {
+        "oid": "e66282014ec75ffe9b305dbfdaf6b40daf53e5be"
+      },
       "comments": [],
       "reviews": [
         {
@@ -892,24 +952,26 @@
       "id": "PR_kwDOShPbiM8AAAABA849rQ",
       "title": "Re-org WIs",
       "url": "https://github.com/mirjak/draft-audit-architecture/pull/29",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "mirjak",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-08-25T14:42:49Z",
-      "updatedAt": "2026-08-26T11:01:07Z",
+      "updatedAt": "2026-09-07T11:28:45Z",
       "baseRepository": "mirjak/draft-audit-architecture",
       "baseRefName": "main",
       "baseRefOid": "05dc280a7ff210eaf86427bf5e7393f6ec49d10c",
       "headRepository": "mirjak/draft-audit-architecture",
       "headRefName": "mirjak-patch-3",
       "headRefOid": "93b07691e235cea3a5e7b05efe7986c1bf0b7cf4",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-09-07T11:28:45Z",
+      "mergedAt": "2026-09-07T11:28:45Z",
+      "mergedBy": "mirjak",
+      "mergeCommit": {
+        "oid": "4ea4d03ace9dd38d46259ac7eaf03a06e5ce70ec"
+      },
       "comments": [],
       "reviews": [
         {
