@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-09-29T03:37:20.080440+00:00",
+  "timestamp": "2026-10-06T04:13:22.939948+00:00",
   "repo": "mirjak/draft-audit-architecture",
   "labels": [
     {
@@ -1148,6 +1148,40 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 36,
+      "id": "PR_kwDOShPbiM8AAAABGs2tbg",
+      "title": "Describe temporal evidence and recorded pre-ingestion admission decisions",
+      "url": "https://github.com/mirjak/draft-audit-architecture/pull/36",
+      "state": "OPEN",
+      "author": "axcpeter",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "This proposal describes external temporal evidence and recorded pre-ingestion admission decisions for auditing, without specifying runtime enforcement mechanisms or changing the auditing/authorization boundary. \r\n\r\nRelated charter PR: https://github.com/mirjak/audit-bof-preparation/pull/60\r\n",
+      "createdAt": "2026-10-05T12:07:41Z",
+      "updatedAt": "2026-10-06T00:26:40Z",
+      "baseRepository": "mirjak/draft-audit-architecture",
+      "baseRefName": "main",
+      "baseRefOid": "2ab1e6c57e18285e2e9d99f1d82ba7e99c50ffd6",
+      "headRepository": "axcpeter/draft-audit-architecture",
+      "headRefName": "audit/temporal-evidence-admission-decisions",
+      "headRefOid": "6f71ce568603e85524ff5cceabd8b600873ef346",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "axcpeter",
+          "authorAssociation": "NONE",
+          "body": "Request for review: temporal evidence and recorded admission decisions\n\nTo make the intended scope of this proposal explicit, the added subsection describes evidence representation for auditing. It does not specify runtime authorization or enforcement.\n\nThe proposed distinctions are:\n\n 1.an actor\u2019s claimed event time, observation time at a declared boundary, and subsequent storage or transparency-registration time\n\n 2.timestamp resolution, source uncertainty, and verification latency\n\n 3.an observed admission decision and the outcome of the corresponding application action; and\n\n 4.successful verification, failed verification, and unavailable or inconclusive evidence.\n\nAn accepted request need not have completed. A rejected or held request does not, by itself, establish what happened elsewhere in the system. Similarly, a signature authenticating a claimed timestamp does not alone establish an independently corroborated event time.\n\nI would particularly welcome feedback on two questions:\n\n1. Is the end of the Attestation Model section, before Identity Substrate, the appropriate location for this material?\n\n2. Should the architecture describe these evidence distinctions here, while leaving deployment-specific collection, retention, and handling of missing evidence to operational guidance?\n\nThe proposal remains independent of any particular temporal-evidence protocol, storage service, or record format.\n\nRelated charter clarification:\nhttps://github.com/mirjak/audit-bof-preparation/pull/60\n\n",
+          "createdAt": "2026-10-06T00:26:40Z",
+          "updatedAt": "2026-10-06T00:26:40Z"
+        }
+      ],
+      "reviews": []
     }
   ]
 }
