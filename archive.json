@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-10-06T04:13:22.939948+00:00",
+  "timestamp": "2026-10-11T03:17:29.293536+00:00",
   "repo": "mirjak/draft-audit-architecture",
   "labels": [
     {
@@ -1161,7 +1161,7 @@
       "labels": [],
       "body": "This proposal describes external temporal evidence and recorded pre-ingestion admission decisions for auditing, without specifying runtime enforcement mechanisms or changing the auditing/authorization boundary. \r\n\r\nRelated charter PR: https://github.com/mirjak/audit-bof-preparation/pull/60\r\n",
       "createdAt": "2026-10-05T12:07:41Z",
-      "updatedAt": "2026-10-06T00:26:40Z",
+      "updatedAt": "2026-10-10T02:26:09Z",
       "baseRepository": "mirjak/draft-audit-architecture",
       "baseRefName": "main",
       "baseRefOid": "2ab1e6c57e18285e2e9d99f1d82ba7e99c50ffd6",
@@ -1179,6 +1179,13 @@
           "body": "Request for review: temporal evidence and recorded admission decisions\n\nTo make the intended scope of this proposal explicit, the added subsection describes evidence representation for auditing. It does not specify runtime authorization or enforcement.\n\nThe proposed distinctions are:\n\n 1.an actor\u2019s claimed event time, observation time at a declared boundary, and subsequent storage or transparency-registration time\n\n 2.timestamp resolution, source uncertainty, and verification latency\n\n 3.an observed admission decision and the outcome of the corresponding application action; and\n\n 4.successful verification, failed verification, and unavailable or inconclusive evidence.\n\nAn accepted request need not have completed. A rejected or held request does not, by itself, establish what happened elsewhere in the system. Similarly, a signature authenticating a claimed timestamp does not alone establish an independently corroborated event time.\n\nI would particularly welcome feedback on two questions:\n\n1. Is the end of the Attestation Model section, before Identity Substrate, the appropriate location for this material?\n\n2. Should the architecture describe these evidence distinctions here, while leaving deployment-specific collection, retention, and handling of missing evidence to operational guidance?\n\nThe proposal remains independent of any particular temporal-evidence protocol, storage service, or record format.\n\nRelated charter clarification:\nhttps://github.com/mirjak/audit-bof-preparation/pull/60\n\n",
           "createdAt": "2026-10-06T00:26:40Z",
           "updatedAt": "2026-10-06T00:26:40Z"
+        },
+        {
+          "author": "axcpeter",
+          "authorAssociation": "NONE",
+          "body": "Clarification on Temporal Evidence Models: Pre-effect vs. Post-facto\n\nFollowing recent coordination on expected audit records (e.g., Case 7 & Case 8 discussions on the mailing list), I would like to clarify the intended boundary for this proposal:\n\n1. Post-facto Evidence (e.g., RFC 3161 TSA, SCITT): Attests to interaction records after an execution has occurred. This serves as retrospective proof and is complementary to this proposal.\n\n2. Pre-effect Temporal Sealing (Admission Evidence): Evaluates temporal consensus, TLS session exporters, and atomic nonce states before the application state-commit occurs. A failure at this boundary generates a signed refusal receipt (Case 8) and halts downstream execution.\n\nExplicitly mapping these two temporal boundaries in Section 3/4 of the architecture draft will prevent confusion between retrospective timestamping and real-time pre-ingestion enforcement. \n\nThis PR simply provides the architectural profile for audit tasks to reference pre-ingestion admission evidence alongside post-facto records.\n",
+          "createdAt": "2026-10-10T02:26:09Z",
+          "updatedAt": "2026-10-10T02:26:09Z"
         }
       ],
       "reviews": []
